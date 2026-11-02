@@ -336,7 +336,7 @@ assorted	ə'sɔːtɪd	adj. 各式各样的	0	0	0	0
 assume	ə'sjuːm	v. 假定；承担；使用	0	0	0	0
 assumption	ə'sʌm(p)ʃ(ə)n	n. 假定之事；承担，担任	0	0	0	0
 assurance	ə'ʃʊər(ə)ns	n. 自信；承诺；保险	0	0	0	0
-assure	ə'ʃʊə; ə'ʃɔː	v. 断言，使确信；保(人寿)险	2	0	2	0
+assure	ə'ʃʊə; ə'ʃɔː	v. 断言，使确信；保(人寿)险	4	1	3	1
 asthma	'æsmə	n. 哮喘症	0	0	0	0
 astonish	ə'stɒnɪʃ	vt. 使惊讶，使吃惊	0	0	0	0
 astound	ə'staʊnd	v. 使震惊	0	0	0	0
@@ -411,7 +411,7 @@ awkward	'ɔːkwəd	adj. 难使用的，笨拙的；尴尬的	0	0	0	0
 axis	'æksɪs	n. (plaxes)轴，轴心	0	0	0	0
 axle	'æksl	n. 车轴，轮轴	0	0	0	0
 bachelor	'bætʃələ(r)	n. 学士；单身汉	0	0	0	0
-backbone	'bækbəun	n. 脊椎；骨干；支柱	2	0	2	0
+backbone	'bækbəun	n. 脊椎；骨干；支柱	4	2	2	2
 background	'bækgraund	n. 背景；经历；后台；不重要或不引人注目的地方	0	0	0	0
 bacterial	bæk'tɪəriəl	adj. 细菌的；由细菌引起的	0	0	0	0
 badge	bædʒ	n. 徽章；标记；象征	0	0	0	0
@@ -1246,7 +1246,7 @@ denote	dɪ'nəʊt	v. 是的符号，提示，表示	0	0	0	0
 denounce	dɪ'naʊns	v. 谴责，斥责	0	0	0	0
 dense	dens	adj. 浓密的，密集的；愚笨的	0	0	0	0
 density	'densəti	n. 密集；浓度，密度	0	0	0	0
-dentist	'dentɪst	n. 牙医	1	0	1	0
+dentist	'dentɪst	n. 牙医	3	0	3	0
 deny	dɪ'naɪ	v. 否认,否定，拒绝一项要求"	0	0	0	0
 depart	dɪ'pɑːt	v. 离开，启程	0	0	0	0
 departmental	ˌdiːpɑːt'mentl	adj. 部门的	0	0	0	0
@@ -1420,7 +1420,7 @@ dissipate	'dɪsɪpeɪt	v. 消散，消失；浪费，挥霍	0	0	0	0
 dissolve	dɪ'zɒlv	v. 使液化，融化；使解散	0	0	0	0
 distance	'dɪstəns	n. 距离；远方；一长段时间	0	0	0	0
 distend	dɪ'stend	v. (使)扩张；膨胀	0	0	0	0
-distil	dis'til	v. 蒸馏	2	0	2	0
+distil	dis'til	v. 蒸馏	4	0	4	0
 distill	dɪ'stɪl	vt. 蒸馏，提取	0	0	0	0
 distinct	dɪ'stɪŋ(k)t	adj. 不同的，清楚的，独特的	0	0	0	0
 distinction	dɪ'stɪŋ(k)ʃ(ə)n	n. 差别，区分；卓著，荣誉	0	0	0	0
@@ -1641,7 +1641,7 @@ enigma	ɪ'nɪgmə	n. 谜，谜一样的人或事	0	0	0	0
 enjoyable	ɪn'dʒɔɪəbl	adj. 令人愉快的，使人快乐的	0	0	0	0
 enlarge	ɪn'lɑːdʒ	v. 扩大，放大，扩充	0	0	0	0
 enlighten	ɪn'laɪt(ə)n; en-	v. 启发，开导	0	0	0	0
-enlist	ɪn'lɪst	v. 征募；从军，参军；谋取	1	0	1	0
+enlist	ɪn'lɪst	v. 征募；从军，参军；谋取	3	0	3	0
 enormous	ɪ'nɔːməs	adj. 巨大的，庞大的	0	0	0	0
 enquire	ɪn'kwaɪə	v. 询问，打听	0	0	0	0
 enquiry	ɪn'kwaɪrɪ	n. 询问，打听	0	0	0	0
@@ -1843,7 +1843,7 @@ face	feɪs	n. 脸，表情 | v. 面向，正视，承认，呈现前	0	0	0	0
 facet	'fæsɪt; -et	n. 刻面，(问题的)一个方面	0	0	0	0
 facial	'feɪʃl	adj. 面部的；面部用的	0	0	0	0
 facilitate	fə'sɪlɪteɪt	v. 使便利	0	0	0	0
-facility	fə'sɪləti	n. 灵巧，熟练；设备	2	0	2	0
+facility	fə'sɪləti	n. 灵巧，熟练；设备	4	0	4	0
 facsimile	fæk'sɪməli	n. 复制品；副本	0	0	0	0
 fact sheet		n. 情况简报，资料摘要	0	0	0	0
 factor	'fæktə	n. 因素，要素	0	0	0	0
@@ -1909,7 +1909,7 @@ fervent	'fɜːv(ə)nt	adj. 热烈的；热情的	0	0	0	0
 fester	'festə	v. 脓疮，(怨恨等)郁积，恶化	0	0	0	0
 festival	'festɪv(ə)l	n&a. 节日(的)，表演会期(的)	0	0	0	0
 fetch	fetʃ	v. (去)取，拿来；(货物)售的(价钱)	0	0	0	0
-fetter	'fetə	n&vt. 脚镣；束缚	2	0	2	0
+fetter	'fetə	n&vt. 脚镣；束缚	4	2	2	2
 feud	fjuːd	n&vt. 长期不和；争吵	0	0	0	0
 fibre	'faɪbə	n. 纤维，结构；质地，性格	0	0	0	0
 fickle	'fɪk(ə)l	adj. 感情易变的；无常的	0	0	0	0
@@ -2311,7 +2311,7 @@ hold	həʊld	n&v. 握，抓；支持；装得下；认为；举行	0	0	0	0
 holistic	həu'lɪstɪk	adj. 整体的，全面的；功能整体性的	0	0	0	0
 holistically	həu'lɪstɪkli	adv. 整体地，全盘地	0	0	0	0
 hollow	'hɒləu	adj. 空的，空洞的；沉闷的；虚伪的，空虚的 | v. 挖空，凿空	0	0	0	0
-holocaust	'hɒləkɔːst	n. 大破坏	2	0	2	0
+holocaust	'hɒləkɔːst	n. 大破坏	4	0	4	0
 homesick	'həumsɪk	adj. 想家的，思乡的	0	0	0	0
 homestay	'həʊmsteɪ	n. 在当地居民家居住	0	0	0	0
 homogeneous	,hɒmə(ʊ)'dʒiːnɪəs; -'dʒen-	adj. 同类的，同族的	0	0	0	0
@@ -2651,7 +2651,7 @@ irrevocable	ɪ'revəkəbl	adj. 无法取消的，不能改变的	0	0	0	0
 irrigation	ˌɪrɪˈɡeʃn	n. 灌溉	0	0	0	0
 irritable	'ɪrɪtəbl	adj. 急躁的，易怒的，易受刺激的；过敏的	0	0	0	0
 irritate	'ɪrɪteɪt	v. 激怒；使烦躁，使感到不适	0	0	0	0
-irritation	ˌɪrɪ'teɪʃn	n. 激怒，恼怒；刺激物，恼人的事	0	0	0	0
+irritation	ˌɪrɪ'teɪʃn	n. 激怒，恼怒；刺激物，恼人的事	2	0	2	0
 isle	aɪl	n. 岛，小岛	0	0	0	0
 isolate	'aɪsəleɪt	v. 隔离，孤立	0	0	0	0
 isolated	'aɪsəleɪtɪd	adj. 隔离的，分离的；与世隔绝的，偏僻的；孤立的，孤独的；个别的	0	0	0	0
@@ -2765,7 +2765,7 @@ legitimate	lɪ'dʒɪtɪmət	adj. 合法的，合理的	0	0	0	0
 legitimize	lɪ'dʒɪtəmaɪz	vt. 使合法；赋予合法权利	0	0	0	0
 leisure	'leʒə(r)	n. 空闲时间；悠闲	0	0	0	0
 lenient	'liːnɪənt	adj. 宽大的，宽厚的	0	0	0	0
-lens	lenz	n. 透镜；眼睛水晶体	0	0	0	0
+lens	lenz	n. 透镜；眼睛水晶体	2	1	1	1
 leopard	'lepəd	n. 豹，美洲豹	0	0	0	0
 let	let	v. 允许，让，出租	0	0	0	0
 lethal	'liːθ(ə)l	adj. 致死的；致死的	0	0	0	0
@@ -3137,7 +3137,7 @@ murmur	'mɜːmə	n&v. 低沉连续的声音；诉怨	0	0	0	0
 muscle	'mʌsl	n. 肌肉；体力；力量，实力	0	0	0	0
 muscular	'mʌskjʊlə	adj. 肌肉的；肌肉发达的	0	0	0	0
 mushroom	'mʌʃruːm; -rʊm	n&v. 蘑菇，迅速发展	0	0	0	0
-muster	'mʌstə	v. 集合，检阅，集中	2	0	2	0
+muster	'mʌstə	v. 集合，检阅，集中	4	2	2	2
 mutation	mjuː'teɪʃ(ə)n	n. 变化，变异，转变	0	0	0	0
 mutter	'mʌtə	v&n. 轻声低语；怨言	0	0	0	0
 mutual	'mjuːtʃʊəl; -tjʊəl	adj. 相互的，共有的，共同的	0	0	0	0
@@ -3509,7 +3509,7 @@ periphery	pə'rɪf(ə)rɪ	n. (圆体的)外面；周围	0	0	0	0
 periscope	'perɪskəʊp	n. 潜望镜	0	0	0	0
 perish	'perɪʃ	vt&vi. 灭亡，使痛苦；腐朽	0	0	0	0
 perishable	'perɪʃəb(ə)l	a&n. (尤指食物)易坏的,易腐烂的；易坏之物"	0	0	0	0
-permanent	'pɜːm(ə)nənt	adj. 永久性的，持久的	1	0	1	0
+permanent	'pɜːm(ə)nənt	adj. 永久性的，持久的	3	0	3	0
 permeate	'pɜːmɪeɪt	v. 弥漫，透过	0	0	0	0
 permissible	pə'mɪsɪb(ə)l	adj. 许可的，容许的	0	0	0	0
 permission	pə'mɪʃn	n. 允许，准许	0	0	0	0
@@ -3594,7 +3594,7 @@ plague	pleɪg	n. 瘟疫；麻烦，祸患	0	0	0	0
 plaintive	'pleɪntɪv	adj. 哀伤的，忧伤的	0	0	0	0
 planetarium	,plænɪ'teərɪəm	n. 天文馆	0	0	0	0
 plank	plæŋk	n. 厚板，板材，地板	0	0	0	0
-plankton	'plæŋ(k)t(ə)n; -tɒn	n. 浮游生物	2	0	2	0
+plankton	'plæŋ(k)t(ə)n; -tɒn	n. 浮游生物	4	0	4	0
 plantation	plæn'teɪʃ(ə)n; plɑːn-	n. 种植园	0	0	0	0
 plaster	'plɑːstə	n&vt. 膏药；(涂)灰泥	0	0	0	0
 plastic	'plæstɪk	adj. 塑料的	0	0	0	0
@@ -3659,7 +3659,7 @@ postage	'pəʊstɪdʒ	n. 邮费，邮资	0	0	0	0
 postcode	'pəustkəud	n. 邮政编码	0	0	0	0
 poster	'pəʊstə	n. 招贴画，广告；广告画	0	0	0	0
 posterity	pɒ'sterɪtɪ	n. 后裔，子孙，后代	0	0	0	0
-postgraduate	pəʊs(t)'grædjʊət	adj. 大学毕业后的，研究院的 | n. 研究生	0	0	0	0
+postgraduate	pəʊs(t)'grædjʊət	adj. 大学毕业后的，研究院的 | n. 研究生	2	1	1	1
 posthumous	'pɒstjʊməs	adj. 遗腹的；父亡后出生的；死后的；身后的	0	0	0	0
 postmortem	pəust'mɔ:təm	n&a. ，验尸，尸体解剖；事后的，死后的	0	0	0	0
 postpone	pəʊs(t)'pəʊn; pə'spəʊn	v. 推迟；延缓	0	0	0	0
@@ -4020,7 +4020,7 @@ renewal	rɪ'njuːəl	n. 更新，恢复；重新开始；重建；复兴；续�
 renovation	,renə'veɪʃn	n. 修理，恢复	0	0	0	0
 renowned	rɪ'naʊnd	adj. 有名望的，声誉鹊起的	0	0	0	0
 rent	rent	v. 租借；出租 | n. 租金	0	0	0	0
-rental	'rentl	adj. 租用的；出租的 | n. 租金额；出租，租赁	2	0	2	0
+rental	'rentl	adj. 租用的；出租的 | n. 租金额；出租，租赁	4	0	4	0
 reorient	ˌriː'ɔːrient	vt. 重新定方位；重新定位；使适应	0	0	0	0
 repack	rɪ'pæk	vt. 重新包装；重新填塞；再装配；拆修	0	0	0	0
 repaint	rɪ'peɪnt	v. 重新油漆，重画	0	0	0	0
@@ -4298,7 +4298,7 @@ shock	ʃɒk	n&vt. (使)震惊	0	0	0	0
 shore	ʃɔː(r)	n. 滨，岸，海滩	0	0	0	0
 short-term	'ʃɔːttɜːm	adj. 短期的	0	0	0	0
 shortage	'ʃɔːtɪdʒ	n. 不足，缺少	0	0	0	0
-shorthand	'ʃɔːthænd	n. 速记法；速记	2	0	2	0
+shorthand	'ʃɔːthænd	n. 速记法；速记	4	0	4	0
 shovel	'ʃʌv(ə)l	n. 铁锨，铲 | v. 铲起	0	0	0	0
 shower	'ʃaʊə	n. 阵雨；淋浴	0	0	0	0
 shred	ʃred	n. 碎片；最少量 | v. 撕碎	0	0	0	0
@@ -4541,7 +4541,7 @@ stereo	'sterɪəʊ; 'stɪərɪəʊ	n. 立体声录音机	0	0	0	0
 stereoscopic	,sterɪəʊ'skɒpɪk	adj. 有立体视觉的；有立体效果的 | v. 刺，戳；黏贴，黏住；卡住，陷住	0	0	0	0
 stereotype	'sterɪə(ʊ)taɪp; 'stɪərɪə(ʊ)-	n. 典型的榜样，样本	0	0	0	0
 sterilize	'sterəlaiz	v. 使不结果实；使绝育；使无效；杀菌	0	0	0	0
-sterling	'stɜːlɪŋ	adj. 金银标准成份的，货真价实的，纯正的	2	0	2	0
+sterling	'stɜːlɪŋ	adj. 金银标准成份的，货真价实的，纯正的	4	0	4	0
 stern	stɜːn	adj. 严厉的，严格的	0	0	0	0
 steward	'stjuːəd	n. 乘务员，服务员，组织者	0	0	0	0
 stick	stɪk	n. 枝条；木棍 | v. 刺；粘；陷往	0	0	0	0
@@ -4561,7 +4561,7 @@ storage	'stɔːrɪdʒ	n. 仓库，货栈	0	0	0	0
 storey	'stɔːrɪ	n. 房屋的一层	0	0	0	0
 storyline	'stɔːrilaɪn	n. 故事情节	0	0	0	0
 stout	staut	adj. 发胖的，肥胖的，强壮的；结实的，牢固的；顽强的，坚毅的	0	0	0	0
-stove	stəuv	n. 炉	2	0	2	0
+stove	stəuv	n. 炉	4	0	4	0
 straightforward	streɪt'fɔːwəd	adj. 正直的，坦率的，老实的，简明易懂的	0	0	0	0
 strain	streɪn	n. 拉紧，紧张，拉力；劳累 | vt&vi. 尽量利用	0	0	0	0
 strait	streɪt	n. 海峡；困难，窘迫	0	0	0	0
@@ -4609,7 +4609,7 @@ subordinate	sə'bɔːdɪnət	adj. 下级的，次要的,从属的 | n. 部下，
 subscribe	səb'skraɪb	vt&vi. 捐款，捐助；订阅；同意，赞成	0	0	0	0
 subscription	səb'skrɪpʃn	n. 订阅，订购；订阅费，订购款；捐赠，捐助；签字，签署	0	0	0	0
 subsequent	'sʌbsɪkw(ə)nt	adj. 接着的，然后的	0	0	0	0
-subside	səb'saɪd	v. 洪水退落；土地下沉；建筑物沉降	2	0	2	0
+subside	səb'saɪd	v. 洪水退落；土地下沉；建筑物沉降	4	0	4	0
 subsidiary	səb'sɪdɪərɪ	adj. 辅助的；附属的 | n. 子公司，附属机构	0	0	0	0
 subsidise	'sʌbsɪdaɪz	vt. 津贴，资助	0	0	0	0
 subsidy	'sʌbsɪdɪ	n. 补助金；津贴费	0	0	0	0
@@ -5258,7 +5258,7 @@ wreck	rek	n. 破坏，船舶失事；失事船只	0	0	0	0
 wrench	ren(t)ʃ	n&vt. 猛扭，猛拉	0	0	0	0
 wrestle	'res(ə)l	v. 摔跤，角斗；斗争，努力	0	0	0	0
 wretch	retʃ	n. 不幸的人	0	0	0	0
-wretched	'retʃɪd	adj. 不幸的，可怜的；令人难受的	2	0	2	0
+wretched	'retʃɪd	adj. 不幸的，可怜的；令人难受的	4	0	4	0
 wrinkle	'rɪŋkl	n. 皱纹	0	0	0	0
 wrought	rɔːt	adj. 锤炼的	0	0	0	0
 yacht	jɒt	n. 小帆船，快艇；帆船	0	0	0	0
