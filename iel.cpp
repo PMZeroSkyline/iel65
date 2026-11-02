@@ -163,13 +163,13 @@ int main(int argc, char** argv) {
         in = trim(in);
         if (in == "q") break;
         bool right = false;
+        vector<Word*> mixed;  // 和本题混淆的词：你写的答案其实是它们的意思/拼写
         if (!in.empty()) {
-            if (e2c) right = matchCn(in, x.m);
-            else {
-                right = lower(in) == lower(x.w);
-                if (!right && editDist(lower(in), lower(x.w)) == 1) puts("  拼写差一点！");
-                if (!right) for (auto& y : v) if (lower(y.w) == lower(in)) { printf("  %s 的意思是：%s\n", y.w.c_str(), y.m.c_str()); break; }
-            }
+            right = e2c ? matchCn(in, x.m) : lower(in) == lower(x.w);
+            if (!right && !e2c && editDist(lower(in), lower(x.w)) == 1) puts("  拼写差一点！");
+            if (!right) for (auto& y : v)
+                if (&y != &x && (e2c ? matchCn(in, y.m) : lower(y.w) == lower(in))) mixed.push_back(&y);
+            for (size_t k = 0; k < mixed.size() && k < 5; k++) printf("  你的答案是 %s 的意思：%s\n", mixed[k]->w.c_str(), mixed[k]->m.c_str());
         }
         printf("%s  %s  /%s/  %s\n", right ? "√ 正确" : "× 错误", x.w.c_str(), x.ph.c_str(), x.m.c_str());
         speak(x.w);
@@ -177,7 +177,9 @@ int main(int argc, char** argv) {
             printf("  (y 改判为对，回车继续) "); fflush(stdout);
             string c; if (readLine(c) && trim(c) == "y") right = true;
         }
-        x.seen++; right ? (x.right++, x.streak++) : (x.wrong++, x.streak = 0);
+        // 混淆了已掌握的词，说明没真掌握，把它踢回学习中
+        if (!right) for (auto* y : mixed) if (y->streak >= MASTER) { y->streak = 0; printf("  ↓ %s 移出已掌握\n", y->w.c_str()); }
+        x.seen++; right ?(x.right++, x.streak++) : (x.wrong++, x.streak = 0);
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");
         done++; ok += right;
         save(v);
