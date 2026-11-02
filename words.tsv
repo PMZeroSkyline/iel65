@@ -1155,7 +1155,7 @@ dash	dæʃ	n&v. 撞击；冲，短跑；破折号；闯劲	0	0	0	0
 data	'deɪtə	n. 数据；资料	0	0	0	0
 database	'deɪtəbeɪs	n. 数据库	0	0	0	0
 date	deɪt	n&v. 日期；约会	0	0	0	0
-daunt	dɔːnt	vt. 使气馁，使胆怯	1	0	1	0
+daunt	dɔːnt	vt. 使气馁，使胆怯	3	0	3	0
 dawn	dɔːn	n&v. 黎明；开始；发生	0	0	0	0
 day	deɪ	n. 白天，一天	0	0	0	0
 dazzle	'dæz(ə)l	v. 眩目，耀眼	0	0	0	0
@@ -1246,7 +1246,7 @@ denote	dɪ'nəʊt	v. 是的符号，提示，表示	0	0	0	0
 denounce	dɪ'naʊns	v. 谴责，斥责	0	0	0	0
 dense	dens	adj. 浓密的，密集的；愚笨的	0	0	0	0
 density	'densəti	n. 密集；浓度，密度	0	0	0	0
-dentist	'dentɪst	n. 牙医	7	2	5	2
+dentist	'dentɪst	n. 牙医	8	3	5	3
 deny	dɪ'naɪ	v. 否认,否定，拒绝一项要求"	0	0	0	0
 depart	dɪ'pɑːt	v. 离开，启程	0	0	0	0
 departmental	ˌdiːpɑːt'mentl	adj. 部门的	0	0	0	0
@@ -1383,7 +1383,7 @@ disguise	dɪs'gaɪz	vt/n. 假扮；隐蔽；掩饰	0	0	0	0
 disgust	dɪs'gʌst	n&vt. 厌恶，讨厌	0	0	0	0
 disharmony	ˌdɪs'hɑːməni	n. 不一致；不和谐	0	0	0	0
 disillusion	ˌdɪsɪ'luːʒn	vt. 使醒悟	0	0	0	0
-disillusionment	ˌdɪsɪ'luːʒnmənt	n. 幻灭；觉醒，醒悟	2	0	2	0
+disillusionment	ˌdɪsɪ'luːʒnmənt	n. 幻灭；觉醒，醒悟	4	0	4	0
 disintegrate	dɪs'ɪntɪgreɪt	v. 碎裂，瓦解，解体	0	0	0	0
 dismantle	dɪs'mæntl	vt. 拆除；废除，取消	0	0	0	0
 dismay	dɪs'meɪ	n&vt. 灰心丧气；惊愕	0	0	0	0
@@ -1577,9 +1577,9 @@ eligible	'elɪdʒɪb(ə)l	adj. 合格的，适宜的	0	0	0	0
 eliminate	ɪ'lɪmɪneɪt	v. 消灭，消除	0	0	0	0
 elite	[eɪˈliːt]	n&a. 社会精华(的)，高贵者(的)	0	0	0	0
 eloquent	'eləkwənt	adj. 雄辩的	0	0	0	0
-elsewhere	els'weə; 'elsweə	adv. 在别处，向别处	0	0	0	0
+elsewhere	els'weə; 'elsweə	adv. 在别处，向别处	1	1	0	1
 elucidate	i'luːsɪdeɪt	vt. 阐明，使…清楚	0	0	0	0
-elusive	i'luːsɪv	adj. 难懂的，难捉摸的；易忘的	0	0	0	0
+elusive	i'luːsɪv	adj. 难懂的，难捉摸的；易忘的	2	0	2	0
 embankment	ɪm'bæŋkmənt	n. 筑堤；堤岸，路基	0	0	0	0
 embargo	em'bɑːgəʊ; ɪm-	n&v. 禁止贸易	0	0	0	0
 embark	ɪm'bɑːk; em-	v. 上船；从事；开始	0	0	0	0
@@ -1641,7 +1641,7 @@ enigma	ɪ'nɪgmə	n. 谜，谜一样的人或事	0	0	0	0
 enjoyable	ɪn'dʒɔɪəbl	adj. 令人愉快的，使人快乐的	0	0	0	0
 enlarge	ɪn'lɑːdʒ	v. 扩大，放大，扩充	0	0	0	0
 enlighten	ɪn'laɪt(ə)n; en-	v. 启发，开导	0	0	0	0
-enlist	ɪn'lɪst	v. 征募；从军，参军；谋取	7	0	7	0
+enlist	ɪn'lɪst	v. 征募；从军，参军；谋取	9	2	7	2
 enormous	ɪ'nɔːməs	adj. 巨大的，庞大的	0	0	0	0
 enquire	ɪn'kwaɪə	v. 询问，打听	0	0	0	0
 enquiry	ɪn'kwaɪrɪ	n. 询问，打听	0	0	0	0
@@ -1843,7 +1843,7 @@ face	feɪs	n. 脸，表情 | v. 面向，正视，承认，呈现前	0	0	0	0
 facet	'fæsɪt; -et	n. 刻面，(问题的)一个方面	0	0	0	0
 facial	'feɪʃl	adj. 面部的；面部用的	0	0	0	0
 facilitate	fə'sɪlɪteɪt	v. 使便利	0	0	0	0
-facility	fə'sɪləti	n. 灵巧，熟练；设备	8	0	8	0
+facility	fə'sɪləti	n. 灵巧，熟练；设备	10	0	10	0
 facsimile	fæk'sɪməli	n. 复制品；副本	0	0	0	0
 fact sheet		n. 情况简报，资料摘要	0	0	0	0
 factor	'fæktə	n. 因素，要素	0	0	0	0
@@ -2311,7 +2311,7 @@ hold	həʊld	n&v. 握，抓；支持；装得下；认为；举行	0	0	0	0
 holistic	həu'lɪstɪk	adj. 整体的，全面的；功能整体性的	0	0	0	0
 holistically	həu'lɪstɪkli	adv. 整体地，全盘地	0	0	0	0
 hollow	'hɒləu	adj. 空的，空洞的；沉闷的；虚伪的，空虚的 | v. 挖空，凿空	0	0	0	0
-holocaust	'hɒləkɔːst	n. 大破坏	8	0	8	0
+holocaust	'hɒləkɔːst	n. 大破坏	10	2	8	2
 homesick	'həumsɪk	adj. 想家的，思乡的	0	0	0	0
 homestay	'həʊmsteɪ	n. 在当地居民家居住	0	0	0	0
 homogeneous	,hɒmə(ʊ)'dʒiːnɪəs; -'dʒen-	adj. 同类的，同族的	0	0	0	0
@@ -2491,7 +2491,7 @@ inferior	ɪn'fɪərɪə	n. 地位(能力)低的人 | adj. 劣质的,差的,下�
 infest	ɪn'fest	v. 大批出动，成群出现(鼠类及害虫)	0	0	0	0
 infiltrate	'ɪnfɪltreɪt	v. 悄悄进入，潜入；渗入，渗透	0	0	0	0
 infinite	'ɪnfɪnət	adj. 无限的，无穷的	0	0	0	0
-infirmary	ɪn'fɜːm(ə)rɪ	n. 医务，医务室	0	0	0	0
+infirmary	ɪn'fɜːm(ə)rɪ	n. 医务，医务室	1	0	1	0
 infirmity	ɪn'fɜːməti	n. 虚弱，衰弱	0	0	0	0
 inflammable	ɪn'flæməbl	adj. 易燃的；易怒的	0	0	0	0
 inflate	ɪn'fleɪt	v. 使充气，使膨胀；使得意，使骄傲；抬高，使膨胀	0	0	0	0
@@ -2651,7 +2651,7 @@ irrevocable	ɪ'revəkəbl	adj. 无法取消的，不能改变的	0	0	0	0
 irrigation	ˌɪrɪˈɡeʃn	n. 灌溉	0	0	0	0
 irritable	'ɪrɪtəbl	adj. 急躁的，易怒的，易受刺激的；过敏的	0	0	0	0
 irritate	'ɪrɪteɪt	v. 激怒；使烦躁，使感到不适	0	0	0	0
-irritation	ˌɪrɪ'teɪʃn	n. 激怒，恼怒；刺激物，恼人的事	6	0	6	0
+irritation	ˌɪrɪ'teɪʃn	n. 激怒，恼怒；刺激物，恼人的事	8	0	8	0
 isle	aɪl	n. 岛，小岛	0	0	0	0
 isolate	'aɪsəleɪt	v. 隔离，孤立	0	0	0	0
 isolated	'aɪsəleɪtɪd	adj. 隔离的，分离的；与世隔绝的，偏僻的；孤立的，孤独的；个别的	0	0	0	0
@@ -2987,7 +2987,7 @@ mention	'menʃn	n&v. 提及，说起	0	0	0	0
 mentor	'mentɔː(r)	n. 导师；顾问，指导者	0	0	0	0
 mercantile	'mɜːk(ə)ntaɪl	adj. 商业的；贸易的	0	0	0	0
 mercenary	'mɜːsɪn(ə)rɪ	adj. 唯利是图的，为钱的	0	0	0	0
-merchandising	'mɜːtʃəndaɪzɪŋ	n. 销售规划	0	0	0	0
+merchandising	'mɜːtʃəndaɪzɪŋ	n. 销售规划	2	0	2	0
 mercury	'mɜːkjəri	n. 水银	0	0	0	0
 mercy	'mɜːsɪ	n. 怜悯；宽恕	0	0	0	0
 mere	mɪə(r)	adj. 仅仅的；纯粹的	0	0	0	0
@@ -3509,7 +3509,7 @@ periphery	pə'rɪf(ə)rɪ	n. (圆体的)外面；周围	0	0	0	0
 periscope	'perɪskəʊp	n. 潜望镜	0	0	0	0
 perish	'perɪʃ	vt&vi. 灭亡，使痛苦；腐朽	0	0	0	0
 perishable	'perɪʃəb(ə)l	a&n. (尤指食物)易坏的,易腐烂的；易坏之物"	0	0	0	0
-permanent	'pɜːm(ə)nənt	adj. 永久性的，持久的	7	1	6	1
+permanent	'pɜːm(ə)nənt	adj. 永久性的，持久的	9	3	6	3
 permeate	'pɜːmɪeɪt	v. 弥漫，透过	0	0	0	0
 permissible	pə'mɪsɪb(ə)l	adj. 许可的，容许的	0	0	0	0
 permission	pə'mɪʃn	n. 允许，准许	0	0	0	0
@@ -3529,7 +3529,7 @@ personality	pɜːsə'nælɪtɪ	n. 个性；(有名的)人物	0	0	0	0
 personalize	'pɜːsənəlaɪz	vt. 使成为私人的；在上标出主人姓名；个人化	0	0	0	0
 personnel	pɜːsə'nel	n. 职员，人员，人事	0	0	0	0
 perspective	pə'spektɪv	n. 透视；透视画法；视角，观点	0	0	0	0
-perspire	pə'spaɪə	v. 出汗，流汗	1	0	1	0
+perspire	pə'spaɪə	v. 出汗，流汗	3	0	3	0
 persuade	pə'sweɪd	v. 说服，劝说；使相信	0	0	0	0
 pertain	pə'teɪn	v. 附属；有关	0	0	0	0
 pertinent	'pɜːtɪnənt	adj. 贴切的，中肯的	0	0	0	0
@@ -3594,7 +3594,7 @@ plague	pleɪg	n. 瘟疫；麻烦，祸患	0	0	0	0
 plaintive	'pleɪntɪv	adj. 哀伤的，忧伤的	0	0	0	0
 planetarium	,plænɪ'teərɪəm	n. 天文馆	0	0	0	0
 plank	plæŋk	n. 厚板，板材，地板	0	0	0	0
-plankton	'plæŋ(k)t(ə)n; -tɒn	n. 浮游生物	8	0	8	0
+plankton	'plæŋ(k)t(ə)n; -tɒn	n. 浮游生物	10	0	10	0
 plantation	plæn'teɪʃ(ə)n; plɑːn-	n. 种植园	0	0	0	0
 plaster	'plɑːstə	n&vt. 膏药；(涂)灰泥	0	0	0	0
 plastic	'plæstɪk	adj. 塑料的	0	0	0	0
@@ -3615,7 +3615,7 @@ plummet	'plʌmɪt	v. 骤然跌落	0	0	0	0
 plunder	'plʌndə	vt&vi. 抢劫，掠夺	0	0	0	0
 plunge	plʌn(d)ʒ	v&n. 投入，插入；跳水	0	0	0	0
 plus	plʌs	prep&n. 加，加号 | adj. 正的	0	0	0	0
-plush	plʌʃ	adj. 豪华的，舒适的 | n. 长毛绒	2	0	2	0
+plush	plʌʃ	adj. 豪华的，舒适的 | n. 长毛绒	4	0	4	0
 point	pɔɪnt	v. 指，指向；表明；瞄准 | n. 尖，尖端；点，小数点；条款，细目；分数，得分；要点，论点，观点	0	0	0	0
 pointed	'pɒɪntɪd	adj. 尖锐的；率直的	0	0	0	0
 pointless	'pɒɪntlɪs	adj. 无意义的，无目标的	0	0	0	0
@@ -3784,7 +3784,7 @@ prolonged	prə'lɒŋd	adj. 持久的，长期的	0	0	0	0
 prominence	'prɒmɪnəns	n. 突出，显著；卓越；重要	0	0	0	0
 prominent	'prɒmɪnənt	adj. 突出的，显要的，著名的	0	0	0	0
 promise	'prɒmɪs	n&v. 诺言；指望；前途	0	0	0	0
-promising	'prɒmɪsɪŋ	adj. 有希望的；有出息的	3	0	3	0
+promising	'prɒmɪsɪŋ	adj. 有希望的；有出息的	5	1	4	1
 promote	prə'məʊt	v. 开放；促进，宣传	0	0	0	0
 promotion	prə'məuʃn	n. 提升，晋级；促进，增进；发起，发扬；宣传，推销	0	0	0	0
 prompt	prɒm(p)t	adj. 迅速的 | v. 敦促	0	0	0	0
@@ -3919,7 +3919,7 @@ reckon	'rek(ə)n	v. 计算	0	0	0	0
 reclaim	rɪ'kleɪm	v. 开垦，开拓；要求归还	0	0	0	0
 recline	rɪ'klaɪn	vt&vi. 斜倚，躺	0	0	0	0
 recognition	ˌrekəg'nɪʃn	n. 识别；认出；承认，确认，认可；赏识，表彰	0	0	0	0
-recognize	'rekəgnaɪz	vt. 认出；承认，认可	0	0	0	0
+recognize	'rekəgnaɪz	vt. 认出；承认，认可	2	0	2	0
 recommend	ˌrekə'mend	vt. 推荐；劝告；使受欢迎	0	0	0	0
 recommendation	,rekəmen'deɪʃ(ə)n	n. 推荐，介绍；推荐信	0	0	0	0
 reconcile	'rek(ə)nsaɪl	v. 使和解；使复交；调解，调停	0	0	0	0
@@ -4020,7 +4020,7 @@ renewal	rɪ'njuːəl	n. 更新，恢复；重新开始；重建；复兴；续�
 renovation	,renə'veɪʃn	n. 修理，恢复	0	0	0	0
 renowned	rɪ'naʊnd	adj. 有名望的，声誉鹊起的	0	0	0	0
 rent	rent	v. 租借；出租 | n. 租金	0	0	0	0
-rental	'rentl	adj. 租用的；出租的 | n. 租金额；出租，租赁	8	3	5	1
+rental	'rentl	adj. 租用的；出租的 | n. 租金额；出租，租赁	10	5	5	3
 reorient	ˌriː'ɔːrient	vt. 重新定方位；重新定位；使适应	0	0	0	0
 repack	rɪ'pæk	vt. 重新包装；重新填塞；再装配；拆修	0	0	0	0
 repaint	rɪ'peɪnt	v. 重新油漆，重画	0	0	0	0
@@ -4310,7 +4310,7 @@ shutter	'ʃʌtə	n. 百叶窗；照相机快门	0	0	0	0
 shuttle	'ʃʌt(ə)l	n. 梭，滑梭 | v. 使穿梭般往返移动	0	0	0	0
 sicken	'sɪk(ə)n	vt&vi. (使)生气；(使)厌恶	0	0	0	0
 siege	siːdʒ	n. 围困；围城	0	0	0	0
-siesta	si'estə	n. 午睡，午休	1	0	1	0
+siesta	si'estə	n. 午睡，午休	3	1	2	1
 sieve	sɪv	n. (细)筛，过滤网	0	0	0	0
 sift	sɪft	v. 细查；筛；过滤	0	0	0	0
 sigh	saɪ	v&n. 叹气	0	0	0	0
@@ -4541,7 +4541,7 @@ stereo	'sterɪəʊ; 'stɪərɪəʊ	n. 立体声录音机	0	0	0	0
 stereoscopic	,sterɪəʊ'skɒpɪk	adj. 有立体视觉的；有立体效果的 | v. 刺，戳；黏贴，黏住；卡住，陷住	0	0	0	0
 stereotype	'sterɪə(ʊ)taɪp; 'stɪərɪə(ʊ)-	n. 典型的榜样，样本	0	0	0	0
 sterilize	'sterəlaiz	v. 使不结果实；使绝育；使无效；杀菌	0	0	0	0
-sterling	'stɜːlɪŋ	adj. 金银标准成份的，货真价实的，纯正的	8	0	8	0
+sterling	'stɜːlɪŋ	adj. 金银标准成份的，货真价实的，纯正的	10	1	9	1
 stern	stɜːn	adj. 严厉的，严格的	0	0	0	0
 steward	'stjuːəd	n. 乘务员，服务员，组织者	0	0	0	0
 stick	stɪk	n. 枝条；木棍 | v. 刺；粘；陷往	0	0	0	0
@@ -4821,7 +4821,7 @@ thoughtful	'θɔːtfʊl; -f(ə)l	adj. 深思的，关心的	0	0	0	0
 threaten	'θretn	v. 威胁，恐吓；预示快要来临，是…的征兆，可能发生	0	0	0	0
 threshold	'θreʃəʊld; 'θreʃ,həʊld	n. 门槛；开始；开端，入门	0	0	0	0
 thrifty	'θrɪfti	adj. 节俭的，节约的	0	0	0	0
-thrill	θrɪl	n&v. 激动；震颤	0	0	0	0
+thrill	θrɪl	n&v. 激动；震颤	1	0	1	0
 thrive	θraɪv	v. 兴旺，繁荣	0	0	0	0
 throat	θrəʊt	n. 咽喉，嗓子	0	0	0	0
 throbbing	'θrɒbɪŋ	adj. 跳动的，悸动的	0	0	0	0
@@ -5249,7 +5249,7 @@ workaholic	ˌwɜːkə'hɒlɪk	n. 工作狂	0	0	0	0
 workforce	'wɜːkfɔːs	n. 受雇的或现有的工作人员总数；劳动人口	0	0	0	0
 world-wide	'wɜːldwaɪd	a&ad. 遍及全球的/地	0	0	0	0
 worm	wɜːm	n. 虫，蠕虫；蜗杆，螺纹	0	0	0	0
-worship	'wə:ʃip	n. 礼拜；崇拜	0	0	0	0
+worship	'wə:ʃip	n. 礼拜；崇拜	2	0	2	0
 worthwhile	wɜːθ'waɪl	adj. 值得(花时间、精力)的；合算的	0	0	0	0
 worthy	'wɜːði	adj. 有价值的；值得的	0	0	0	0
 wrap	ræp	vt&vi. 包裹	0	0	0	0
