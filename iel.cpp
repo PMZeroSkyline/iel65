@@ -11,7 +11,21 @@
 #ifdef _WIN32
 #define NOMINMAX
 #include <windows.h>
+#include <sapi.h>
+#pragma comment(lib, "sapi.lib")
+#pragma comment(lib, "ole32.lib")
+ISpVoice* voice = nullptr;  // Windows 自带语音合成，离线
 #endif
+// 异步朗读英文；新的朗读会打断上一个
+void speak(const std::string& text) {
+#ifdef _WIN32
+    if (!voice) return;
+    std::string xml = "<voice required=\"Language=409\">" + text + "</voice>";  // 409 = en-US
+    std::wstring w(MultiByteToWideChar(CP_UTF8, 0, xml.c_str(), -1, nullptr, 0), 0);
+    MultiByteToWideChar(CP_UTF8, 0, xml.c_str(), -1, w.data(), (int)w.size());
+    voice->Speak(w.c_str(), SPF_ASYNC | SPF_PURGEBEFORESPEAK | SPF_IS_XML, nullptr);
+#endif
+}
 using namespace std;
 namespace fs = std::filesystem;
 
@@ -114,6 +128,8 @@ void stat(const vector<Word>& v) {
 int main(int argc, char** argv) {
 #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
+    CoInitialize(nullptr);
+    CoCreateInstance(CLSID_SpVoice, nullptr, CLSCTX_ALL, IID_ISpVoice, (void**)&voice);
 #endif
     string mode = argc > 1 ? argv[1] : "e2c";
     int n = argc > 2 ? atoi(argv[2]) : 20;
@@ -156,6 +172,7 @@ int main(int argc, char** argv) {
             }
         }
         printf("%s  %s  /%s/  %s\n", right ? "√ 正确" : "× 错误", x.w.c_str(), x.ph.c_str(), x.m.c_str());
+        speak(x.w);
         if (!right && !in.empty()) {
             printf("  (y 改判为对，回车继续) "); fflush(stdout);
             string c; if (readLine(c) && trim(c) == "y") right = true;
@@ -168,4 +185,7 @@ int main(int argc, char** argv) {
     }
     printf("本轮 %d 题，答对 %d\n", done, ok);
     stat(v);
+#ifdef _WIN32
+    if (voice) voice->WaitUntilDone(3000);  // 让最后一个词读完再退出
+#endif
 }

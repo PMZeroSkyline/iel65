@@ -138,6 +138,15 @@ function reveal(right, extra = '') {
   $('nextRow').hidden = false; $('override').hidden = right;
   $('cardBox').hidden = true;
   updSess();
+  speak(cur.w);
+}
+function speak(t) { // 浏览器/系统自带语音合成
+  if (!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; u.rate = 0.9;
+  const v = speechSynthesis.getVoices().find(v => v.lang.replace('_', '-').startsWith('en-US')) || speechSynthesis.getVoices().find(v => v.lang.startsWith('en'));
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
 }
 function submit() {
   if (answered) return show();
