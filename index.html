@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>雅思 6.5 词汇</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1d2433;--mute:#6b7385;--line:#e3e6ec;--acc:#2f6fed;--ok:#1f9d55;--bad:#d64545;--warn:#d98a00}
+@media (prefers-color-scheme:dark){:root{--bg:#12151b;--card:#1b2029;--fg:#e6e9ef;--mute:#9099ab;--line:#2a313d;--acc:#5b8cff;--ok:#3cc47c;--bad:#ff6b6b;--warn:#f0b429}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:640px;margin:0 auto;padding:12px 16px 40px}
+nav{display:flex;gap:8px;margin-bottom:12px}
+nav button,.seg button{flex:1;padding:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;font-size:15px}
+nav button.on,.seg button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.seg{display:flex;gap:6px;margin-bottom:10px}.seg button{padding:7px;font-size:14px}
+.q{font-size:30px;font-weight:600;text-align:center;margin:18px 0 4px;word-break:break-word}
+.q.cn{font-size:20px;font-weight:500}
+.ph{text-align:center;color:var(--mute);min-height:1.5em}
+input[type=text]{width:100%;padding:12px;font-size:18px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);margin-top:14px}
+.row{display:flex;gap:8px;margin-top:10px}.row button{flex:1;padding:12px;border:0;border-radius:10px;font-size:16px;color:#fff;background:var(--acc)}
+.row .b2{background:var(--mute)}.row .ok{background:var(--ok)}.row .bad{background:var(--bad)}
+.res{margin-top:12px;min-height:3em}.res b.ok{color:var(--ok)}.res b.bad{color:var(--bad)}
+.mute{color:var(--mute);font-size:13px}
+label{font-size:14px;color:var(--mute)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.stats div b{display:block;font-size:22px}.stats div span{font-size:12px;color:var(--mute)}
+.bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden;display:flex;margin:12px 0 4px}
+.bar i{display:block;height:100%}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{cursor:pointer;white-space:nowrap;color:var(--mute);font-weight:500}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td .m{color:var(--mute);font-size:12px}
+.tag{font-size:11px;padding:1px 6px;border-radius:6px;color:#fff}
+</style>
+</head>
+<body>
+<main>
+<nav><button id="tQuiz" class="on">刷单词</button><button id="tProg">掌握进度</button></nav>
+
+<section id="quiz">
+  <div class="card">
+    <div class="seg" id="mode"><button data-m="e2c" class="on">英→中</button><button data-m="c2e">中→英</button><button data-m="card">卡片</button></div>
+    <div class="seg" id="pool"><button data-p="todo" class="on">未掌握</button><button data-p="weak">易错</button><button data-p="all">全部</button></div>
+    <div class="q" id="q">加载中…</div>
+    <div class="ph" id="ph"></div>
+    <div id="typeBox">
+      <input type="text" id="ans" placeholder="输入答案，回车提交" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <div class="row"><button id="submit">提交</button><button id="skip" class="b2">不会</button></div>
+    </div>
+    <div id="cardBox" hidden>
+      <div class="row"><button id="flip">显示释义</button></div>
+      <div class="row"><button id="know" class="ok">认识</button><button id="dunno" class="bad">不认识</button></div>
+    </div>
+    <div class="res" id="res"></div>
+    <div class="row" id="nextRow" hidden><button id="next">下一个</button><button id="override" class="b2">算我对</button></div>
+  </div>
+  <div class="mute" id="sess"></div>
+  <p class="mute">网页端不保存记录，刷新即清空。要记录进度请用命令行 iel 并提交 words.tsv。</p>
+</section>
+
+<section id="prog" hidden>
+  <div class="card">
+    <div class="stats" id="sum"></div>
+    <div class="bar" id="bar"></div>
+    <div class="mute" id="acc"></div>
+  </div>
+  <div class="card">
+    <input type="text" id="search" placeholder="搜索单词或中文" style="margin-top:0">
+    <div class="seg" id="filter" style="margin-top:10px"><button data-f="seen" class="on">刷过的</button><button data-f="mast">已掌握</button><button data-f="weak">易错</button><button data-f="all">全部</button></div>
+    <table><thead><tr><th data-k="w">单词</th><th class="n" data-k="seen">次数</th><th class="n" data-k="right">对</th><th class="n" data-k="wrong">错</th><th class="n" data-k="rate">正确率</th></tr></thead><tbody id="tb"></tbody></table>
+    <div class="mute" id="more"></div>
+  </div>
+</section>
+</main>
+
+<script>
+const MASTER = 3; // 与 CLI 保持一致：连续答对 3 次视为掌握
+let W = [], mode = 'e2c', pool = 'todo', cur = null, curDir = 'e2c', answered = false, lastRight = false;
+let sess = {n: 0, ok: 0};
+const $ = id => document.getElementById(id);
+const status = w => w.streak >= MASTER ? 'mast' : w.seen ? 'learn' : 'new';
+const isWeak = w => w.seen > 0 && w.streak < MASTER && (w.wrong >= w.right || w.streak === 0);
+
+// ===== 软匹配（与 iel.cpp 同逻辑）=====
+function senses(t) {
+  const out = []; let cur = '', depth = 0;
+  for (const c of t) {
+    if ('(（[【<《'.includes(c)) { depth++; continue; }
+    if (')）]】>》'.includes(c)) { depth = Math.max(0, depth - 1); continue; }
+    if (depth || /[A-Za-z.]/.test(c)) continue;
+    if ('；;，,、|/… \t'.includes(c)) { if (cur) out.push(cur); cur = ''; } else cur += c;
+  }
+  if (cur) out.push(cur);
+  return out;
+}
+function matchCn(input, meaning) {
+  for (const a of senses(input)) for (const s of senses(meaning)) {
+    const A = [...a], S = [...s];
+    if ((A.length >= 2 || S.length === 1) && (s.includes(a) || a.includes(s))) return true;
+    const common = A.filter(c => s.includes(c)).length;
+    if (common >= 2 && common * 10 >= A.length * 6 && common * 2 >= S.length) return true;
+  }
+  return false;
+}
+function editDist(a, b) {
+  const d = [...Array(b.length + 1).keys()];
+  for (let i = 1; i <= a.length; i++) { let p = d[0]; d[0] = i;
+    for (let j = 1; j <= b.length; j++) { const t = d[j]; d[j] = Math.min(d[j] + 1, d[j - 1] + 1, p + (a[i - 1] !== b[j - 1])); p = t; } }
+  return d[b.length];
+}
+
+// ===== 刷题 =====
+function pick() {
+  let c = W.filter(w => pool === 'all' ? true : pool === 'weak' ? isWeak(w) : w.streak < MASTER);
+  if (!c.length) c = W;
+  // 网页里本轮刷过的往后放，答错的会再出现
+  const fresh = c.filter(w => !w._done);
+  return (fresh.length ? fresh : c)[Math.floor(Math.random() * (fresh.length || c.length))];
+}
+function show() {
+  cur = pick(); answered = false;
+  curDir = mode === 'c2e' ? 'c2e' : 'e2c';
+  $('q').textContent = curDir === 'e2c' ? cur.w : cur.m;
+  $('q').className = 'q' + (curDir === 'c2e' ? ' cn' : '');
+  $('ph').textContent = curDir === 'e2c' && cur.ph ? '/' + cur.ph + '/' : '';
+  $('res').innerHTML = ''; $('nextRow').hidden = true;
+  $('typeBox').hidden = mode === 'card'; $('cardBox').hidden = mode !== 'card';
+  $('ans').value = ''; if (mode !== 'card') $('ans').focus({preventScroll: true});
+}
+function reveal(right, extra = '') {
+  answered = true; lastRight = right;
+  sess.n++; if (right) sess.ok++;
+  if (right) cur._done = true;
+  $('res').innerHTML = `<b class="${right ? 'ok' : 'bad'}">${right ? '✓ 正确' : '✗ 错误'}</b> ${extra}<br><b>${esc(cur.w)}</b> <span class="mute">/${esc(cur.ph)}/</span><br>${esc(cur.m)}`;
+  $('nextRow').hidden = false; $('override').hidden = right;
+  $('cardBox').hidden = true;
+  updSess();
+}
+function submit() {
+  if (answered) return show();
+  const a = $('ans').value.trim();
+  if (!a) return reveal(false);
+  if (curDir === 'e2c') return reveal(matchCn(a, cur.m));
+  const ok = a.toLowerCase() === cur.w.toLowerCase();
+  let extra = '';
+  if (!ok && editDist(a.toLowerCase(), cur.w.toLowerCase()) === 1) extra = '拼写差一点！';
+  const other = !ok && W.find(w => w.w.toLowerCase() === a.toLowerCase());
+  if (other) extra += ` ${esc(other.w)} 的意思是：${esc(other.m)}`;
+  reveal(ok, extra);
+}
+function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : ''); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+
+$('submit').onclick = submit;
+$('ans').onkeydown = e => { if (e.key === 'Enter') submit(); };
+$('skip').onclick = () => reveal(false);
+$('next').onclick = show;
+$('override').onclick = () => { sess.ok++; cur._done = true; $('override').hidden = true; updSess(); };
+$('flip').onclick = () => { $('ph').textContent = (cur.ph ? '/' + cur.ph + '/  ' : '') + cur.m; };
+$('know').onclick = () => reveal(true);
+$('dunno').onclick = () => reveal(false);
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && answered && document.activeElement !== $('ans')) show(); });
+function seg(id, attr, fn) {
+  $(id).onclick = e => { const b = e.target.closest('button'); if (!b) return;
+    [...$(id).children].forEach(x => x.classList.toggle('on', x === b)); fn(b.dataset[attr]); };
+}
+seg('mode', 'm', m => { mode = m; show(); });
+seg('pool', 'p', p => { pool = p; show(); });
+
+// ===== 进度 =====
+let filter = 'seen', sortK = 'seen', sortDesc = true, limit = 200;
+function renderProg() {
+  const c = {mast: 0, learn: 0, new: 0}; let r = 0, w = 0, seen = 0;
+  W.forEach(x => { c[status(x)]++; r += x.right; w += x.wrong; seen += x.seen; });
+  const weak = W.filter(isWeak).length, N = W.length;
+  $('sum').innerHTML = [['总词数', N], ['已掌握', c.mast], ['学习中', c.learn], ['易错', weak]].map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join('');
+  $('bar').innerHTML = `<i style="width:${c.mast / N * 100}%;background:var(--ok)"></i><i style="width:${c.learn / N * 100}%;background:var(--warn)"></i>`;
+  $('acc').innerHTML = `掌握 ${(c.mast / N * 100).toFixed(1)}% · 未学 ${c.new} · 累计答题 ${r + w} 次，对 ${r}，错 ${w}，正确率 ${r + w ? (r * 100 / (r + w)).toFixed(1) : 0}%<br>掌握标准：连续答对 ${MASTER} 次`;
+  renderTable();
+}
+function renderTable() {
+  const q = $('search').value.trim().toLowerCase();
+  let rows = W.filter(x => filter === 'all' || (filter === 'seen' ? x.seen > 0 : filter === 'mast' ? x.streak >= MASTER : isWeak(x)));
+  if (q) rows = (filter === 'seen' && !rows.some(x => x.w.toLowerCase().includes(q) || x.m.includes(q)) ? W : rows).filter(x => x.w.toLowerCase().includes(q) || x.m.includes(q));
+  const val = x => sortK === 'w' ? x.w.toLowerCase() : sortK === 'rate' ? (x.seen ? x.right / x.seen : -1) : x[sortK];
+  rows.sort((a, b) => { const A = val(a), B = val(b); return (A < B ? -1 : A > B ? 1 : 0) * (sortDesc ? -1 : 1); });
+  const tag = x => { const s = status(x); return s === 'mast' ? '<span class="tag" style="background:var(--ok)">已掌握</span>' : isWeak(x) ? '<span class="tag" style="background:var(--bad)">易错</span>' : ''; };
+  $('tb').innerHTML = rows.slice(0, limit).map(x => `<tr><td><b>${esc(x.w)}</b> ${tag(x)}<div class="m">${esc(x.m)}</div></td><td class="n">${x.seen}</td><td class="n">${x.right}</td><td class="n">${x.wrong}</td><td class="n">${x.seen ? Math.round(x.right * 100 / x.seen) + '%' : '-'}</td></tr>`).join('')
+    || '<tr><td colspan="5" class="mute">暂无数据。用命令行刷几轮并提交 words.tsv 后这里会显示。</td></tr>';
+  $('more').innerHTML = rows.length > limit ? `共 ${rows.length} 条，显示前 ${limit} 条 <a href="#" id="lm">显示更多</a>` : `共 ${rows.length} 条`;
+  if ($('lm')) $('lm').onclick = e => { e.preventDefault(); limit += 300; renderTable(); };
+}
+$('search').oninput = () => { limit = 200; renderTable(); };
+seg('filter', 'f', f => { filter = f; limit = 200; renderTable(); });
+document.querySelector('thead').onclick = e => { const k = e.target.dataset.k; if (!k) return; sortDesc = sortK === k ? !sortDesc : k !== 'w'; sortK = k; renderTable(); };
+
+function tab(p) { $('quiz').hidden = p; $('prog').hidden = !p; $('tQuiz').classList.toggle('on', !p); $('tProg').classList.toggle('on', p); if (p) renderProg(); }
+$('tQuiz').onclick = () => tab(false); $('tProg').onclick = () => tab(true);
+
+fetch('words.tsv', {cache: 'no-cache'}).then(r => r.text()).then(t => {
+  W = t.split('\n').slice(1).filter(Boolean).map(l => { const a = l.replace(/\r$/, '').split('\t');
+    return {w: a[0], ph: a[1] || '', m: a[2] || '', seen: +a[3] || 0, right: +a[4] || 0, wrong: +a[5] || 0, streak: +a[6] || 0}; });
+  show();
+}).catch(() => { $('q').textContent = '加载 words.tsv 失败'; });
+</script>
+</body>
+</html>
