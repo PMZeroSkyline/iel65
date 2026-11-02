@@ -169,8 +169,8 @@ int main(int argc, char** argv) {
             right = e2c ? matchCn(in, x.m) : lower(in) == lower(x.w);
             if (!right && !e2c && editDist(lower(in), lower(x.w)) == 1) puts("  拼写差一点！");
             if (!right) for (auto& y : v)
-                if (&y != &x && (e2c ? matchCn(in, y.m) : lower(y.w) == lower(in))) mixed.push_back(&y);
-            for (size_t k = 0; k < mixed.size() && k < 5; k++) printf("  你的答案是 %s 的意思：%s\n", mixed[k]->w.c_str(), mixed[k]->m.c_str());
+                if (&y != &x && mixed.size() < 5 && (e2c ? matchCn(in, y.m) : lower(y.w) == lower(in))) mixed.push_back(&y);
+            for (size_t k = 0; k < mixed.size(); k++) printf("  你的答案是 %s 的意思：%s\n", mixed[k]->w.c_str(), mixed[k]->m.c_str());
         }
         printf("%s  %s  /%s/  %s\n", right ? "√ 正确" : "× 错误", x.w.c_str(), x.ph.c_str(), x.m.c_str());
         speak(x.w);
@@ -178,10 +178,20 @@ int main(int argc, char** argv) {
             printf("  (y 改判为对，回车继续) "); fflush(stdout);
             string c; if (readLine(c) && trim(c) == "y") right = true;
         }
-        // 混淆了已掌握的词，说明没真掌握，把它踢回学习中
-        if (!right) for (auto* y : mixed) if (y->streak >= MASTER) { y->streak = 0; printf("  ↓ %s 移出已掌握\n", y->w.c_str()); }
-        if (!right && x.streak >= MASTER) printf("  ↓ %s 移出已掌握\n", x.w.c_str());
-        x.seen++; right ? (x.right++, x.streak++) : (x.wrong++, x.streak = 0);
+        // 已掌握的词答错/被混淆时，确认后才踢回学习中（避免同义词误杀）；回车=不会 则直接踢
+        auto kick = [&](Word& y, bool ask) {
+            if (y.streak < MASTER) return true;
+            if (ask) {
+                printf("  %s 是已掌握的词，移出已掌握？(y=移出，回车=保留) ", y.w.c_str()); fflush(stdout);
+                string c; if (!readLine(c) || trim(c) != "y") return false;
+            }
+            printf("  ↓ %s 移出已掌握\n", y.w.c_str());
+            return true;
+        };
+        if (!right) for (auto* y : mixed) if (y->streak >= MASTER && kick(*y, true)) y->streak = 0;
+        x.seen++;
+        if (right) x.right++, x.streak++;
+        else { x.wrong++; if (kick(x, !in.empty())) x.streak = 0; }
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");
         done++; ok += right;
         save(v);
