@@ -33,7 +33,7 @@ th,td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left;vertic
 th{cursor:pointer;white-space:nowrap;color:var(--mute);font-weight:500}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 td .m{color:var(--mute);font-size:12px}
-.say{cursor:pointer;-webkit-tap-highlight-color:transparent}.say:active{opacity:.5}
+.say{float:right;cursor:pointer;padding:2px 6px;font-size:18px;line-height:1;-webkit-tap-highlight-color:transparent}.say:active{opacity:.5}
 .tag{font-size:11px;padding:1px 6px;border-radius:6px;color:#fff}
 </style>
 </head>
@@ -135,7 +135,7 @@ function reveal(right, extra = '') {
   answered = true; lastRight = right;
   sess.n++; if (right) sess.ok++;
   if (right) cur._done = true;
-  $('res').innerHTML = `<b class="${right ? 'ok' : 'bad'}">${right ? '✓ 正确' : '✗ 错误'}</b> ${extra}<br><b class="say" data-w="${esc(cur.w)}">${esc(cur.w)} 🔊</b> <span class="mute">/${esc(cur.ph)}/</span><br>${esc(cur.m)}`;
+  $('res').innerHTML = `<b class="${right ? 'ok' : 'bad'}">${right ? '✓ 正确' : '✗ 错误'}</b> ${extra}<span class="say" data-w="${esc(cur.w)}">🔊</span><br><b>${esc(cur.w)}</b> <span class="mute">/${esc(cur.ph)}/</span><br>${esc(cur.m)}`;
   $('nextRow').hidden = false; $('override').hidden = right;
   $('cardBox').hidden = true;
   updSess();
@@ -198,7 +198,7 @@ function renderTable() {
   const val = x => sortK === 'w' ? x.w.toLowerCase() : sortK === 'rate' ? (x.seen ? x.right / x.seen : -1) : x[sortK];
   rows.sort((a, b) => { const A = val(a), B = val(b); return (A < B ? -1 : A > B ? 1 : 0) * (sortDesc ? -1 : 1); });
   const tag = x => { const s = status(x); return s === 'mast' ? '<span class="tag" style="background:var(--ok)">已掌握</span>' : isWeak(x) ? '<span class="tag" style="background:var(--bad)">易错</span>' : ''; };
-  $('tb').innerHTML = rows.slice(0, limit).map(x => `<tr><td><b class="say" data-w="${esc(x.w)}">${esc(x.w)} 🔊</b> ${tag(x)}<div class="m">${esc(x.m)}</div></td><td class="n">${x.seen}</td><td class="n">${x.right}</td><td class="n">${x.wrong}</td><td class="n">${x.seen ? Math.round(x.right * 100 / x.seen) + '%' : '-'}</td></tr>`).join('')
+  $('tb').innerHTML = rows.slice(0, limit).map(x => `<tr><td><span class="say" data-w="${esc(x.w)}">🔊</span><b>${esc(x.w)}</b> ${tag(x)}<div class="m">${esc(x.m)}</div></td><td class="n">${x.seen}</td><td class="n">${x.right}</td><td class="n">${x.wrong}</td><td class="n">${x.seen ? Math.round(x.right * 100 / x.seen) + '%' : '-'}</td></tr>`).join('')
     || '<tr><td colspan="5" class="mute">暂无数据。用命令行刷几轮并提交 words.tsv 后这里会显示。</td></tr>';
   $('more').innerHTML = rows.length > limit ? `共 ${rows.length} 条，显示前 ${limit} 条 <a href="#" id="lm">显示更多</a>` : `共 ${rows.length} 条`;
   if ($('lm')) $('lm').onclick = e => { e.preventDefault(); limit += 300; renderTable(); };
