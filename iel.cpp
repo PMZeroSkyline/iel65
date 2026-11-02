@@ -131,8 +131,8 @@ int main(int argc, char** argv) {
     CoInitialize(nullptr);
     CoCreateInstance(CLSID_SpVoice, nullptr, CLSCTX_ALL, IID_ISpVoice, (void**)&voice);
 #endif
-    string mode = argc > 1 ? argv[1] : "e2c";
-    int n = argc > 2 ? atoi(argv[2]) : 20;
+    string mode = "e2c"; int n = 20; bool review = false;  // review = 只刷已掌握的
+    for (int i = 1; i < argc; i++) { string a = argv[i]; if (isdigit((unsigned char)a[0])) n = atoi(a.c_str()); else if (a == "review") review = true; else mode = a; }
     for (fs::path p : {fs::current_path(), fs::absolute(argv[0]).parent_path(), fs::absolute(argv[0]).parent_path().parent_path(),
                        fs::absolute(argv[0]).parent_path().parent_path().parent_path()})
         if (fs::exists(p / "words.tsv")) { dbPath = p / "words.tsv"; break; }
@@ -140,13 +140,14 @@ int main(int argc, char** argv) {
     auto v = load();
     if (mode == "stat") { stat(v); return 0; }
     if (mode != "e2c" && mode != "c2e" && mode != "mix") {
-        puts("用法: iel [e2c|c2e|mix|stat] [题数=20]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度");
+        puts("用法: iel [e2c|c2e|mix|stat] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度\n  review 只刷已掌握的词，答错踢回未掌握");
         return 0;
     }
-    // 选题：跳过已掌握；乱序后按 易错词 > 未学 > 学习中 排序
+    // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错词 > 未学 > 学习中 排序
     mt19937 rng(random_device{}());
     vector<int> idx;
-    for (int i = 0; i < (int)v.size(); i++) if (v[i].streak < MASTER) idx.push_back(i);
+    for (int i = 0; i < (int)v.size(); i++) if ((v[i].streak >= MASTER) == review) idx.push_back(i);
+    if (idx.empty()) { puts(review ? "还没有已掌握的单词" : "全部掌握了！"); return 0; }
     shuffle(idx.begin(), idx.end(), rng);
     auto rank = [&](int i) { auto& x = v[i]; return x.seen == 0 ? 1 : x.wrong > x.right || x.streak == 0 ? 0 : 2; };
     stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return rank(a) < rank(b); });
@@ -179,7 +180,8 @@ int main(int argc, char** argv) {
         }
         // 混淆了已掌握的词，说明没真掌握，把它踢回学习中
         if (!right) for (auto* y : mixed) if (y->streak >= MASTER) { y->streak = 0; printf("  ↓ %s 移出已掌握\n", y->w.c_str()); }
-        x.seen++; right ?(x.right++, x.streak++) : (x.wrong++, x.streak = 0);
+        if (!right && x.streak >= MASTER) printf("  ↓ %s 移出已掌握\n", x.w.c_str());
+        x.seen++; right ? (x.right++, x.streak++) : (x.wrong++, x.streak = 0);
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");
         done++; ok += right;
         save(v);

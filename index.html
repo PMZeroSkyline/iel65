@@ -44,7 +44,7 @@ td .m{color:var(--mute);font-size:12px}
 <section id="quiz">
   <div class="card">
     <div class="seg" id="mode"><button data-m="e2c" class="on">英→中</button><button data-m="c2e">中→英</button><button data-m="card">卡片</button></div>
-    <div class="seg" id="pool"><button data-p="todo" class="on">未掌握</button><button data-p="weak">易错</button><button data-p="all">全部</button></div>
+    <div class="seg" id="pool"><button data-p="todo" class="on">未掌握</button><button data-p="weak">易错</button><button data-p="mast">已掌握</button><button data-p="all">全部</button></div>
     <div class="q" id="q">加载中…</div>
     <div class="ph" id="ph"></div>
     <div id="typeBox">
@@ -115,14 +115,15 @@ function editDist(a, b) {
 
 // ===== 刷题 =====
 function pick() {
-  let c = W.filter(w => pool === 'all' ? true : pool === 'weak' ? isWeak(w) : w.streak < MASTER);
-  if (!c.length) c = W;
+  let c = W.filter(w => pool === 'all' ? true : pool === 'weak' ? isWeak(w) : pool === 'mast' ? w.streak >= MASTER : w.streak < MASTER);
+  if (!c.length) { if (pool === 'mast') { $('q').textContent = '还没有已掌握的单词'; return null; } c = W; }
   // 网页里本轮刷过的往后放，答错的会再出现
   const fresh = c.filter(w => !w._done);
   return (fresh.length ? fresh : c)[Math.floor(Math.random() * (fresh.length || c.length))];
 }
 function show() {
   cur = pick(); answered = false;
+  if (!cur) { $('ph').textContent = $('res').innerHTML = ''; $('typeBox').hidden = $('cardBox').hidden = $('nextRow').hidden = true; return; }
   curDir = mode === 'c2e' ? 'c2e' : 'e2c';
   $('q').textContent = curDir === 'e2c' ? cur.w : cur.m;
   $('q').className = 'q' + (curDir === 'c2e' ? ' cn' : '');

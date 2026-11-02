@@ -403,7 +403,7 @@ avenue	'ævənjuː	n. 林阴道，大街；方法，途径	0	0	0	0
 average	'ævərɪdʒ	adj. 平均的；平常的，普通的 | v. 平均达到；平均为 | n. 平均	0	0	0	0
 avert	ə'vɜːt	v. 避开，防止	0	0	0	0
 aviation	eɪvɪ'eɪʃ(ə)n	n. 航空(学)	0	0	0	0
-avoid	ə'vɒɪd	v. 避免，逃避	0	0	0	0
+avoid	ə'vɒɪd	v. 避免，逃避	1	1	0	1
 award	ə'wɔːd	n. 奖；评判；	0	0	0	0
 aware	ə'weə	adj. 知道的，意识的	0	0	0	0
 awful	'ɔːfʊl	adj. 可怕的；糟糕的；极度的	0	0	0	0
@@ -495,7 +495,7 @@ blueprint	'bluːprɪnt	n. 蓝图；方案	0	0	0	0
 blunt	blʌnt	adj. 钝的；率直的 | vt. 把…弄钝；使减弱	0	0	0	0
 board	bɔːd	n. 板；委员会	0	0	0	0
 boast	bəust	n&v. 自夸；夸耀	0	0	0	0
-bold	bəuld	adj. 粗体的；大胆的，鲁莽的，勇敢的；醒目的	1	0	1	0
+bold	bəuld	adj. 粗体的；大胆的，鲁莽的，勇敢的；醒目的	2	1	1	1
 bolster	'bəulstə(r)	vt. 支持，支撑；	0	0	0	0
 bonus	'bəunəs	n. 奖金，红利；好处	0	0	0	0
 booklet	'buklət	n. 小册子	0	0	0	0
@@ -1246,7 +1246,7 @@ denote	dɪ'nəʊt	v. 是的符号，提示，表示	0	0	0	0
 denounce	dɪ'naʊns	v. 谴责，斥责	0	0	0	0
 dense	dens	adj. 浓密的，密集的；愚笨的	0	0	0	0
 density	'densəti	n. 密集；浓度，密度	0	0	0	0
-dentist	'dentɪst	n. 牙医	5	0	5	0
+dentist	'dentɪst	n. 牙医	6	1	5	1
 deny	dɪ'naɪ	v. 否认,否定，拒绝一项要求"	0	0	0	0
 depart	dɪ'pɑːt	v. 离开，启程	0	0	0	0
 departmental	ˌdiːpɑːt'mentl	adj. 部门的	0	0	0	0
@@ -1383,7 +1383,7 @@ disguise	dɪs'gaɪz	vt/n. 假扮；隐蔽；掩饰	0	0	0	0
 disgust	dɪs'gʌst	n&vt. 厌恶，讨厌	0	0	0	0
 disharmony	ˌdɪs'hɑːməni	n. 不一致；不和谐	0	0	0	0
 disillusion	ˌdɪsɪ'luːʒn	vt. 使醒悟	0	0	0	0
-disillusionment	ˌdɪsɪ'luːʒnmənt	n. 幻灭；觉醒，醒悟	0	0	0	0
+disillusionment	ˌdɪsɪ'luːʒnmənt	n. 幻灭；觉醒，醒悟	1	0	1	0
 disintegrate	dɪs'ɪntɪgreɪt	v. 碎裂，瓦解，解体	0	0	0	0
 dismantle	dɪs'mæntl	vt. 拆除；废除，取消	0	0	0	0
 dismay	dɪs'meɪ	n&vt. 灰心丧气；惊愕	0	0	0	0
@@ -1420,7 +1420,7 @@ dissipate	'dɪsɪpeɪt	v. 消散，消失；浪费，挥霍	0	0	0	0
 dissolve	dɪ'zɒlv	v. 使液化，融化；使解散	0	0	0	0
 distance	'dɪstəns	n. 距离；远方；一长段时间	0	0	0	0
 distend	dɪ'stend	v. (使)扩张；膨胀	0	0	0	0
-distil	dis'til	v. 蒸馏	6	2	4	2
+distil	dis'til	v. 蒸馏	7	3	4	3
 distill	dɪ'stɪl	vt. 蒸馏，提取	0	0	0	0
 distinct	dɪ'stɪŋ(k)t	adj. 不同的，清楚的，独特的	0	0	0	0
 distinction	dɪ'stɪŋ(k)ʃ(ə)n	n. 差别，区分；卓著，荣誉	0	0	0	0
@@ -1641,7 +1641,7 @@ enigma	ɪ'nɪgmə	n. 谜，谜一样的人或事	0	0	0	0
 enjoyable	ɪn'dʒɔɪəbl	adj. 令人愉快的，使人快乐的	0	0	0	0
 enlarge	ɪn'lɑːdʒ	v. 扩大，放大，扩充	0	0	0	0
 enlighten	ɪn'laɪt(ə)n; en-	v. 启发，开导	0	0	0	0
-enlist	ɪn'lɪst	v. 征募；从军，参军；谋取	5	0	5	0
+enlist	ɪn'lɪst	v. 征募；从军，参军；谋取	6	0	6	0
 enormous	ɪ'nɔːməs	adj. 巨大的，庞大的	0	0	0	0
 enquire	ɪn'kwaɪə	v. 询问，打听	0	0	0	0
 enquiry	ɪn'kwaɪrɪ	n. 询问，打听	0	0	0	0
@@ -1843,7 +1843,7 @@ face	feɪs	n. 脸，表情 | v. 面向，正视，承认，呈现前	0	0	0	0
 facet	'fæsɪt; -et	n. 刻面，(问题的)一个方面	0	0	0	0
 facial	'feɪʃl	adj. 面部的；面部用的	0	0	0	0
 facilitate	fə'sɪlɪteɪt	v. 使便利	0	0	0	0
-facility	fə'sɪləti	n. 灵巧，熟练；设备	6	0	6	0
+facility	fə'sɪləti	n. 灵巧，熟练；设备	7	0	7	0
 facsimile	fæk'sɪməli	n. 复制品；副本	0	0	0	0
 fact sheet		n. 情况简报，资料摘要	0	0	0	0
 factor	'fæktə	n. 因素，要素	0	0	0	0
@@ -1866,7 +1866,7 @@ familiar	fə'mɪlɪə	adj. 熟悉的，通晓的；亲密的，常见的	0	0	0	0
 familiarise	fə'mɪliəraɪz	vt. 使熟悉，使通晓；使家喻户晓	0	0	0	0
 famine	'fæmɪn	n. 饥荒	0	0	0	0
 fanatic	fə'nætɪk	a&n. 狂热的，狂热者	0	0	0	0
-fancy	'fænsɪ	adj. 颜色鲜艳的；奇特的n&v想象力,设想,爱好	2	0	2	0
+fancy	'fænsɪ	adj. 颜色鲜艳的；奇特的n&v想象力,设想,爱好	3	1	2	1
 fantastic	fæn'tæstɪk	adj. 奇异的；荒谬的，极好的	0	0	0	0
 fantasy	'fæntəsɪ; -zɪ	n. 幻想，怪念头	0	0	0	0
 fare	feə	n. 车(船)费	0	0	0	0
@@ -2311,7 +2311,7 @@ hold	həʊld	n&v. 握，抓；支持；装得下；认为；举行	0	0	0	0
 holistic	həu'lɪstɪk	adj. 整体的，全面的；功能整体性的	0	0	0	0
 holistically	həu'lɪstɪkli	adv. 整体地，全盘地	0	0	0	0
 hollow	'hɒləu	adj. 空的，空洞的；沉闷的；虚伪的，空虚的 | v. 挖空，凿空	0	0	0	0
-holocaust	'hɒləkɔːst	n. 大破坏	6	0	6	0
+holocaust	'hɒləkɔːst	n. 大破坏	7	0	7	0
 homesick	'həumsɪk	adj. 想家的，思乡的	0	0	0	0
 homestay	'həʊmsteɪ	n. 在当地居民家居住	0	0	0	0
 homogeneous	,hɒmə(ʊ)'dʒiːnɪəs; -'dʒen-	adj. 同类的，同族的	0	0	0	0
@@ -2651,7 +2651,7 @@ irrevocable	ɪ'revəkəbl	adj. 无法取消的，不能改变的	0	0	0	0
 irrigation	ˌɪrɪˈɡeʃn	n. 灌溉	0	0	0	0
 irritable	'ɪrɪtəbl	adj. 急躁的，易怒的，易受刺激的；过敏的	0	0	0	0
 irritate	'ɪrɪteɪt	v. 激怒；使烦躁，使感到不适	0	0	0	0
-irritation	ˌɪrɪ'teɪʃn	n. 激怒，恼怒；刺激物，恼人的事	4	0	4	0
+irritation	ˌɪrɪ'teɪʃn	n. 激怒，恼怒；刺激物，恼人的事	5	0	5	0
 isle	aɪl	n. 岛，小岛	0	0	0	0
 isolate	'aɪsəleɪt	v. 隔离，孤立	0	0	0	0
 isolated	'aɪsəleɪtɪd	adj. 隔离的，分离的；与世隔绝的，偏僻的；孤立的，孤独的；个别的	0	0	0	0
@@ -3509,7 +3509,7 @@ periphery	pə'rɪf(ə)rɪ	n. (圆体的)外面；周围	0	0	0	0
 periscope	'perɪskəʊp	n. 潜望镜	0	0	0	0
 perish	'perɪʃ	vt&vi. 灭亡，使痛苦；腐朽	0	0	0	0
 perishable	'perɪʃəb(ə)l	a&n. (尤指食物)易坏的,易腐烂的；易坏之物"	0	0	0	0
-permanent	'pɜːm(ə)nənt	adj. 永久性的，持久的	5	0	5	0
+permanent	'pɜːm(ə)nənt	adj. 永久性的，持久的	6	0	6	0
 permeate	'pɜːmɪeɪt	v. 弥漫，透过	0	0	0	0
 permissible	pə'mɪsɪb(ə)l	adj. 许可的，容许的	0	0	0	0
 permission	pə'mɪʃn	n. 允许，准许	0	0	0	0
@@ -3594,7 +3594,7 @@ plague	pleɪg	n. 瘟疫；麻烦，祸患	0	0	0	0
 plaintive	'pleɪntɪv	adj. 哀伤的，忧伤的	0	0	0	0
 planetarium	,plænɪ'teərɪəm	n. 天文馆	0	0	0	0
 plank	plæŋk	n. 厚板，板材，地板	0	0	0	0
-plankton	'plæŋ(k)t(ə)n; -tɒn	n. 浮游生物	6	0	6	0
+plankton	'plæŋ(k)t(ə)n; -tɒn	n. 浮游生物	7	0	7	0
 plantation	plæn'teɪʃ(ə)n; plɑːn-	n. 种植园	0	0	0	0
 plaster	'plɑːstə	n&vt. 膏药；(涂)灰泥	0	0	0	0
 plastic	'plæstɪk	adj. 塑料的	0	0	0	0
@@ -3615,7 +3615,7 @@ plummet	'plʌmɪt	v. 骤然跌落	0	0	0	0
 plunder	'plʌndə	vt&vi. 抢劫，掠夺	0	0	0	0
 plunge	plʌn(d)ʒ	v&n. 投入，插入；跳水	0	0	0	0
 plus	plʌs	prep&n. 加，加号 | adj. 正的	0	0	0	0
-plush	plʌʃ	adj. 豪华的，舒适的 | n. 长毛绒	0	0	0	0
+plush	plʌʃ	adj. 豪华的，舒适的 | n. 长毛绒	1	0	1	0
 point	pɔɪnt	v. 指，指向；表明；瞄准 | n. 尖，尖端；点，小数点；条款，细目；分数，得分；要点，论点，观点	0	0	0	0
 pointed	'pɒɪntɪd	adj. 尖锐的；率直的	0	0	0	0
 pointless	'pɒɪntlɪs	adj. 无意义的，无目标的	0	0	0	0
@@ -3784,7 +3784,7 @@ prolonged	prə'lɒŋd	adj. 持久的，长期的	0	0	0	0
 prominence	'prɒmɪnəns	n. 突出，显著；卓越；重要	0	0	0	0
 prominent	'prɒmɪnənt	adj. 突出的，显要的，著名的	0	0	0	0
 promise	'prɒmɪs	n&v. 诺言；指望；前途	0	0	0	0
-promising	'prɒmɪsɪŋ	adj. 有希望的；有出息的	1	0	1	0
+promising	'prɒmɪsɪŋ	adj. 有希望的；有出息的	2	0	2	0
 promote	prə'məʊt	v. 开放；促进，宣传	0	0	0	0
 promotion	prə'məuʃn	n. 提升，晋级；促进，增进；发起，发扬；宣传，推销	0	0	0	0
 prompt	prɒm(p)t	adj. 迅速的 | v. 敦促	0	0	0	0
@@ -4020,7 +4020,7 @@ renewal	rɪ'njuːəl	n. 更新，恢复；重新开始；重建；复兴；续�
 renovation	,renə'veɪʃn	n. 修理，恢复	0	0	0	0
 renowned	rɪ'naʊnd	adj. 有名望的，声誉鹊起的	0	0	0	0
 rent	rent	v. 租借；出租 | n. 租金	0	0	0	0
-rental	'rentl	adj. 租用的；出租的 | n. 租金额；出租，租赁	6	2	4	2
+rental	'rentl	adj. 租用的；出租的 | n. 租金额；出租，租赁	7	2	5	0
 reorient	ˌriː'ɔːrient	vt. 重新定方位；重新定位；使适应	0	0	0	0
 repack	rɪ'pæk	vt. 重新包装；重新填塞；再装配；拆修	0	0	0	0
 repaint	rɪ'peɪnt	v. 重新油漆，重画	0	0	0	0
@@ -4298,7 +4298,7 @@ shock	ʃɒk	n&vt. (使)震惊	0	0	0	0
 shore	ʃɔː(r)	n. 滨，岸，海滩	0	0	0	0
 short-term	'ʃɔːttɜːm	adj. 短期的	0	0	0	0
 shortage	'ʃɔːtɪdʒ	n. 不足，缺少	0	0	0	0
-shorthand	'ʃɔːthænd	n. 速记法；速记	6	1	5	1
+shorthand	'ʃɔːthænd	n. 速记法；速记	7	2	5	2
 shovel	'ʃʌv(ə)l	n. 铁锨，铲 | v. 铲起	0	0	0	0
 shower	'ʃaʊə	n. 阵雨；淋浴	0	0	0	0
 shred	ʃred	n. 碎片；最少量 | v. 撕碎	0	0	0	0
@@ -4541,7 +4541,7 @@ stereo	'sterɪəʊ; 'stɪərɪəʊ	n. 立体声录音机	0	0	0	0
 stereoscopic	,sterɪəʊ'skɒpɪk	adj. 有立体视觉的；有立体效果的 | v. 刺，戳；黏贴，黏住；卡住，陷住	0	0	0	0
 stereotype	'sterɪə(ʊ)taɪp; 'stɪərɪə(ʊ)-	n. 典型的榜样，样本	0	0	0	0
 sterilize	'sterəlaiz	v. 使不结果实；使绝育；使无效；杀菌	0	0	0	0
-sterling	'stɜːlɪŋ	adj. 金银标准成份的，货真价实的，纯正的	6	0	6	0
+sterling	'stɜːlɪŋ	adj. 金银标准成份的，货真价实的，纯正的	7	0	7	0
 stern	stɜːn	adj. 严厉的，严格的	0	0	0	0
 steward	'stjuːəd	n. 乘务员，服务员，组织者	0	0	0	0
 stick	stɪk	n. 枝条；木棍 | v. 刺；粘；陷往	0	0	0	0
@@ -4561,7 +4561,7 @@ storage	'stɔːrɪdʒ	n. 仓库，货栈	0	0	0	0
 storey	'stɔːrɪ	n. 房屋的一层	0	0	0	0
 storyline	'stɔːrilaɪn	n. 故事情节	0	0	0	0
 stout	staut	adj. 发胖的，肥胖的，强壮的；结实的，牢固的；顽强的，坚毅的	0	0	0	0
-stove	stəuv	n. 炉	6	1	5	1
+stove	stəuv	n. 炉	7	2	5	2
 straightforward	streɪt'fɔːwəd	adj. 正直的，坦率的，老实的，简明易懂的	0	0	0	0
 strain	streɪn	n. 拉紧，紧张，拉力；劳累 | vt&vi. 尽量利用	0	0	0	0
 strait	streɪt	n. 海峡；困难，窘迫	0	0	0	0
@@ -4609,7 +4609,7 @@ subordinate	sə'bɔːdɪnət	adj. 下级的，次要的,从属的 | n. 部下，
 subscribe	səb'skraɪb	vt&vi. 捐款，捐助；订阅；同意，赞成	0	0	0	0
 subscription	səb'skrɪpʃn	n. 订阅，订购；订阅费，订购款；捐赠，捐助；签字，签署	0	0	0	0
 subsequent	'sʌbsɪkw(ə)nt	adj. 接着的，然后的	0	0	0	0
-subside	səb'saɪd	v. 洪水退落；土地下沉；建筑物沉降	6	1	5	1
+subside	səb'saɪd	v. 洪水退落；土地下沉；建筑物沉降	7	2	5	2
 subsidiary	səb'sɪdɪərɪ	adj. 辅助的；附属的 | n. 子公司，附属机构	0	0	0	0
 subsidise	'sʌbsɪdaɪz	vt. 津贴，资助	0	0	0	0
 subsidy	'sʌbsɪdɪ	n. 补助金；津贴费	0	0	0	0
@@ -5258,7 +5258,7 @@ wreck	rek	n. 破坏，船舶失事；失事船只	0	0	0	0
 wrench	ren(t)ʃ	n&vt. 猛扭，猛拉	0	0	0	0
 wrestle	'res(ə)l	v. 摔跤，角斗；斗争，努力	0	0	0	0
 wretch	retʃ	n. 不幸的人	0	0	0	0
-wretched	'retʃɪd	adj. 不幸的，可怜的；令人难受的	6	1	5	1
+wretched	'retʃɪd	adj. 不幸的，可怜的；令人难受的	7	2	5	2
 wrinkle	'rɪŋkl	n. 皱纹	0	0	0	0
 wrought	rɔːt	adj. 锤炼的	0	0	0	0
 yacht	jɒt	n. 小帆船，快艇；帆船	0	0	0	0
