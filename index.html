@@ -116,7 +116,8 @@ function applyOps(rows, ops) {
 }
 function setBase(text) { const d = parseTsv(text); HEAD = d.head; W = d.rows; applyOps(W, LOG); }
 const status = w => w.streak >= MASTER ? 'mast' : w.seen ? 'learn' : 'new';
-const isWeak = w => w.seen > 0 && w.streak < MASTER && (w.wrong >= w.right || w.streak === 0);
+// 易错 = 错过且还没掌握；答对几次也留在易错里，直到连续答对 MASTER 次
+const isWeak = w => w.wrong > 0 && w.streak < MASTER;
 
 // ===== 软匹配（与 iel.cpp 同逻辑）=====
 function senses(t) {
