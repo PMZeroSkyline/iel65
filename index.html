@@ -39,6 +39,9 @@ td .m{color:var(--mute);font-size:12px}
 .kick.on{background:var(--bad);color:#fff}
 input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
 #sync summary{cursor:pointer;color:var(--mute);font-size:13px;margin-top:10px}
+#st{margin-top:6px;font-size:14px;font-weight:600}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);max-width:calc(100% - 32px);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9}
+.toast.on{opacity:1}
 </style>
 </head>
 <body>
@@ -184,6 +187,7 @@ function reveal(right, extra = '', typed = false, mixed = []) {
   $('res').innerHTML = `<b class="${right ? 'ok' : 'bad'}">${right ? '✓ 正确' : '✗ 错误'}</b> ${extra}<button type="button" class="say" tabindex="-1" data-w="${esc(cur.w)}">🔊</button><br><b>${esc(cur.w)}</b> <span class="mute">/${esc(cur.ph)}/</span><br>${esc(cur.m)}`
     + mixed.map(x => `<div class="mute">你的答案是 <b>${esc(x.w)}</b> 的意思：${esc(x.m)}</div>`).join('')
     + (!right && !typed && mast(cur) ? `<div class="mute">↓ ${esc(cur.w)} 移出已掌握</div>` : '')
+    + `<div id="st">${stLine(right)}</div>`
     + (ask.length ? `<div id="kicks"><div class="mute">已掌握的词要移出吗？（不点 = 保留）</div>${ask.map(kickBtn).join('')}</div>` : '');
   $('nextRow').hidden = false; $('override').hidden = right;
   $('cardBox').hidden = true;
@@ -217,6 +221,12 @@ function finalize() {
     ops.push({w: p.w, op: !p.self || !p.typed || p.kick.has(p.w) ? 'w' : 'k'});
     p.mixed.forEach(w => { if (p.kick.has(w)) ops.push({w, op: 'x'}); });
   }
+  // 状态变化弹提示：刚掌握 / 移出已掌握
+  const byW = new Map(W.map(x => [x.w, x])), tips = [];
+  for (const {w, op} of ops) { const x = byW.get(w); if (!x) continue;
+    if (op === 'r' && x.streak + 1 === MASTER) tips.push(`★ ${w} 已掌握`);
+    if ((op === 'w' || op === 'x') && x.streak >= MASTER) tips.push(`↓ ${w} 已移出已掌握`); }
+  if (tips.length) toast(tips.join('　'));
   LOG.push(...ops); applyOps(W, ops); saveLog();
 }
 function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : ''); }
@@ -226,7 +236,20 @@ $('submit').onclick = submit;
 $('ans').onkeydown = e => { if (e.key === 'Enter') submit(); };
 $('skip').onclick = () => reveal(false);
 $('next').onclick = show;
-$('override').onclick = () => { sess.ok++; cur._done = true; $('override').hidden = true; if (pend) pend.right = true; if ($('kicks')) $('kicks').remove(); updSess(); };
+$('override').onclick = () => { sess.ok++; cur._done = true; $('override').hidden = true; if (pend) pend.right = true; if ($('kicks')) $('kicks').remove(); $('st').textContent = stLine(true); updSess(); };
+// 结果里的连续答对提示（与 CLI 的 ★/清零 提示对应）
+function stLine(right) {
+  const s = cur.streak;
+  if (right) return s >= MASTER ? '' : s + 1 >= MASTER ? '★ 已掌握，之后不再出现' : `连续答对 ${s + 1}/${MASTER}`;
+  return s > 0 && s < MASTER ? `连续答对清零（之前 ${s}/${MASTER}）` : '';
+}
+let toastTimer;
+function toast(t) {
+  let el = document.querySelector('.toast');
+  if (!el) { el = document.createElement('div'); el.className = 'toast'; document.body.appendChild(el); }
+  el.textContent = t; el.classList.add('on');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('on'), 2200);
+}
 $('res').addEventListener('click', e => { const b = e.target.closest('.kick'); if (!b || !pend) return;
   const on = b.classList.toggle('on'); on ? pend.kick.add(b.dataset.w) : pend.kick.delete(b.dataset.w);
   b.textContent = (on ? '✓ 将移出：' : '移出已掌握：') + b.dataset.w; });
