@@ -241,7 +241,7 @@ ape	eɪp	n. 猿；无尾猿；傻瓜 | vt. 模仿；抢台词 | adj. 狂热的	0
 apologetic	əpɒlə'dʒetɪk	adj. 表示歉意的；道歉的；急于认错的；辩护的	0	0	0	0
 apparatus	ˌæpəˈreɪtəs	n. 仪器；设备；装置；器具；器官	0	0	0	0
 apparent	ə'pær(ə)nt	adj. 明显的；表面上的；清晰可见的；显然的	0	0	0	0
-apparently	ə'pærəntli	adv. 显然；看来；似乎；表面上；清楚地	9	3	6	0
+apparently	ə'pærəntli	adv. 显然；看来；似乎；表面上；清楚地	10	3	7	0
 appeal	ə'piːl	vi&n. 呼吁；上诉；吸引(力) | n. 恳求；诉请 | vi. 要求；有吸引力；诉诸；求助；迎合爱好	19	9	10	6
 appear	ə'pɪə(r)	v. 出现；显露；公开露面；出场；问世；仿佛；似乎 | vi. 显得；来到；出庭	0	0	0	0
 appearance	ə'pɪərəns	n. 出现；外观；露面；外表；出版；外貌	0	0	0	0
@@ -411,7 +411,7 @@ awkward	'ɔːkwəd	adj. 难使用的；笨拙的；尴尬的；棘手的；不�
 axis	'æksɪs	n. (plaxes)轴；轴心	0	0	0	0
 axle	'æksl	n. 车轴；轮轴	0	0	0	0
 bachelor	'bætʃələ(r)	n. 学士；单身汉	0	0	0	0
-backbone	'bækbəun	n. 脊椎；骨干；支柱；志气；主干网；决心；毅力	4	2	2	2
+backbone	'bækbəun	n. 脊椎；骨干；支柱；志气；主干网；决心；毅力	5	3	2	3
 background	'bækgraund	n. 背景；经历；后台；不重要或不引人注目的地方；背景资料；隐蔽的位置	0	0	0	0
 bacterial	bæk'tɪəriəl	adj. 细菌的；由细菌引起的	0	0	0	0
 badge	bædʒ	n. 徽章；标记；象征；证章	0	0	0	0
@@ -902,7 +902,7 @@ confidence	'kɒnfɪd(ə)ns	n. 信任；信心；自信；秘密 | adj. 骗得信
 confident	'kɒnfɪd(ə)nt	adj. 确信的；有把握的；有信心的；自信的	0	0	0	0
 confidential	kɒnfɪ'denʃ(ə)l	adj. 机密的；信任的；获他人信赖的；易于信任他人的；表示信任的	0	0	0	0
 configuration	kən,fɪgə'reɪʃ(ə)n; -gjʊ-	n. 配置；布局；构造；结构；表面配置；外形	0	0	0	0
-confine	kən'faɪn	v. 限制；禁闭 | vt. 使不外出 | vi. 邻接；交界 | n. 边缘；范围；区域；界限；边界	5	1	4	0
+confine	kən'faɪn	v. 限制；禁闭 | vt. 使不外出 | vi. 邻接；交界 | n. 边缘；范围；区域；界限；边界	7	1	6	0
 confirm	kən'fɜːm	v. (权力)使巩固；认可(任命) | vt. 证实；确定；批准；确认	4	2	2	2
 confirmation	ˌkɒnfə'meɪʃn	n. 证实；确认；批准；证明	0	0	0	0
 conflict	'kɒnflɪkt	n. 战斗；斗争；意见(分歧)；冲突；矛盾；争执 | vi. 抵触	0	0	0	0
@@ -1396,7 +1396,7 @@ dispatch	dɪˈspætʃ	v&n. 派遣；发送；迅速办理；急件 | vt. 分派	
 dispel	dɪ'spel	v. 驱逐；消除 | vt. 驱散	0	0	0	0
 dispense	dɪ'spens	vt. 分发；分配；提供；免除；执行 | vi. 特许；豁免	0	0	0	0
 dispenser	dɪs'pensə(r)	n. 药剂师；配药师；分配者；施予者；自动售货机；配药员；分配器；施与者	0	0	0	0
-dispersal	dɪ'spɜːsl	n. 散布；分散；消散；疏散；传播；消失	11	0	11	0
+dispersal	dɪ'spɜːsl	n. 散布；分散；消散；疏散；传播；消失	12	0	12	0
 disperse	dɪ'spɜːs	v. (使)散开；使疏开；使分散 | vt. 传播	0	0	0	0
 dispiriting	dɪ'spɪrɪtɪŋ	adj. 令人沮丧的；使人气馁的 | v. 使沮丧	0	0	0	0
 displace	dɪs'pleɪs	v. 转移；取代 | vt. 移置；替换；置换；把…免职；排水	0	0	0	0
@@ -1579,7 +1579,7 @@ elite	[eɪˈliːt]	n&a. 社会精华(的)；高贵者(的) | n. 精华；精锐�
 eloquent	'eləkwənt	adj. 雄辩的；有口才的；有说服力的；意味深长的；动人的	0	0	0	0
 elsewhere	els'weə; 'elsweə	adv. 在别处；向别处；到别处	1	1	0	1
 elucidate	i'luːsɪdeɪt	vt. 阐明；使…清楚；说明	0	0	0	0
-elusive	i'luːsɪv	adj. 难懂的；难捉摸的；易忘的；难以捉摸的；逃避的	19	4	15	0
+elusive	i'luːsɪv	adj. 难懂的；难捉摸的；易忘的；难以捉摸的；逃避的	20	4	16	0
 embankment	ɪm'bæŋkmənt	n. 筑堤；堤岸；路基；堤防；路堤	0	0	0	0
 embargo	em'bɑːgəʊ; ɪm-	n&v. 禁止贸易 | n. 封港令；禁运；禁令；禁止 | vt. 禁止出入港口	0	0	0	0
 embark	ɪm'bɑːk; em-	v. 上船；从事；开始 | vi. 乘船；着手；上飞机；上船或飞机	0	0	0	0
@@ -1731,7 +1731,7 @@ evidence	'evɪdəns	n. 根据；证据；形迹；迹象；证明；明显	0	0	0
 evoke	ɪ'vəʊk	v. 唤起；引起 | vt. 召(魂)；博得	0	0	0	0
 evolution	,iːvə'luːʃ(ə)n; 'ev-	n. 演变；进展；进化；发展；(气体)放出；开方	0	0	0	0
 evolve	i'vɒlv	v. 逐渐形成；演变；进化 | vi. 进展；展开 | vt. 使发展；使推断出；使逐步形成	0	0	0	0
-exacerbate	ɪg'zæsəbeɪt; ek'sæs-	v. 加重；恶化 | vt. 使增剧；激怒；使加剧	0	0	0	0
+exacerbate	ɪg'zæsəbeɪt; ek'sæs-	v. 加重；恶化 | vt. 使增剧；激怒；使加剧	1	0	1	0
 exact	ɪg'zækt	adj. 精确的；准确的；精密的 | vt. 强求；急需；要求	0	0	0	0
 exaggerate	ɪg'zædʒəreɪt; eg-	v. 夸大；夸张 | vt. 使扩大；使增大	0	0	0	0
 examine	ɪg'zæmɪn	vt. 检查；调查；研究；测验；检测 | v. 考试	0	0	0	0
