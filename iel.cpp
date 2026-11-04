@@ -163,13 +163,13 @@ int main(int argc, char** argv) {
         puts("用法: iel [e2c|c2e|mix|stat] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度\n  review 只刷已掌握的词，答错踢回未掌握");
         return 0;
     }
-    // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错词 > 未学 > 学习中 排序
+    // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错（错过） > 学习中（刷过没错过） > 未学 排序
     mt19937 rng(random_device{}());
     vector<int> idx;
     for (int i = 0; i < (int)v.size(); i++) if ((v[i].streak >= MASTER) == review) idx.push_back(i);
     if (idx.empty()) { puts(review ? "还没有已掌握的单词" : "全部掌握了！"); return 0; }
     shuffle(idx.begin(), idx.end(), rng);
-    auto rank = [&](int i) { auto& x = v[i]; return x.seen == 0 ? 1 : x.wrong > x.right || x.streak == 0 ? 0 : 2; };
+    auto rank = [&](int i) { auto& x = v[i]; return x.wrong > 0 ? 0 : x.seen > 0 ? 1 : 2; };
     stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return rank(a) < rank(b); });
     if ((int)idx.size() > n) idx.resize(n);
 

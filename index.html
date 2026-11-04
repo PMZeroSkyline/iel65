@@ -151,9 +151,14 @@ function editDist(a, b) {
 function pick() {
   let c = W.filter(w => pool === 'all' ? true : pool === 'weak' ? isWeak(w) : pool === 'mast' ? w.streak >= MASTER : w.streak < MASTER);
   if (!c.length) { if (pool === 'mast') { $('q').textContent = '还没有已掌握的单词'; return null; } c = W; }
-  // 网页里本轮刷过的往后放，答错的会再出现
+  // 网页里本次答对的往后放，答错的会再出现
   const fresh = c.filter(w => !w._done);
-  return (fresh.length ? fresh : c)[Math.floor(Math.random() * (fresh.length || c.length))];
+  if (fresh.length) c = fresh;
+  // 和命令行一样的优先级：易错（错过） > 学习中（刷过没错过） > 未学，同级随机
+  const rank = w => w.wrong > 0 ? 0 : w.seen > 0 ? 1 : 2;
+  const top = Math.min(...c.map(rank));
+  c = c.filter(w => rank(w) === top);
+  return c[Math.floor(Math.random() * c.length)];
 }
 function show() {
   finalize();
