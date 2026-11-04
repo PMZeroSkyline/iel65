@@ -35,6 +35,10 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 td .m{color:var(--mute);font-size:12px}
 .say{float:right;cursor:pointer;padding:2px 6px;font-size:18px;line-height:1;border:0;background:none;color:inherit;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}.say:active{opacity:.5}
 .tag{font-size:11px;padding:1px 6px;border-radius:6px;color:#fff}
+.kick{margin:6px 6px 0 0;padding:5px 10px;border:1px solid var(--bad);border-radius:8px;background:none;color:var(--bad);font-size:13px}
+.kick.on{background:var(--bad);color:#fff}
+input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+#sync summary{cursor:pointer;color:var(--mute);font-size:13px;margin-top:10px}
 </style>
 </head>
 <body>
@@ -59,7 +63,6 @@ td .m{color:var(--mute);font-size:12px}
     <div class="row" id="nextRow" hidden><button id="next">下一个</button><button id="override" class="b2">算我对</button></div>
   </div>
   <div class="mute" id="sess"></div>
-  <p class="mute">网页端不保存记录，刷新即清空。要记录进度请用命令行 iel 并提交 words.tsv。</p>
 </section>
 
 <section id="prog" hidden>
@@ -75,13 +78,43 @@ td .m{color:var(--mute);font-size:12px}
     <div class="mute" id="more"></div>
   </div>
 </section>
+
+<div class="card" id="sync">
+  <div class="mute" id="syncMsg"></div>
+  <div class="row"><button id="upload">上传进度</button></div>
+  <details id="tokBox"><summary>GitHub 令牌设置</summary>
+    <p class="mute">令牌只保存在这台设备的浏览器里，不会写进仓库。需要细粒度令牌（Fine-grained token），只授权本仓库的 Contents: Read and write。</p>
+    <input type="password" id="tok" placeholder="粘贴 github_pat_..." autocomplete="off">
+    <div class="row"><button id="tokSave">保存</button><button id="tokClear" class="b2">清除</button></div>
+  </details>
+</div>
 </main>
 
 <script>
 const MASTER = 3; // 与 CLI 保持一致：连续答对 3 次视为掌握
-let W = [], mode = 'e2c', pool = 'todo', cur = null, curDir = 'e2c', answered = false, lastRight = false;
+let W = [], HEAD = '', mode = 'e2c', pool = 'todo', cur = null, curDir = 'e2c', answered = false, pend = null;
 let sess = {n: 0, ok: 0};
 const $ = id => document.getElementById(id);
+const store = (k, v) => { try { v === undefined ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
+const load = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+
+// ===== 数据：仓库里的 words.tsv + 本机未上传的答题记录 LOG =====
+// LOG 每条 {w, op}：r=答对  w=答错并清零连续  k=答错但保留已掌握  x=被混淆的已掌握词移出
+let LOG = []; try { LOG = JSON.parse(load('iel_log') || '[]'); } catch (e) {}
+const saveLog = () => { store('iel_log', JSON.stringify(LOG)); updSync(); };
+function parseTsv(t) {
+  const lines = t.replace(/\r/g, '').split('\n');
+  return {head: lines[0], rows: lines.slice(1).filter(Boolean).map(l => { const a = l.split('\t');
+    return {w: a[0], ph: a[1] || '', m: a[2] || '', seen: +a[3] || 0, right: +a[4] || 0, wrong: +a[5] || 0, streak: +a[6] || 0}; })};
+}
+const toTsv = (head, rows) => head + '\n' + rows.map(x => [x.w, x.ph, x.m, x.seen, x.right, x.wrong, x.streak].join('\t')).join('\n') + '\n';
+function applyOps(rows, ops) {
+  const m = new Map(rows.map(x => [x.w, x]));
+  for (const {w, op} of ops) { const x = m.get(w); if (!x) continue;
+    if (op === 'x') { x.streak = 0; continue; }
+    x.seen++; if (op === 'r') { x.right++; x.streak++; } else { x.wrong++; if (op === 'w') x.streak = 0; } }
+}
+function setBase(text) { const d = parseTsv(text); HEAD = d.head; W = d.rows; applyOps(W, LOG); }
 const status = w => w.streak >= MASTER ? 'mast' : w.seen ? 'learn' : 'new';
 const isWeak = w => w.seen > 0 && w.streak < MASTER && (w.wrong >= w.right || w.streak === 0);
 
@@ -122,6 +155,7 @@ function pick() {
   return (fresh.length ? fresh : c)[Math.floor(Math.random() * (fresh.length || c.length))];
 }
 function show() {
+  finalize();
   cur = pick(); answered = false;
   if (!cur) { $('ph').textContent = $('res').innerHTML = ''; $('typeBox').hidden = $('cardBox').hidden = $('nextRow').hidden = true; return; }
   curDir = mode === 'c2e' ? 'c2e' : 'e2c';
@@ -132,11 +166,19 @@ function show() {
   $('typeBox').hidden = mode === 'card'; $('cardBox').hidden = mode !== 'card';
   $('ans').value = ''; if (mode !== 'card') $('ans').focus({preventScroll: true});
 }
-function reveal(right, extra = '') {
-  answered = true; lastRight = right;
+// typed=是否输入了答案（"不会/不认识"为 false，已掌握的词直接移出）；mixed=答案其实是这些词的意思/拼写
+function reveal(right, extra = '', typed = false, mixed = []) {
+  answered = true;
   sess.n++; if (right) sess.ok++;
   if (right) cur._done = true;
-  $('res').innerHTML = `<b class="${right ? 'ok' : 'bad'}">${right ? '✓ 正确' : '✗ 错误'}</b> ${extra}<button type="button" class="say" tabindex="-1" data-w="${esc(cur.w)}">🔊</button><br><b>${esc(cur.w)}</b> <span class="mute">/${esc(cur.ph)}/</span><br>${esc(cur.m)}`;
+  const mast = x => x.streak >= MASTER;
+  const kickBtn = x => `<button type="button" class="kick" data-w="${esc(x.w)}">移出已掌握：${esc(x.w)}</button>`;
+  const ask = [...(!right && typed && mast(cur) ? [cur] : []), ...(right ? [] : mixed.filter(mast))];
+  pend = {w: cur.w, right, typed, self: mast(cur), mixed: right ? [] : mixed.filter(mast).map(x => x.w), kick: new Set()};
+  $('res').innerHTML = `<b class="${right ? 'ok' : 'bad'}">${right ? '✓ 正确' : '✗ 错误'}</b> ${extra}<button type="button" class="say" tabindex="-1" data-w="${esc(cur.w)}">🔊</button><br><b>${esc(cur.w)}</b> <span class="mute">/${esc(cur.ph)}/</span><br>${esc(cur.m)}`
+    + mixed.map(x => `<div class="mute">你的答案是 <b>${esc(x.w)}</b> 的意思：${esc(x.m)}</div>`).join('')
+    + (!right && !typed && mast(cur) ? `<div class="mute">↓ ${esc(cur.w)} 移出已掌握</div>` : '')
+    + (ask.length ? `<div id="kicks"><div class="mute">已掌握的词要移出吗？（不点 = 保留）</div>${ask.map(kickBtn).join('')}</div>` : '');
   $('nextRow').hidden = false; $('override').hidden = right;
   $('cardBox').hidden = true;
   updSess();
@@ -152,15 +194,24 @@ function speak(t) { // 浏览器/系统自带语音合成
 }
 function submit() {
   if (answered) return show();
-  const a = $('ans').value.trim();
+  const a = $('ans').value.trim(), al = a.toLowerCase();
   if (!a) return reveal(false);
-  if (curDir === 'e2c') return reveal(matchCn(a, cur.m));
-  const ok = a.toLowerCase() === cur.w.toLowerCase();
-  let extra = '';
-  if (!ok && editDist(a.toLowerCase(), cur.w.toLowerCase()) === 1) extra = '拼写差一点！';
-  const other = !ok && W.find(w => w.w.toLowerCase() === a.toLowerCase());
-  if (other) extra += ` ${esc(other.w)} 的意思是：${esc(other.m)}`;
-  reveal(ok, extra);
+  const ok = curDir === 'e2c' ? matchCn(a, cur.m) : al === cur.w.toLowerCase();
+  const extra = !ok && curDir === 'c2e' && editDist(al, cur.w.toLowerCase()) === 1 ? '拼写差一点！' : '';
+  const mixed = ok ? [] : W.filter(y => y !== cur && (curDir === 'e2c' ? matchCn(a, y.m) : y.w.toLowerCase() === al)).slice(0, 5);
+  reveal(ok, extra, true, mixed);
+}
+// 进入下一题（或上传）前，把本题结果写进 LOG
+function finalize() {
+  if (!pend) return;
+  const p = pend; pend = null;
+  const ops = [];
+  if (p.right) ops.push({w: p.w, op: 'r'});
+  else {
+    ops.push({w: p.w, op: !p.self || !p.typed || p.kick.has(p.w) ? 'w' : 'k'});
+    p.mixed.forEach(w => { if (p.kick.has(w)) ops.push({w, op: 'x'}); });
+  }
+  LOG.push(...ops); applyOps(W, ops); saveLog();
 }
 function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : ''); }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
@@ -169,7 +220,10 @@ $('submit').onclick = submit;
 $('ans').onkeydown = e => { if (e.key === 'Enter') submit(); };
 $('skip').onclick = () => reveal(false);
 $('next').onclick = show;
-$('override').onclick = () => { sess.ok++; cur._done = true; $('override').hidden = true; updSess(); };
+$('override').onclick = () => { sess.ok++; cur._done = true; $('override').hidden = true; if (pend) pend.right = true; if ($('kicks')) $('kicks').remove(); updSess(); };
+$('res').addEventListener('click', e => { const b = e.target.closest('.kick'); if (!b || !pend) return;
+  const on = b.classList.toggle('on'); on ? pend.kick.add(b.dataset.w) : pend.kick.delete(b.dataset.w);
+  b.textContent = (on ? '✓ 将移出：' : '移出已掌握：') + b.dataset.w; });
 $('flip').onclick = () => { $('ph').textContent = (cur.ph ? '/' + cur.ph + '/  ' : '') + cur.m; };
 $('know').onclick = () => reveal(true);
 $('dunno').onclick = () => reveal(false);
@@ -213,11 +267,58 @@ document.querySelector('thead').onclick = e => { const k = e.target.dataset.k; i
 function tab(p) { $('quiz').hidden = p; $('prog').hidden = !p; $('tQuiz').classList.toggle('on', !p); $('tProg').classList.toggle('on', p); if (p) renderProg(); }
 $('tQuiz').onclick = () => tab(false); $('tProg').onclick = () => tab(true);
 
-fetch('words.tsv', {cache: 'no-cache'}).then(r => r.text()).then(t => {
-  W = t.split('\n').slice(1).filter(Boolean).map(l => { const a = l.replace(/\r$/, '').split('\t');
-    return {w: a[0], ph: a[1] || '', m: a[2] || '', seen: +a[3] || 0, right: +a[4] || 0, wrong: +a[5] || 0, streak: +a[6] || 0}; });
-  show();
-}).catch(() => { $('q').textContent = '加载 words.tsv 失败'; });
+// ===== 上传进度：通过 GitHub API 把合并后的 words.tsv 提交回仓库 =====
+const REPO = location.hostname.endsWith('.github.io') && location.pathname.split('/')[1]
+  ? location.hostname.split('.')[0] + '/' + location.pathname.split('/')[1] : 'PMZeroSkyline/iel65';
+const API = `https://api.github.com/repos/${REPO}/contents/words.tsv`;
+const token = () => load('iel_token') || '';
+const ghHeaders = extra => ({Authorization: 'Bearer ' + token(), 'X-GitHub-Api-Version': '2022-11-28', ...extra});
+async function fetchLatest() { // 取最新内容和它的 blob sha（用内容算 sha，保证两者一致）
+  const r = await fetch(API + '?ref=main', {headers: ghHeaders({Accept: 'application/vnd.github.raw'}), cache: 'no-store'});
+  if (!r.ok) throw new Error(r.status === 401 ? '令牌无效或已过期' : r.status === 404 ? '找不到仓库，检查令牌权限' : '读取失败 ' + r.status);
+  const buf = new Uint8Array(await r.arrayBuffer());
+  const pre = new TextEncoder().encode(`blob ${buf.length}\0`), all = new Uint8Array(pre.length + buf.length);
+  all.set(pre); all.set(buf, pre.length);
+  const sha = [...new Uint8Array(await crypto.subtle.digest('SHA-1', all))].map(b => b.toString(16).padStart(2, '0')).join('');
+  return {text: new TextDecoder().decode(buf), sha};
+}
+function b64(str) {
+  const bytes = new TextEncoder().encode(str); let s = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(s);
+}
+let uploading = false;
+async function upload() {
+  if (!token()) { $('tokBox').open = true; return msg('请先在下面设置 GitHub 令牌'); }
+  finalize();
+  if (!LOG.length) return msg('没有需要上传的记录');
+  uploading = true; $('upload').disabled = true;
+  try {
+    for (let i = 0; i < 3; i++) { // sha 冲突（电脑端刚推送过）就重新取最新的再合并
+      msg('上传中…');
+      const {text, sha} = await fetchLatest();
+      const n = LOG.length, d = parseTsv(text);
+      applyOps(d.rows, LOG.slice(0, n));
+      const out = toTsv(d.head, d.rows);
+      const r = await fetch(API, {method: 'PUT', headers: ghHeaders({'Content-Type': 'application/json'}),
+        body: JSON.stringify({message: `网页刷词：上传 ${n} 条记录`, content: b64(out), sha, branch: 'main'})});
+      if (r.ok) { LOG = LOG.slice(n); saveLog(); setBase(out); if (!$('prog').hidden) renderProg(); return msg(`已上传 ${n} 条记录 ✓`); }
+      if (r.status !== 409 && r.status !== 422) throw new Error(r.status === 403 ? '令牌没有写权限' : '上传失败 ' + r.status);
+    }
+    throw new Error('多次冲突，稍后再试');
+  } catch (e) { msg('✗ ' + e.message + '（记录仍保存在本机）'); }
+  finally { uploading = false; $('upload').disabled = false; }
+}
+function msg(t) { $('syncMsg').textContent = t; }
+function updSync() { if (!uploading) msg(LOG.length ? `本机有 ${LOG.length} 条记录待上传` : token() ? '记录已全部上传' : '设置令牌后可以把网页上刷的记录上传到仓库'); }
+$('upload').onclick = upload;
+$('tokSave').onclick = () => { const t = $('tok').value.trim(); if (!t) return; store('iel_token', t); $('tok').value = ''; $('tokBox').open = false; msg('令牌已保存'); };
+$('tokClear').onclick = () => { store('iel_token'); msg('令牌已清除'); };
+
+// 有令牌时直接从 API 读最新的（GitHub Pages 有几分钟缓存）；没有就读 Pages 上的
+(token() ? fetchLatest().then(d => d.text) : Promise.reject()).catch(() => fetch('words.tsv', {cache: 'no-cache'}).then(r => r.text()))
+  .then(t => { setBase(t); show(); updSync(); })
+  .catch(() => { $('q').textContent = '加载 words.tsv 失败'; });
 </script>
 </body>
 </html>

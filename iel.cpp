@@ -137,6 +137,26 @@ int main(int argc, char** argv) {
                        fs::absolute(argv[0]).parent_path().parent_path().parent_path()})
         if (fs::exists(p / "words.tsv")) { dbPath = p / "words.tsv"; break; }
     if (dbPath.empty()) { puts("找不到 words.tsv"); return 1; }
+    {   // 网页可能上传过进度：远程有新提交就先 pull，避免之后推送冲突
+#ifdef _WIN32
+#define popen _popen
+#define pclose _pclose
+        const string q = " 2>nul ";
+#else
+        const string q = " 2>/dev/null ";
+#endif
+        string g = "git -C \"" + dbPath.parent_path().string() + "\" ";
+        int behind = 0;
+        if (FILE* p = popen((g + "fetch -q" + q + "&& " + g + "rev-list --count HEAD..@{u}" + q).c_str(), "r")) {
+            if (fscanf(p, "%d", &behind) != 1) behind = 0;
+            pclose(p);
+        }
+        if (behind > 0) {
+            printf("远程有 %d 个新提交（可能是网页上传的进度）。回车=自动 git pull，n=跳过：", behind); fflush(stdout);
+            string c; readLine(c);
+            if (trim(c) != "n" && system((g + "pull --ff-only -q").c_str()) != 0) { puts("自动 pull 失败，请手动处理后再刷"); return 1; }
+        }
+    }
     auto v = load();
     if (mode == "stat") { stat(v); return 0; }
     if (mode != "e2c" && mode != "c2e" && mode != "mix") {
