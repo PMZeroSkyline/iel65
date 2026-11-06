@@ -157,6 +157,7 @@ function pick() {
   // 网页里本次答对的往后放，答错的会再出现
   const fresh = c.filter(w => !w._done);
   if (fresh.length) c = fresh;
+  if (cur && c.length > 1) c = c.filter(w => w.w !== cur.w); // 不连续出同一个词
   // 和命令行一样的优先级：易错（错过） > 学习中（刷过没错过） > 未学，同级随机
   const rank = w => w.wrong > 0 ? 0 : w.seen > 0 ? 1 : 2;
   const top = Math.min(...c.map(rank));
