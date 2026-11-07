@@ -166,15 +166,15 @@ int main(int argc, char** argv) {
                        fs::absolute(argv[0]).parent_path().parent_path().parent_path()})
         if (fs::exists(p / "words.tsv")) { dbPath = p / "words.tsv"; break; }
     if (dbPath.empty()) { puts("找不到 words.tsv"); return 1; }
-    {   // 网页可能上传过进度：远程有新提交就先 pull，避免之后推送冲突
 #ifdef _WIN32
 #define popen _popen
 #define pclose _pclose
-        const string q = " 2>nul ";
+    const string q = " 2>nul ";
 #else
-        const string q = " 2>/dev/null ";
+    const string q = " 2>/dev/null ";
 #endif
-        string g = "git -C \"" + dbPath.parent_path().string() + "\" ";
+    const string g = "git -C \"" + dbPath.parent_path().string() + "\" ";
+    if (mode != "push") {   // 网页可能上传过进度：远程有新提交就先 pull，避免之后推送冲突
         int behind = 0;
         if (FILE* p = popen((g + "fetch -q" + q + "&& " + g + "rev-list --count HEAD..@{u}" + q).c_str(), "r")) {
             if (fscanf(p, "%d", &behind) != 1) behind = 0;
@@ -189,8 +189,31 @@ int main(int argc, char** argv) {
     auto v = load();
     loadTimes();
     if (mode == "stat") { stat(v); return 0; }
+    if (mode == "push") {  // 只提交学习数据，然后推送；网页刚上传过就 rebase 后再推
+        const string files = " -- words.tsv time.tsv";
+        system((g + "add" + files + q).c_str());
+        bool changed = system((g + "diff --cached --quiet" + files + q).c_str()) != 0;
+        if (changed) {
+            int m = 0, a = 0; for (auto& x : v) { m += x.streak >= MASTER; a += x.seen; }
+            string msg = "刷词：已掌握 " + to_string(m) + "，累计答题 " + to_string(a) + "\n";
+            FILE* p = popen((g + "commit -q -F -" + files).c_str(), "w");  // 从标准输入传说明，避免中文被命令行转码
+            if (p) fputs(msg.c_str(), p);
+            if (!p || pclose(p) != 0) { puts("提交失败"); return 1; }
+            printf("已提交：%s", msg.c_str());
+        } else puts("没有新记录要提交");
+        if (system((g + "push -q" + q).c_str()) != 0) {
+            if (system((g + "pull --rebase --autostash -q" + q).c_str()) != 0) {
+                system((g + "rebase --abort" + q).c_str());
+                puts("推送失败：和远程冲突（可能网页上传过同一批单词）。本地提交还在，请手动处理");
+                return 1;
+            }
+            if (system((g + "push -q" + q).c_str()) != 0) { puts("推送失败，请检查网络后重新运行 iel push"); return 1; }
+        }
+        puts("已推送");
+        return 0;
+    }
     if (mode != "e2c" && mode != "c2e" && mode != "mix") {
-        puts("用法: iel [e2c|c2e|mix|stat] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度\n  review 只刷已掌握的词，答错踢回未掌握");
+        puts("用法: iel [e2c|c2e|mix|stat|push] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度  push 提交并推送学习记录\n  review 只刷已掌握的词，答错踢回未掌握");
         return 0;
     }
     // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错（错过） > 学习中（刷过没错过） > 未学 排序
