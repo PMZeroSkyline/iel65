@@ -73,6 +73,7 @@ input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var
     <div class="stats" id="sum"></div>
     <div class="bar" id="bar"></div>
     <div class="mute" id="acc"></div>
+    <div class="mute" id="timeLine" style="margin-top:6px"></div>
   </div>
   <div class="card">
     <input type="text" id="search" placeholder="搜索单词或中文" style="margin-top:0">
@@ -96,7 +97,7 @@ input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var
 <script>
 const MASTER = 3; // 与 CLI 保持一致：连续答对 3 次视为掌握
 let W = [], HEAD = '', mode = 'e2c', pool = 'todo', cur = null, curDir = 'e2c', answered = false, pend = null;
-let sess = {n: 0, ok: 0};
+let sess = {n: 0, ok: 0, sec: 0};
 const $ = id => document.getElementById(id);
 const store = (k, v) => { try { v === undefined ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
 const load = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
@@ -118,6 +119,39 @@ function applyOps(rows, ops) {
     x.seen++; if (op === 'r') { x.right++; x.streak++; } else { x.wrong++; if (op === 'w') x.streak = 0; } }
 }
 function setBase(text) { const d = parseTsv(text); HEAD = d.head; W = d.rows; applyOps(W, LOG); }
+
+// ===== 学习时长：time.tsv（已上传）+ 本机未上传的秒数 =====
+const IDLE_MS = 60000; // 两次操作之间最多算 60 秒，走开不累加（命令行相同）
+let TB = {}, TP = {}, lastTick = null; try { TP = JSON.parse(load('iel_time') || '{}'); } catch (e) {}
+const dayStr = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+function parseTime(t) {
+  const o = {};
+  t.replace(/\r/g, '').split('\n').slice(1).filter(Boolean).forEach(l => { const [d, s] = l.split('\t'); o[d] = (o[d] || 0) + (+s || 0); });
+  return o;
+}
+const toTime = o => 'date\tseconds\n' + Object.keys(o).sort().map(d => `${d}\t${o[d]}\n`).join('');
+function tick() {
+  const now = Date.now();
+  if (lastTick !== null) {
+    const s = Math.min(now - lastTick, IDLE_MS) / 1000, d = dayStr(new Date());
+    TP[d] = (TP[d] || 0) + s; sess.sec += s; store('iel_time', JSON.stringify(TP));
+  }
+  lastTick = now;
+}
+const pendSec = () => Object.values(TP).reduce((a, b) => a + b, 0);
+function fmtTime(s) {
+  return s < 60 ? `${Math.round(s)} 秒` : s < 3600 ? `${Math.round(s / 60)} 分钟` : `${(s / 3600).toFixed(1)} 小时`;
+}
+function renderTime() {
+  const all = {...TB}; for (const d in TP) all[d] = (all[d] || 0) + TP[d];
+  const ds = Object.keys(all).filter(d => all[d] > 0).sort(), now = new Date(), from = new Date();
+  from.setDate(from.getDate() - 13);
+  const sum = f => ds.filter(f).reduce((a, d) => a + all[d], 0), fromS = dayStr(from), today = dayStr(now);
+  $('timeLine').textContent = ds.length
+    ? `学习时长 ${fmtTime(sum(() => true))} · 过去两周 ${fmtTime(sum(d => d >= fromS))} · 今天 ${fmtTime(sum(d => d === today))} · 最后学习 ${ds[ds.length - 1]}`
+    : '学习时长：还没有记录';
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) tick(); else lastTick = Date.now(); }); // 切走或锁屏不计时
 const status = w => w.streak >= MASTER ? 'mast' : w.seen ? 'learn' : 'new';
 // 易错 = 错过且还没掌握；答对几次也留在易错里，直到连续答对 MASTER 次
 const isWeak = w => w.wrong > 0 && w.streak < MASTER;
@@ -165,6 +199,7 @@ function pick() {
   return c[Math.floor(Math.random() * c.length)];
 }
 function show() {
+  tick();
   finalize();
   cur = pick(); answered = false;
   if (!cur) { $('ph').textContent = $('res').innerHTML = ''; $('typeBox').hidden = $('cardBox').hidden = $('nextRow').hidden = true; return; }
@@ -178,6 +213,7 @@ function show() {
 }
 // typed=是否输入了答案（"不会/不认识"为 false，已掌握的词直接移出）；mixed=答案其实是这些词的意思/拼写
 function reveal(right, extra = '', typed = false, mixed = []) {
+  tick();
   answered = true;
   sess.n++; if (right) sess.ok++;
   if (right) cur._done = true;
@@ -230,7 +266,7 @@ function finalize() {
   if (tips.length) toast(tips.join('　'));
   LOG.push(...ops); applyOps(W, ops); saveLog();
 }
-function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : ''); }
+function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : '') + ` · 本次用时 ${fmtTime(sess.sec)}`; }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 
 $('submit').onclick = submit;
@@ -268,6 +304,7 @@ seg('pool', 'p', p => { pool = p; show(); });
 // ===== 进度 =====
 let filter = 'seen', sortK = 'seen', sortDesc = true, limit = 200;
 function renderProg() {
+  renderTime();
   const c = {mast: 0, learn: 0, new: 0}; let r = 0, w = 0, seen = 0;
   W.forEach(x => { c[status(x)]++; r += x.right; w += x.wrong; seen += x.seen; });
   const weak = W.filter(isWeak).length, N = W.length;
@@ -300,11 +337,11 @@ $('tQuiz').onclick = () => tab(false); $('tProg').onclick = () => tab(true);
 // ===== 上传进度：通过 GitHub API 把合并后的 words.tsv 提交回仓库 =====
 const REPO = location.hostname.endsWith('.github.io') && location.pathname.split('/')[1]
   ? location.hostname.split('.')[0] + '/' + location.pathname.split('/')[1] : 'PMZeroSkyline/iel65';
-const API = `https://api.github.com/repos/${REPO}/contents/words.tsv`;
+const API = f => `https://api.github.com/repos/${REPO}/contents/${f}`;
 const token = () => load('iel_token') || '';
 const ghHeaders = extra => ({Authorization: 'Bearer ' + token(), 'X-GitHub-Api-Version': '2022-11-28', ...extra});
-async function fetchLatest() { // 取最新内容和它的 blob sha（用内容算 sha，保证两者一致）
-  const r = await fetch(API + '?ref=main', {headers: ghHeaders({Accept: 'application/vnd.github.raw'}), cache: 'no-store'});
+async function fetchLatest(file) { // 取最新内容和它的 blob sha（用内容算 sha，保证两者一致）
+  const r = await fetch(API(file) + '?ref=main', {headers: ghHeaders({Accept: 'application/vnd.github.raw'}), cache: 'no-store'});
   if (!r.ok) throw new Error(r.status === 401 ? '令牌无效或已过期' : r.status === 404 ? '找不到仓库，检查令牌权限' : '读取失败 ' + r.status);
   const buf = new Uint8Array(await r.arrayBuffer());
   const pre = new TextEncoder().encode(`blob ${buf.length}\0`), all = new Uint8Array(pre.length + buf.length);
@@ -320,35 +357,51 @@ function b64(str) {
 let uploading = false;
 async function upload() {
   if (!token()) { $('tokBox').open = true; return msg('请先在下面设置 GitHub 令牌'); }
-  finalize();
-  if (!LOG.length) return msg('没有需要上传的记录');
-  uploading = true; $('upload').disabled = true;
+  finalize(); tick();
+  const n = LOG.length, snap = {}; // 只上传满 1 秒的部分，零头留到下次
+  for (const d in TP) if (TP[d] >= 1) snap[d] = Math.floor(TP[d]);
+  const hasTime = Object.keys(snap).length > 0;
+  if (!n && !hasTime) return msg('没有需要上传的记录');
+  uploading = true; $('upload').disabled = true; msg('上传中…');
   try {
-    for (let i = 0; i < 3; i++) { // sha 冲突（电脑端刚推送过）就重新取最新的再合并
-      msg('上传中…');
-      const {text, sha} = await fetchLatest();
-      const n = LOG.length, d = parseTsv(text);
-      applyOps(d.rows, LOG.slice(0, n));
-      const out = toTsv(d.head, d.rows);
-      const r = await fetch(API, {method: 'PUT', headers: ghHeaders({'Content-Type': 'application/json'}),
-        body: JSON.stringify({message: `网页刷词：上传 ${n} 条记录`, content: b64(out), sha, branch: 'main'})});
-      if (r.ok) { LOG = LOG.slice(n); saveLog(); setBase(out); if (!$('prog').hidden) renderProg(); return msg(`已上传 ${n} 条记录 ✓`); }
-      if (r.status !== 409 && r.status !== 422) throw new Error(r.status === 403 ? '令牌没有写权限' : '上传失败 ' + r.status);
+    if (n) {
+      const out = await putFile('words.tsv', `网页刷词：上传 ${n} 条记录`, text => {
+        const d = parseTsv(text); applyOps(d.rows, LOG.slice(0, n)); return toTsv(d.head, d.rows); });
+      LOG = LOG.slice(n); store('iel_log', JSON.stringify(LOG)); setBase(out);
     }
-    throw new Error('多次冲突，稍后再试');
-  } catch (e) { msg('✗ ' + e.message + '（记录仍保存在本机）'); }
+    if (hasTime) {
+      const out = await putFile('time.tsv', `网页学习时长：上传 ${fmtTime(Object.values(snap).reduce((a, b) => a + b, 0))}`, text => {
+        const o = parseTime(text); for (const d in snap) o[d] = (o[d] || 0) + snap[d]; return toTime(o); });
+      for (const d in snap) { TP[d] -= snap[d]; if (TP[d] <= 0) delete TP[d]; }
+      store('iel_time', JSON.stringify(TP)); TB = parseTime(out);
+    }
+    if (!$('prog').hidden) renderProg();
+    msg(n ? `已上传 ${n} 条记录 ✓` : '学习时长已上传 ✓');
+  } catch (e) { msg('✗ ' + e.message + '（没传上去的仍保存在本机）'); }
   finally { uploading = false; $('upload').disabled = false; }
 }
+async function putFile(file, message, merge) {
+  for (let i = 0; i < 3; i++) { // sha 冲突（电脑端刚推送过）就重新取最新的再合并
+    const {text, sha} = await fetchLatest(file), out = merge(text);
+    const r = await fetch(API(file), {method: 'PUT', headers: ghHeaders({'Content-Type': 'application/json'}),
+      body: JSON.stringify({message, content: b64(out), sha, branch: 'main'})});
+    if (r.ok) return out;
+    if (r.status !== 409 && r.status !== 422) throw new Error(r.status === 403 ? '令牌没有写权限' : '上传失败 ' + r.status);
+  }
+  throw new Error('多次冲突，稍后再试');
+}
 function msg(t) { $('syncMsg').textContent = t; }
-function updSync() { if (!uploading) msg(LOG.length ? `本机有 ${LOG.length} 条记录待上传` : token() ? '记录已全部上传' : '设置令牌后可以把网页上刷的记录上传到仓库'); }
+function updSync() { if (!uploading) msg(LOG.length || pendSec() >= 1 ? `本机有 ${LOG.length} 条记录、${fmtTime(pendSec())}学习时长待上传` : token() ? '记录已全部上传' : '设置令牌后可以把网页上刷的记录上传到仓库'); }
 $('upload').onclick = upload;
 $('tokSave').onclick = () => { const t = $('tok').value.trim(); if (!t) return; store('iel_token', t); $('tok').value = ''; $('tokBox').open = false; msg('令牌已保存'); };
 $('tokClear').onclick = () => { store('iel_token'); msg('令牌已清除'); };
 
 // 有令牌时直接从 API 读最新的（GitHub Pages 有几分钟缓存）；没有就读 Pages 上的
-(token() ? fetchLatest().then(d => d.text) : Promise.reject()).catch(() => fetch('words.tsv', {cache: 'no-cache'}).then(r => r.text()))
+const loadFile = f => (token() ? fetchLatest(f).then(d => d.text) : Promise.reject()).catch(() => fetch(f, {cache: 'no-cache'}).then(r => { if (!r.ok) throw 0; return r.text(); }));
+loadFile('words.tsv')
   .then(t => { setBase(t); show(); updSync(); })
   .catch(() => { $('q').textContent = '加载 words.tsv 失败'; });
+loadFile('time.tsv').then(t => { TB = parseTime(t); if (!$('prog').hidden) renderTime(); }).catch(() => {});
 </script>
 </body>
 </html>

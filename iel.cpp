@@ -1,6 +1,9 @@
 // iel — 雅思 6.5 命令行背单词。用法见 README.md
 #include <algorithm>
+#include <chrono>
 #include <cstdio>
+#include <ctime>
+#include <map>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -118,11 +121,37 @@ int editDist(const string& a, const string& b) {
     return d[b.size()];
 }
 
+// ===== 学习时长：time.tsv 每天一行（日期、秒数）=====
+map<string, long> times;
+const long IDLE_MS = 60000;  // 两次操作之间最多算 60 秒，走开不累加（网页端相同）
+string dayStr(time_t t) { char b[16]; strftime(b, sizeof b, "%Y-%m-%d", localtime(&t)); return b; }
+void loadTimes() {
+    ifstream f(dbPath.parent_path() / "time.tsv"); string line;
+    getline(f, line);
+    while (getline(f, line)) { auto p = line.find('\t'); if (p != string::npos) times[line.substr(0, p)] += atol(line.c_str() + p + 1); }
+}
+void saveTimes() {
+    ofstream f(dbPath.parent_path() / "time.tsv", ios::binary);
+    f << "date\tseconds\n";
+    for (auto& [d, s] : times) f << d << '\t' << s << '\n';
+}
+string fmtTime(long s) {
+    char b[32];
+    if (s < 60) snprintf(b, sizeof b, "%ld 秒", s);
+    else if (s < 3600) snprintf(b, sizeof b, "%ld 分钟", (s + 30) / 60);
+    else snprintf(b, sizeof b, "%.1f 小时", s / 3600.0);
+    return b;
+}
+
 void stat(const vector<Word>& v) {
     int m = 0, l = 0, u = 0, r = 0, w = 0;
     for (auto& x : v) { x.streak >= MASTER ? m++ : x.seen ? l++ : u++; r += x.right; w += x.wrong; }
     printf("总词数 %zu | 已掌握 %d | 学习中 %d | 未学 %d\n累计答题 %d | 对 %d | 错 %d | 正确率 %.1f%%\n",
            v.size(), m, l, u, r + w, r, w, r + w ? 100.0 * r / (r + w) : 0.0);
+    long all = 0, two = 0; string last, now = dayStr(time(nullptr)), from = dayStr(time(nullptr) - 13 * 86400);
+    for (auto& [d, s] : times) { all += s; if (d >= from) two += s; if (s > 0) last = d; }
+    if (all) printf("学习时长 %s | 过去两周 %s | 今天 %s | 最后学习 %s\n", fmtTime(all).c_str(), fmtTime(two).c_str(),
+                    fmtTime(times.count(now) ? times[now] : 0).c_str(), last.c_str());
 }
 
 int main(int argc, char** argv) {
@@ -158,6 +187,7 @@ int main(int argc, char** argv) {
         }
     }
     auto v = load();
+    loadTimes();
     if (mode == "stat") { stat(v); return 0; }
     if (mode != "e2c" && mode != "c2e" && mode != "mix") {
         puts("用法: iel [e2c|c2e|mix|stat] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度\n  review 只刷已掌握的词，答错踢回未掌握");
@@ -175,12 +205,22 @@ int main(int argc, char** argv) {
 
     puts("回车=不会  q=退出  判错时输入 y 可改判为对\n");
     int done = 0, ok = 0;
+    auto last = chrono::steady_clock::now(); long long ms = 0; long sessSec = 0;
+    auto tick = [&] {  // 把距上次操作的时间记入今天，超过 IDLE_MS 的部分不算
+        auto now = chrono::steady_clock::now();
+        ms += min<long long>(IDLE_MS, chrono::duration_cast<chrono::milliseconds>(now - last).count());
+        last = now;
+        long s = (long)(ms / 1000); ms %= 1000;
+        if (s) { times[dayStr(time(nullptr))] += s; sessSec += s; saveTimes(); }
+    };
     for (int i : idx) {
         auto& x = v[i];
         bool e2c = mode == "e2c" || (mode == "mix" && rng() % 2);
         printf("[%d/%zu] %s\n> ", done + 1, idx.size(), e2c ? (x.w + "  /" + x.ph + "/").c_str() : x.m.c_str());
         fflush(stdout);
-        string in; if (!readLine(in)) break;
+        string in; bool got = readLine(in);
+        tick();
+        if (!got) break;
         in = trim(in);
         if (in == "q") break;
         bool right = false;
@@ -215,9 +255,10 @@ int main(int argc, char** argv) {
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");
         done++; ok += right;
         save(v);
+        tick();
         puts("");
     }
-    printf("本轮 %d 题，答对 %d\n", done, ok);
+    printf("本轮 %d 题，答对 %d，用时 %s\n", done, ok, fmtTime(sessSec).c_str());
     stat(v);
 #ifdef _WIN32
     if (voice) voice->WaitUntilDone(3000);  // 让最后一个词读完再退出

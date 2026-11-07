@@ -1,6 +1,7 @@
 # iel65 — 雅思 6.5 背单词
 
 - `words.tsv`：词库 + 学习记录（5274 词，来自 [kajweb/dict](https://github.com/kajweb/dict) 的 IELTS 词书，释义用 [ECDICT](https://github.com/skywind3000/ECDICT) 补全）
+- `time.tsv`：每天的学习时长（日期、秒数）。两次操作之间最多算 60 秒，走开不累加
 - `iel.cpp`：命令行刷词，会把对错写回 `words.tsv`
 - `index.html`：手机网页，读取仓库里的 `words.tsv`，可以刷词、看进度，设置令牌后能把进度上传回仓库
 
