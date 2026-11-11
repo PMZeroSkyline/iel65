@@ -224,7 +224,7 @@ anthology	æn'θɒlədʒɪ	n. 诗集；选集；诗选	0	0	0	0
 anthropologist	ˌænθrə'pɒlədʒɪst	n. 人类学家；人类学者	0	0	0	0
 anthropology	,ænθrə'pɒlədʒɪ	n. 人类学	0	0	0	0
 antibiotic	,æntɪbaɪ'ɒtɪk	n&a. 抗生素；抗菌的	0	0	0	0
-anticipate	æn'tɪsɪpeɪt	v. 占先；预先处理；预料 | vt. 预期；加速；提前使用；期望；抢先	14	3	11	0
+anticipate	æn'tɪsɪpeɪt	v. 占先；预先处理；预料 | vt. 预期；加速；提前使用；期望；抢先	15	4	11	1
 anticipation	æntɪsɪ'peɪʃ(ə)n	n. 预期；预料；希望；预感；先发制人；预支	0	0	0	0
 antidote	'æntidəut	n. 解毒药；矫正方法；解毒剂	0	0	0	0
 antiquated	'æntɪkweɪtɪd	adj. 陈旧的；过时的；废弃的；年老的 | v. 使古旧	0	0	0	0
@@ -250,7 +250,7 @@ appetite	'æpɪtaɪt	n. 食欲；欲望；爱好；嗜好	0	0	0	0
 applaud	ə'plɔːd	v. 鼓掌欢迎；赞成；拍手喝彩；称赞；赞同 | vt. 向…喝采 | vi. 喝彩	0	0	0	0
 appliance	ə'plaɪəns	n. 用具；设备；装置；器械；应用；器具	0	0	0	0
 applicant	'æplɪk(ə)nt	n. 请求者；申请者；申请人	0	0	0	0
-application	ˌæplɪ'keɪʃn	n. 请求；申请；应用；运用；施用；敷用；志愿书；应用程序	1	1	0	1
+application	ˌæplɪ'keɪʃn	n. 请求；申请；应用；运用；施用；敷用；志愿书；应用程序	2	2	0	2
 apply	ə'plaɪ	v. 要求；申请 | vt. 涂；应用；敷 | vi. 适用；请求	0	0	0	0
 appoint	ə'pɔɪnt	vt. 任命；委任；指定；下令；约定 | vi. 委派	0	0	0	0
 appointment	ə'pɒɪntm(ə)nt	n. 职位；约会；委任的职位；委派；任命；约定；任命的职位	0	0	0	0
@@ -298,7 +298,7 @@ arrangement	ə'reɪndʒmənt	n. 安排；排列；整齐；布置；整理；准
 array	ə'reɪ	n. 展示；一系列；排列；衣服；大批；军队；数组；阵列 | vt. 布署；打扮	0	0	0	0
 arrogance	'ærəgəns	n. 傲慢；自大；傲慢态度	0	0	0	0
 arrogant	'ærəg(ə)nt	adj. 傲慢的；自负的；自大的	0	0	0	0
-artefact	'ɑːtɪfækt	n. 人工制品；手工艺品；制造物；人为现象；膺象；矫作物；古代文物；加工品	2	1	1	1
+artefact	'ɑːtɪfækt	n. 人工制品；手工艺品；制造物；人为现象；膺象；矫作物；古代文物；加工品	3	2	1	2
 artery	'ɑːtərɪ	n. 动脉；干线；干道；要道；主流	0	0	0	0
 arthritis	ɑː'θraɪtɪs	n. 关节炎	0	0	0	0
 article	'ɑːtɪk(ə)l	n. 物品；文章；条款；[语]冠词；物件；契约	0	0	0	0
@@ -319,7 +319,7 @@ assassination	əˌsæsɪˈneɪʃn	n. 暗杀；行刺	0	0	0	0
 assault	ə'sɔːlt; ə'sɒlt	n&vt. 袭击 | n. 攻击 | vi. 发动攻击；动武	0	0	0	0
 assemble	ə'semb(ə)l	v. 聚集；装配 | vt. 集合；收集	0	0	0	0
 assert	ə'sɜːt	v. 宣称；维护 | vt. 主张；坚称；断言；坚持；声称	0	0	0	0
-assess	ə'ses	v. 估值；评价 | vt. 估定；对...征税；评定；估价	3	1	2	1
+assess	ə'ses	v. 估值；评价 | vt. 估定；对...征税；评定；估价	10	2	8	1
 assessment	ə'sesmənt	n. 判定；评定；核定的付款额；看法；评价；评估；估定；评定的款额；估价	0	0	0	0
 asset	'æset	n. 财产；资产；有益的东西；优点；有用的东西；有利条件	0	0	0	0
 assign	ə'saɪn	v. 分配；确定时间或地点；指派 | vt. 赋值	0	0	0	0
@@ -355,7 +355,7 @@ atmospheric	ˌætməs'ferɪk	adj. 大气的；空气的；大气层的；大气�
 atomic	ə'tɒmɪk	adj. 原子的；微粒子的	0	0	0	0
 attach	ə'tætʃ	v. 系上；附上；依恋；认为 | vt. 使依附；使附属；使喜爱；缚 | vi. 归属；联系在一起	0	0	0	0
 attack	ə'tæk	n&vt. 攻击；非难；疾病发作 | n. 抨击 | vt. 动手干 | vi. 腐蚀	0	0	0	0
-attain	ə'teɪn	v. 取得；得到 | vt. 达到；获得；实现；到达 | n. 成就	10	2	8	1
+attain	ə'teɪn	v. 取得；得到 | vt. 达到；获得；实现；到达 | n. 成就	11	3	8	2
 attainable	ə'teɪnəbl	adj. 可获得的；可达到的；可实现的；可到达的；可得到的	0	0	0	0
 attempt	ə'tem(p)t	vt&n. 尝试；企图 | n. 试图；攻击	0	0	0	0
 attend	ə'tend	v. 专心；照顾 | vt. 参加；照料；伴随；上（大学等）；招待；陪伴 | vi. 服侍；出席	0	0	0	0
@@ -425,7 +425,7 @@ bankrupt	'bæŋkrʌpt	adj. 破产的	0	0	0	0
 bankruptcy	'bæŋkrʌptsi	n. 破产；彻底失败	0	0	0	0
 banner	'bænə(r)	n. 横幅；旗帜；标语 | adj. 显著的；特别好的	0	0	0	0
 bar	bɑː(r)	n. 酒吧；栅栏；棒；条状物；条；障碍物 | vt. 闩；阻拦；禁止；阻挡	0	0	0	0
-barbaric	bɑː'bærɪk	adj. 野蛮的；粗鲁的；残暴的；残忍的；原始部落的；粗野的；原始的	7	1	6	0
+barbaric	bɑː'bærɪk	adj. 野蛮的；粗鲁的；残暴的；残忍的；原始部落的；粗野的；原始的	9	2	7	1
 barbecue	'bɑːbɪkjuː	n. 金属烤肉架；烧烤野餐；烤肉；吃烤肉的野宴 | vt. 烧烤	0	0	0	0
 bare	beə(r)	adj. 赤裸的；光秃的；缺少的；无遮蔽的；坦率的；空的 | vt. 露出	0	0	0	0
 barely	'beəli	adv. 仅仅；几乎不；赤裸裸地；无遮蔽地；勉强；公开地；贫乏地	0	0	0	0
@@ -466,7 +466,7 @@ beware	bɪ'weə(r)	v. 谨防；当心；小心 | vt. 注意；提防	9	6	3	6
 bewilder	bɪ'wɪldə(r)	vt. 使迷惑；使昏乱；使不知所措	0	0	0	0
 beyond	bɪ'jɒnd	prep. 在…较远的一边；超出；除…之外；超过；在那一边；迟于；越过 | adv. 在远处 | n. 更远处	0	0	0	0
 biased	'baɪəst	adj. 有偏见的；片面的；结果偏倚的	0	0	0	0
-bibliography	ˌbɪbli'ɒgrəfi	n. 参考书目；书目；文献学；文献目录	4	2	2	1
+bibliography	ˌbɪbli'ɒgrəfi	n. 参考书目；书目；文献学；文献目录	5	3	2	2
 bid	bɪd	n&v. 出价；投标 | v. 命令；吩咐；请求；表示；宣布 | n. 叫牌；努力争取	0	0	0	0
 bilateral	ˌbaɪ'lætərəl	adj. 双边的；双方的；有两边的	0	0	0	0
 bilingual	ˌbaɪ'lɪŋgwəl	adj. 两种语言的；双语的	0	0	0	0
@@ -593,7 +593,7 @@ capsize	kæp'saɪz	v. 翻；倾覆	0	0	0	0
 capsule	'kæpsjuːl; -sjʊl	n. 荚；装一剂药的小囊；密封舱；胶囊；蒴果；瓶帽；航天舱；太空舱；小容器 | adj. 压缩的	0	0	0	0
 caption	'kæpʃ(ə)n	n. 报纸文章的标题；照片说明；说明；字幕；标题；逮捕 | vt. 加上标题；加上说明	0	0	0	0
 captive	'kæptɪv	n&a. 俘虏；迷恋者；被俘虏的；被拴住的 | adj. 被迷住的	0	0	0	0
-captivity	kæp'tɪvəti	n. 囚禁；拘留；被关	7	3	4	2
+captivity	kæp'tɪvəti	n. 囚禁；拘留；被关	8	4	4	3
 capture	'kæptʃə	vt&n. 捕获；俘虏；夺得；战利品 | n. 抓取；捕获之物 | vt. 获得；迷住；俘获	0	0	0	0
 cardinal	'kɑːd(ɪ)n(ə)l	adj. 主要的；基本的 | n. 深红色；基数；红衣主教；鲜红色；枢机主教	0	0	0	0
 cardiovascular	ˌkɑːdiəu'væskjələ(r)	adj. 心血管的	0	0	0	0
@@ -802,7 +802,7 @@ comment	'kɒment	n&v. 评论；批评 | n. 注解；备注；意见 | vi. 发表
 commentary	'kɒmənt(ə)rɪ	n. 集注；评论；注释；说明；评注	0	0	0	0
 commerce	'kɒmɜːs	n. 贸易；商业；交往；交流；商务	0	0	0	0
 commercial	kə'mɜːʃ(ə)l	adj. 商业的；贸易的；商用的；商品化的；营利的；靠广告收入的 | n. 电视电台广告；商业广告节目	0	0	0	0
-commiserate	kə'mɪzəreɪt	vi. 同情；怜悯；吊慰	16	5	11	1
+commiserate	kə'mɪzəreɪt	vi. 同情；怜悯；吊慰	17	6	11	2
 commission	kə'mɪʃ(ə)n	n. 委任；佣金；军事任职；考察团；任官令；所委职责；犯；委托；所托之事 | v. 委任	0	0	0	0
 commit	kə'mɪt	v. 犯(罪)；干(坏事)；把交托给 | vt. 委托(托付)；指派...作战；使承担义务；做错事	0	0	0	0
 commitment	kə'mɪtm(ə)nt	n. 所承诺之事；委托；交押；承担义务；赞助；承诺；保证；献身	0	0	0	0
@@ -948,7 +948,7 @@ consolidate	kən'sɒlɪdeɪt	v. 巩固 | 加强；把. 合为一体 | vt. 使联
 consolidation	kənˌsɒlɪ'deɪʃn	n. 合并；巩固；团结；加强	0	0	0	0
 consortium	kən'sɔːtɪəm	n. 集团；财团；社团；协会；合伙；联合	0	0	0	0
 conspicuous	kən'spɪkjʊəs	adj. 明显的；引人注目的；显著的；显眼的；出众的；显而易见的	0	0	0	0
-conspiracy	kən'spɪrəsɪ	n. 阴谋；同谋；阴谋集团；共谋	8	0	8	0
+conspiracy	kən'spɪrəsɪ	n. 阴谋；同谋；阴谋集团；共谋	17	1	16	1
 constant	'kɒnst(ə)nt	adj. 不变的；经常的；坚定的；一定的；时常的；恒定的 | n. 常数；恒量	0	0	0	0
 constantly	'kɒnstəntli	adv. 经常；不断地；不变地；时常地	0	0	0	0
 constituent	kən'stɪtjʊənt	adj. 有选举权的；组成的；组织的；选举的 | v. 选民；成份 | n. 成分；构成物；委托人	0	0	0	0
@@ -986,7 +986,7 @@ contradict	kɒntrə'dɪkt	v. 反驳；否认；同矛盾 | vt. 与...抵触；�
 contradiction	kɒntrə'dɪkʃ(ə)n	n. 矛盾；对立；反驳；否认	0	0	0	0
 contrary	'kɒntrəri	adj. 相反的；矛盾的；对立的 | n. 相反；反面	0	0	0	0
 contrast	'kɒntrɑːst	v. 使对比；形成对照 | n. 明显的差别；差别；对照物	0	0	0	0
-contribute	kən'trɪbjuːt; 'kɒntrɪbjuːt	v. 贡献；促成；投稿 | vt. 有助于；捐助 | vi. 出力；捐献	2	2	0	2
+contribute	kən'trɪbjuːt; 'kɒntrɪbjuːt	v. 贡献；促成；投稿 | vt. 有助于；捐助 | vi. 出力；捐献	3	3	0	3
 contribution	kɒntrɪ'bjuːʃ(ə)n	n. 贡献；捐献；捐助；捐助之物；投稿	0	0	0	0
 contrive	kən'traɪv	v. 发明；设计；设法；造成；图谋 | vi. 谋划；设法做到	0	0	0	0
 contrived	kən'traɪvd	adj. 不自然的；人为的；人造的；勉强的；做作的	0	0	0	0
@@ -1014,7 +1014,7 @@ cooperation	kəuˌɒpə'reɪʃn	n. 合作；协作；配合；协力	0	0	0	0
 cooperative	kəu'ɒpərətɪv	adj. 合作的；协作的 | n. 合作社	0	0	0	0
 coordinate	kəʊ'ɔ:dɪneɪt	v. 使协调 | n. 同等的人(或物)；坐标 | adj. 同等的；并列的 | vt. 调整；整合	0	0	0	0
 coordinator	kəu'ɔːdɪneɪtə(r)	n. 协调者；同等的人或物；协调器	0	0	0	0
-cope	kəup	vi. 应付；处理；竞争；对付 | n. 长袍	20	5	15	0
+cope	kəup	vi. 应付；处理；竞争；对付 | n. 长袍	21	6	15	1
 coral	'kɒrəl	adj. 珊瑚色的；红色的 | n. 珊瑚；珊瑚虫	0	0	0	0
 cord	kɔːd	n. 线；带；绳索；束缚	0	0	0	0
 cordial	'kɔːdɪəl	adj. 热诚的；衷心的；热忱的；诚恳的；有兴奋作用的 | n. 兴奋剂；补品；甜香酒；甘露酒	0	0	0	0
@@ -1071,7 +1071,7 @@ crease	kriːs	n. 折缝；皱痕 | v. 起折痕 | vi. 起皱 | vt. 弄皱	0	0	0	
 create	kriː'eɪt	v. 创造；创作；产生；造成 | vt. 建造；引起；任命	0	0	0	0
 creation	kriː'eɪʃ(ə)n	n. 创作；创造；创造物；发明；产物	0	0	0	0
 creative	kri'eɪtɪv	adj. 创造性的；创作的；有创造力的；产生的	0	0	0	0
-credential	krə'denʃl	n. 证明书；资格证书；证件；国书；凭据；证书	11	4	7	2
+credential	krə'denʃl	n. 证明书；资格证书；证件；国书；凭据；证书	12	5	7	3
 credentials	krə'dɛnʃlz	n. 信任状；证书；国书；文件；身份证明；文凭	0	0	0	0
 credible	'kredɪb(ə)l	adj. 可信任的；可靠的	0	0	0	0
 credit	'kredɪt	n. 信任；信誉；存款；信用贷款；信用；荣誉；贷款；学分 | v. 相信 | vt. 归功于	0	0	0	0
@@ -1186,13 +1186,13 @@ decline	dɪ'klaɪn	n&v. 下降；衰退；减弱；拒绝 | n. 跌落；斜面 |
 decompose	diːkəm'pəʊz	v. 腐败；分解；腐烂	0	0	0	0
 decompression	ˌdiːkəm'preʃn	n. 减压；减压室；解压；降压	0	0	0	0
 decorate	'dekəreɪt	v. 装饰；油漆；授勋 | vt. 布置	0	0	0	0
-decouple	diː'kʌpl	v. 减弱；减少	7	1	6	0
+decouple	diː'kʌpl	v. 减弱；减少	22	2	20	1
 decrease	dɪ'kriːs	v&n. 减少；减少；减少量 | n. 减小	0	0	0	0
 decree	dɪ'kriː	v&n. 法令；判决 | n. 天意 | vt. 颁布；命令；注定 | vi. 发布命令	0	0	0	0
 decrepit	dɪ'krepɪt	adj. 老弱的；衰老的；破旧的	0	0	0	0
 dedicate	'dedɪkeɪt	v. 奉献；供奉；题献(著作) | vt. 献出；贡献；致力；献身	0	0	0	0
 dedicated	'dedɪkeɪtɪd	adj. 献身的；一心一意的；热诚的；专注的；专用的	0	0	0	0
-deduce	dɪ'djuːs	v. 演绎；推论 | vt. 推断	25	10	15	6
+deduce	dɪ'djuːs	v. 演绎；推论 | vt. 推断	26	11	15	1
 deduct	dɪ'dʌkt	v. 扣除；减去 | vt. 演绎	0	0	0	0
 deem	diːm	v. 认为；视为；相信 | vt. 视作 | vi. 持某种看法；作某种评价	0	0	0	0
 default	dɪ'fɔːlt; 'diːfɔːlt	vi&n. 拖欠；违约；不出庭 | n. 不履行责任；缺席；默认值；缺乏 | v. 疏怠职责 | vi. 不履行；不到场	0	0	0	0
@@ -1206,7 +1206,7 @@ deficiency	dɪ'fɪʃ(ə)nsɪ	n. 缺乏；不足；不足之数；缺陷；缺点
 deficit	'defɪsɪt; 'diː-	n. 空额；赤字；不足额	0	0	0	0
 defile	dɪ'faɪl	v. 弄脏；污损 | vt. 败坏；染污 | vi. 以纵队前进 | n. 隘路；狭道；狭谷	0	0	0	0
 define	dɪ'faɪn	vt. 下定义；限定；规定；使明确	0	0	0	0
-definite	'defɪnɪt	adj. 确切的；明确的；一定的	3	2	1	2
+definite	'defɪnɪt	adj. 确切的；明确的；一定的	5	3	2	1
 definition	ˌdefɪ'nɪʃn	n. 定义；释义；清晰；精确度；解说	0	0	0	0
 definitive	dɪ'fɪnɪtɪv	adj. 决定的；明确的；最后的 | n. 限定词	0	0	0	0
 deflate	dɪ'fleɪt	v. 使(轮胎)瘪下去降低重要性 | vt. 放气；抽出空气；使缩小；紧缩通货；打击；使泄气 | vi. 物价下降	0	0	0	0
@@ -1266,7 +1266,7 @@ derelict	'derəlɪkt	adj. 被抛弃的；无主的；玩忽职守的 | n. 遗弃
 derive	dɪ'raɪv	v. 得到；起源于 | vt. 得自	0	0	0	0
 descend	dɪ'send	v. 下降；下来；遗传；袭击 | vi. 世代相传；屈尊；下去	0	0	0	0
 descent	dɪ'sent	n. 下降；斜坡；血流；降落；家系；侵袭；血统；袭击	0	0	0	0
-describe	dɪ'skraɪb	vt. 描述；描写；形容；描绘；画	1	0	1	0
+describe	dɪ'skraɪb	vt. 描述；描写；形容；描绘；画	4	1	3	1
 description	dɪ'skrɪpʃ(ə)n	n. 描写；描绘；叙述；描述；说明；种类；类型	0	0	0	0
 desert	(for v.) dɪ'zɜːt; (for n.) 'dezət	n&a. 沙漠 | n. 无人居住的；离开；应得的赏罚；功劳 | v. 丢弃 | adj. 不毛的 | vt. 放弃；遗弃；擅离	0	0	0	0
 deserve	dɪ'zɜːv	v. 应得；应受 | vt. 该得到；值得 | vi. 应得报答	0	0	0	0
@@ -1305,7 +1305,7 @@ devalue	ˌdiː'væljuː	v. 使贬值；贬低 | vt. vi. 降低...的价值；降
 devastate	'devəsteɪt	v. 破坏；蹂躏 | vt. 毁坏；毁灭	0	0	0	0
 devastating	'devəsteitiŋ	adj. 破坏性的；毁灭性的；(非正式)很好的；引人注目的；全然的 | v. 毁坏	0	0	0	0
 develop	dɪ'veləp	v. 发展；生长；形成；开发 | vt. 使发达；进步；洗印；显影；使成长 | vi. 发育	0	0	0	0
-deviance	'diːviəns	n. 异常；偏常行为；异常行为	4	1	3	0
+deviance	'diːviəns	n. 异常；偏常行为；异常行为	14	2	12	1
 deviate	'diːvɪeɪt	v. 背离；偏离 | vi. 脱离；越轨 | adj. 脱离常规的 | n. 脱离常规的人	0	0	0	0
 device	dɪ'vaɪs	n. 装置；设备；仪表；方法；设计；手段；策略；发明物；图案	0	0	0	0
 devise	dɪ'vaɪz	v. 设计；想出 | vt. 发明；图谋；遗赠给	0	0	0	0
@@ -1396,14 +1396,14 @@ dispatch	dɪˈspætʃ	v&n. 派遣；发送；迅速办理；急件 | vt. 分派	
 dispel	dɪ'spel	v. 驱逐；消除 | vt. 驱散	0	0	0	0
 dispense	dɪ'spens	vt. 分发；分配；提供；免除；执行 | vi. 特许；豁免	0	0	0	0
 dispenser	dɪs'pensə(r)	n. 药剂师；配药师；分配者；施予者；自动售货机；配药员；分配器；施与者	0	0	0	0
-dispersal	dɪ'spɜːsl	n. 散布；分散；消散；疏散；传播；消失	29	9	20	1
+dispersal	dɪ'spɜːsl	n. 散布；分散；消散；疏散；传播；消失	30	10	20	2
 disperse	dɪ'spɜːs	v. (使)散开；使疏开；使分散 | vt. 传播	0	0	0	0
 dispiriting	dɪ'spɪrɪtɪŋ	adj. 令人沮丧的；使人气馁的 | v. 使沮丧	0	0	0	0
 displace	dɪs'pleɪs	v. 转移；取代 | vt. 移置；替换；置换；把…免职；排水	0	0	0	0
 display	dɪ'spleɪ	vt&n. 展览；陈列 | n. 显示；炫耀 | vt. 表现；夸示	0	0	0	0
 disposable	dɪ'spəuzəbl	adj. 一次性的；可动用的；可任意处理的	0	0	0	0
 disposal	dɪ'spəuzl	n. 处理；处置；布置；安排；丢掉；排列；销毁；支配；清理	0	0	0	0
-dispose	dɪ'spəʊz	v. 处理；处置；除去 | vt. 排列；布置；安排 | vi. （能够）决定 | n. 性情	8	2	6	0
+dispose	dɪ'spəʊz	v. 处理；处置；除去 | vt. 排列；布置；安排 | vi. （能够）决定 | n. 性情	11	3	8	1
 disposition	dɪspə'zɪʃ(ə)n	n. 性情；气质；布置；配置；处置；处理；部署；倾向	0	0	0	0
 dispute	dɪ'spjuːt; 'dɪspjuːt	v&n. 争论；争执；质疑 | vt. 辩论；怀疑；阻止；抗拒 | n. 争吵	0	0	0	0
 disqualify	dɪs'kwɒlɪfaɪ	vt. 使丧失资格；使不适合；取消...资格	0	0	0	0
@@ -1438,7 +1438,7 @@ disturb	dɪ'stɜːb	v. 打扰；扰乱 | vt. 妨碍；使不安；弄乱；使�
 disturbance	dɪ'stɜːb(ə)ns	n. 打扰；骚动；扰乱；不安；忧虑；干扰；骚乱	0	0	0	0
 ditch	dɪtʃ	n. 排水沟；沟渠；壕沟 | v. 附入沟中；抛弃 | vt. 在...开沟；在…上掘沟；把…开入沟里；丢弃 | vi. 掘沟	0	0	0	0
 diverge	daɪ'vɜːdʒ	vi. 分开；岔开；分歧；相异；偏离；违背；分叉；离题	0	0	0	0
-diverse	daɪ'vɜːs; 'daɪvɜːs	adj. 多种多样的；不同的；变化多的	3	1	2	0
+diverse	daɪ'vɜːs; 'daɪvɜːs	adj. 多种多样的；不同的；变化多的	5	2	3	1
 diversify	daɪ'vɜːsɪfaɪ	v. 多样化 | vt. 使变化；增加产品种类以扩大	0	0	0	0
 diversion	daɪ'vɜːʃ(ə)n; dɪ-	n. 转向；水遣；改道；转移；消遣；分散注意力	0	0	0	0
 diversity	daɪ'vɜːsəti	n. 多样性；差异	0	0	0	0
@@ -1505,7 +1505,7 @@ dual	'djuːəl	adj. 二重的；双的	0	0	0	0
 dub	dʌb	v. (以某种称号)授予；给起绰号；复制 | vt. 配音；轻点；授予称号；击 | n. 一下击鼓声；笨蛋；鼓声	0	0	0	0
 dubious	'djuːbɪəs	adj. 半信半疑的；可疑的；不确定的；暧昧的；无把握的	0	0	0	0
 due	djuː	adj. 应支付的；正当的；预定应到的(to)；由于；到期的；应得的；约定的；预期的 | n. 应得的东西；应付款	0	0	0	0
-dull	dʌl	adj. 阴暗的；迟钝的；沉闷的；钝的；无趣的；呆滞的 | v. 变钝 | vt. 缓和 | vi. 减少	4	1	3	0
+dull	dʌl	adj. 阴暗的；迟钝的；沉闷的；钝的；无趣的；呆滞的 | v. 变钝 | vt. 缓和 | vi. 减少	7	2	5	1
 duly	'djuːlɪ	adv. 按时地；适当地；恰当地；充分地；及时地	0	0	0	0
 dumb	dʌm	adj. 哑的；暂不说话的；愚笨的；无声音的；无说话能力的	0	0	0	0
 dump	dʌmp	v. 倒垃圾；倾销 | n. 堆垃圾的地方；垃圾场 | vt. 倾倒；倾卸 | vi. 倾销商品	0	0	0	0
@@ -1599,7 +1599,7 @@ eminent	'emɪnənt	adj. 著名的；卓越的；显赫的；杰出的；有名�
 emission	i'mɪʃn	n. 散发；散发物；发射；射出；发行；喷射	0	0	0	0
 emit	ɪ'mɪt	v. 散发；发射 | vt. 发出；放射；发表(意见等)；发行	0	0	0	0
 emotion	ɪ'məʊʃ(ə)n	n. 感情；情绪；激动；强烈的情感；情感	0	0	0	0
-emotional	ɪ'məuʃənl	adj. 感情的；情绪的；引起情感的；表示情感的；情绪激动的；易动感情的；情感的；易激动的；感动人的	3	2	1	2
+emotional	ɪ'məuʃənl	adj. 感情的；情绪的；引起情感的；表示情感的；情绪激动的；易动感情的；情感的；易激动的；感动人的	5	3	2	1
 emperor	'empərə(r)	n. 皇帝；君主	0	0	0	0
 emphasis	'emfəsɪs	n. 强调；重要性；加强；重点；强语气	0	0	0	0
 emphasize	'emfəsaɪz	v. 强调；加强的语气 | vt. 加强语气；着重	0	0	0	0
@@ -1626,14 +1626,14 @@ endeavor	ɪn'devə	n&vi. 努力；力图 | n. 尽力	0	0	0	0
 endeavour	ɪn'devə(r)	n&vi. 努力；尽力；尝试 | n. 力图 | vi. 竭力；企图	0	0	0	0
 endorse	ɪn'dɔːs; en-	v. 背书；签署(姓名)；赞同 | vt. 支持；认可；在背面签名	0	0	0	0
 endow	ɪn'daʊ; en-	v. 捐款；资助 | vt. 捐赠；捐助；赋予；天生具有	0	0	0	0
-endurance	ɪn'djʊər(ə)ns; en-	n. 忍耐力；忍耐；耐性；持久；耐久	25	4	21	0
+endurance	ɪn'djʊər(ə)ns; en-	n. 忍耐力；忍耐；耐性；持久；耐久	26	5	21	1
 endure	ɪn'djuə(r)	v. 忍受；持久；持续 | vt. 忍耐；容忍	0	0	0	0
 energetic	,enə'dʒetɪk	adj. 精力充沛的；精力旺盛的；积极的；有力的	0	0	0	0
 enforce	ɪn'fɔːs; en-	v. 强迫服从；实施；加强 | vt. 强迫；执行；坚持；强制	0	0	0	0
 enfranchise	ɪn'fræntʃaɪz	vt. 给予…政治权利；解放；给予自治权；给予选举权；释放	0	0	0	0
 engage	ɪn'geɪdʒ; en-	v. 雇用；从事；订婚；吸引；啮合 | vi. 答应；交战 | vt. 使忙碌；雇佣；预定	0	0	0	0
 engagement	ɪn'geɪdʒm(ə)nt; en-	n. 订婚；约会；交战；诺言；婚约	0	0	0	0
-engrave	ɪn'greɪv; en-	v. 刻上；铭记 | vt. 雕刻	5	1	4	1
+engrave	ɪn'greɪv; en-	v. 刻上；铭记 | vt. 雕刻	8	2	6	1
 engross	ɪn'grəʊs; en-	v. 占用；吸引 | vt. 用大字体书写；独占(市场)；使全神贯注；正式写成（决议等）	0	0	0	0
 enhance	ɪn'hɑːns; -hæns; en-	v. 提高(强度、力量、数量等)；增加(进) | vt. 加强	0	0	0	0
 enhancer	ɪn'hɑːnsə(r)	n. 增强剂；放大器；增强子；强化剂；增加者	0	0	0	0
@@ -1728,7 +1728,7 @@ eventually	ɪ'ventʃʊəlɪ	adv. 终于；最后	0	0	0	0
 everlasting	evə'lɑːstɪŋ	adj. 永久的；永恒的；持久的；接连不断的 | n. 上帝；神	0	0	0	0
 evict	ɪ'vɪkt	v. 驱逐 | vt. 逐出；赶出	0	0	0	0
 evidence	'evɪdəns	n. 根据；证据；形迹；迹象；证明；明显	0	0	0	0
-evoke	ɪ'vəʊk	v. 唤起；引起 | vt. 召(魂)；博得	15	3	12	1
+evoke	ɪ'vəʊk	v. 唤起；引起 | vt. 召(魂)；博得	16	4	12	2
 evolution	,iːvə'luːʃ(ə)n; 'ev-	n. 演变；进展；进化；发展；(气体)放出；开方	0	0	0	0
 evolve	i'vɒlv	v. 逐渐形成；演变；进化 | vi. 进展；展开 | vt. 使发展；使推断出；使逐步形成	0	0	0	0
 exacerbate	ɪg'zæsəbeɪt; ek'sæs-	v. 加重；恶化 | vt. 使增剧；激怒；使加剧	31	10	21	3
@@ -1767,7 +1767,7 @@ exhale	eks'heɪl	v. 呼出；散发；呼气；发出 | vt. 发散；使蒸发	0
 exhaust	ɪg'zɔːst; eg-	n. 排气；排气装置；废气 | v. 抽空；汲光 | vt. 抽完；用尽；耗尽；使精疲力尽；排出	0	0	0	0
 exhaustible	ɪg'zɔːstəbl	adj. 可耗尽的；会枯竭的；可用完的	0	0	0	0
 exhaustion	ɪg'zɔːstʃən	n. 精疲力竭；耗尽；抽空；疲惫；筋疲力尽；枯竭	0	0	0	0
-exhaustive	ɪg'zɔːstɪv	adj. 包揽无遗的；彻底的；详尽的；消耗的；枯竭的	4	1	3	0
+exhaustive	ɪg'zɔːstɪv	adj. 包揽无遗的；彻底的；详尽的；消耗的；枯竭的	6	2	4	1
 exhibit	ɪg'zɪbɪt	v. 陈列；展览；显示 | n. 展览品；显现；证据；展示会 | vt. 展现；提出（证据等） | vi. 开展览会	0	0	0	0
 exhibition	ˌeksɪ'bɪʃn	n. 展览；陈列；表现；显示	0	0	0	0
 exhilarate	ɪg'zɪləreɪt; eg-	v. 使振奋；使高兴 | vt. 使愉快；鼓励	0	0	0	0
@@ -1883,7 +1883,7 @@ fatuous	'fætjʊəs	adj. 愚昧的；蠢的；发呆的；愚笨的；昏庸的�
 fault	fɔːlt; fɒlt	n. 缺点；毛病；过错；(地质)断层；故障；错误；（网球等）发球失误 | vt. 挑剔 | vi. 产生断层；弄错	0	0	0	0
 faulty	'fɔːlti	adj. 有错误的；有缺点的；不完美的；有过失的；应受责备的	0	0	0	0
 fauna	'fɔːnə	n. 所有动物；动物群；动物区系	0	0	0	0
-favour	'feɪvə	n&vt. 好感；赞成；偏爱 | n. 喜爱；相信；庇护；赞同；支持；信赖；善行	3	2	1	2
+favour	'feɪvə	n&vt. 好感；赞成；偏爱 | n. 喜爱；相信；庇护；赞同；支持；信赖；善行	6	3	3	1
 favourite	'feɪvərɪt	adj. 特别喜欢的；宠爱的；喜爱的 | n. 特别喜欢的人或物；亲信；喜欢的事物	0	0	0	0
 feasible	'fiːzɪb(ə)l	adj. 可行的；可信的；能实行的；适宜的；可能的；可实行的	0	0	0	0
 feast	fiːst	n&v. 筵席；宴请；使享受 | n. 宴会；酒席；节日 | vt. 款待；享乐；请客 | vi. 参加宴会	0	0	0	0
@@ -2005,7 +2005,7 @@ formulation	ˌfɔːmjʊ'leɪʃn	n. 公式化；格式化；确切的表达；系
 fort	fɔːt	n. 要塞；堡垒；易货站；（美）边界贸易站 | vt. 设要塞保卫	0	0	0	0
 forte	'fɔːteɪ; 'fɔːtɪ; fɔːt	n. 长处；特长；拿手；优点 | adv. 响亮地	0	0	0	0
 forth	fɔːθ	adv. 离去；外出；向前；向某处；往前；以后；向外	0	0	0	0
-forthcoming	fɔːθ'kʌmɪŋ	adj. 即将出现的；现有的；即将来临的 | n. 来临	2	1	1	1
+forthcoming	fɔːθ'kʌmɪŋ	adj. 即将出现的；现有的；即将来临的 | n. 来临	4	2	2	1
 fortify	'fɔːtɪfaɪ	v. 设防于；增强 | vt. 设要塞于；加强；使坚强；增加；（酒）的酒精含量 | vi. 筑防御工事	0	0	0	0
 fortnight	'fɔːtnaɪt	n. 两星期	0	0	0	0
 forum	'fɔːrəm	n. 论坛；公开讨论的广场；法庭；讨论会	0	0	0	0
@@ -2118,7 +2118,7 @@ give	gɪv	v. 给；付给；允许；供给；传达 | n. 弹性；适应性 | v
 given	'gɪv(ə)n	adj. 假设的；约定的；同意的；赠予的；沉溺的 | prep. 考虑到	0	0	0	0
 glacial	'gleɪʃl	adj. 冰期的；冰川的；寒冷的；冰冷的；冷若冰霜的；冰川时代的；冰河时代的	0	0	0	0
 glacier	'glæsɪə; 'gleɪsɪə	n. 冰河；冰川	0	0	0	0
-glamor	'glæmə(r)	n. 魅力；诱惑力；迷人的美；魔法 | vt. 迷惑	4	1	3	1
+glamor	'glæmə(r)	n. 魅力；诱惑力；迷人的美；魔法 | vt. 迷惑	8	2	6	1
 glamour	'ɡlæmə	n. 魔力；魅力；迷人的美；魔法 | v. 迷住 | vt. 迷惑	0	0	0	0
 gland	glænd	n. 腺；密封套	0	0	0	0
 glare	gleə	n&v. 眩目地照射；闪耀；瞪视 | n. 刺眼；耀眼的光；受公众注目 | vi. 发眩光 | vt. 瞪眼表示	0	0	0	0
@@ -2155,7 +2155,7 @@ gracious	'greɪʃəs	adj. 亲切的；和善的；任慈的；慈善的；高尚
 gradual	'grædʒʊəl	adj. 逐渐的；不陡的；渐增的；平缓的 | n. 弥撒升阶圣歌	0	0	0	0
 graduate	'grædʒʊət	v. 毕业；获得学位 | n. 毕业生；研究生['grædʒʊeɪt]；量杯 | adj. 已得学位的 | vi. 逐渐变为 | vt. 准予...毕业；授予...学位；分等级	7	5	2	4
 granary	'græn(ə)rɪ	n. 谷仓；粮仓；谷物仓；主要来源；主要贮藏所；盛产粮食的地区	0	0	0	0
-grand	grænd	adj. 最重大的；豪华的；傲慢的；美妙的；庄重的；壮观的；显赫的；最高的；雄伟的；宏大的	7	1	6	0
+grand	grænd	adj. 最重大的；豪华的；傲慢的；美妙的；庄重的；壮观的；显赫的；最高的；雄伟的；宏大的	13	2	11	1
 granite	'grænɪt	n. 花岗岩；花岗石；坚毅；冷酷无情	0	0	0	0
 grant	grɑːnt	v. 同意给予；授予；承认 | n. 拨款；补助款；允许 | vt. 授与 | vi. 同意	0	0	0	0
 granular	'grænjʊlə	adj. 颗粒状的；细粒的	0	0	0	0
@@ -2243,7 +2243,7 @@ harsh	hɑːʃ	adj. 粗糙的；严厉的；刺耳的；严酷的；刺目的	0	0
 hassle	'hæsl	n. 困难；麻烦；分歧；争论；激烈而持久的争论；激战 | vt. 与...争辩；使烦恼；搅扰	0	0	0	0
 haste	heɪst	n. 急速；仓促；匆忙；急忙；轻率 | vi. 赶紧 | vt. 赶快	0	0	0	0
 hasty	'heɪstɪ	adj. 急速的；匆促的；匆匆的；轻率的；性怠的；匆忙的；草率的	0	0	0	0
-hatch	hætʃ	v. 孵出；策划 | n. 孵化；舱口	20	6	14	2
+hatch	hætʃ	v. 孵出；策划 | n. 孵化；舱口	21	7	14	3
 haul	hɔːl	v&n. 用力拉；拖；捕获量；拖运的距离 | n. 用力拖拉；强拉；拖运距离；努力得到的结果 | vi. 改变方向；改变主意	0	0	0	0
 haunt	hɔːnt	v. 常去；(鬼，魂)常出没于 | n. 常去的地方；常到的地方；生息地；栖息地 | vt. 常到；萦绕于 | vi. 出没；作祟	0	0	0	0
 haven	'heɪv(ə)n	n. 安全处所；避难所；港；安息所 | vt. 安置...于港中；庇护	0	0	0	0
@@ -2336,7 +2336,7 @@ hound	haʊnd	n. 猎狗；卑鄙的人；猎犬 | v. 用猎狗追；追逐 | vt. 
 household	'haushəuld	adj. 家庭的；家用的；普通的；家喻户晓的 | n. 家庭；户；全家人；一家人；家族；王室	0	0	0	0
 hover	'hɒvə	v. (鸟)盘旋；翱翔；(人)逗留在附近徘徊 | vi. 徘徊 | vt. 孵；徘徊在…近旁 | n. 犹豫	0	0	0	0
 however	hau'evə(r)	conj. 不管用什么方法；可是 | adv. 然而；无论如何；究竟怎样；不管怎样	0	0	0	0
-howl	haʊl	n&v. 嚎叫；怒吼 | n. 嗥叫；吠声；号叫 | vi. 狂吠；咆哮；呼啸 | vt. 对...吼叫；狂喊着说	5	3	2	2
+howl	haʊl	n&v. 嚎叫；怒吼 | n. 嗥叫；吠声；号叫 | vi. 狂吠；咆哮；呼啸 | vt. 对...吼叫；狂喊着说	6	4	2	3
 hubbub	'hʌbʌb	n. 吵闹；喧哗；叫嚷声；混乱；骚动	0	0	0	0
 huddle	'hʌd(ə)l	v. 挤作一团；乱堆 | n. 一堆；一团；杂乱一团；混乱；拥挤 | vt. 把...挤在一起；草率了事；蜷曲	0	0	0	0
 hug	hʌg	vt&n. 紧抱；拥抱 | vt. 坚持；使沾沾自喜；抱有 | vi. 紧抱在一起；挤在一起 | n. 固执	0	0	0	0
@@ -2459,7 +2459,7 @@ indemnity	ɪn'demnɪtɪ	n. 保障；保护；赔偿；补偿；赦免	0	0	0	0
 independence	ˌɪndɪ'pendəns	n. 独立；自主；自立	0	0	0	0
 independent	ˌɪndɪ'pendənt	adj. 独立的；自主的；不受约束的；有主见的；不须依赖的；单独的 | n. 中立派；无党派议员；独立自主者；无党派者	0	0	0	0
 indicate	'ɪndɪkeɪt	v. 标示；表示；表明；象征；暗示；示意 | vt. 显示；指示；指出；预示	0	0	0	0
-indication	ˌɪndɪ'keɪʃn	n. 指示；象征；暗示；指出；迹象	8	2	6	0
+indication	ˌɪndɪ'keɪʃn	n. 指示；象征；暗示；指出；迹象	9	3	6	1
 indicative	ɪn'dɪkətɪv	adj. 指示的；表示的；象征的	0	0	0	0
 indicator	'ɪndɪkeɪtə	n. 指示者；指示物；指示器；指示剂；指标；指示符；压力计	0	0	0	0
 indifferent	ɪn'dɪf(ə)r(ə)nt	adj. 不感兴趣的；不关心的；质量不高的；无重要性的；中立的；无关紧要的；中性的	0	0	0	0
@@ -2485,7 +2485,7 @@ infect	ɪn'fekt	v. 传染；受影响；受感染	0	0	0	0
 infection	ɪn'fekʃn	n. 传染；感染；侵染；传播；传染病；影响	0	0	0	0
 infectious	ɪn'fekʃəs	adj. 传染的；感染性的；有传染性的	0	0	0	0
 infer	ɪn'fɜː(r)	v. 推断；猜想 | vt. 推论出 | vi. 作推论；作出推论	0	0	0	0
-inference	'ɪnf(ə)r(ə)ns	"n. 推论；推断" | n. 推论；推理	6	1	5	0
+inference	'ɪnf(ə)r(ə)ns	"n. 推论；推断" | n. 推论；推理	12	2	10	1
 inferential	ˌɪnfə'renʃl	adj. 可推断的；推理的；可以推论的；推论的；根据推理的	0	0	0	0
 inferior	ɪn'fɪərɪə	n. 地位(能力)低的人；部下；次品；下标(符号) | adj. 劣质的；差的；下等的"；次等的；下方的；下级的	0	0	0	0
 infest	ɪn'fest	v. 大批出动；成群出现(鼠类及害虫) | vt. 骚扰；寄生于；大批出没；大批滋生	0	0	0	0
@@ -2617,9 +2617,9 @@ introspection	ˌɪntrə'spekʃn	n. 内省；反省；反思；自省	0	0	0	0
 introvert	'ɪntrəvɜːt	n. 性格内向的人；个性内向者 | vt. 使内向；使内弯；内陷 | vi. 内省 | adj. 性格内向的	0	0	0	0
 intrusion	ɪn'truːʒn	n. 闯入；打搅；侵扰；侵入	0	0	0	0
 intuition	ɪntjʊ'ɪʃ(ə)n	n. 直觉；直觉知识；直觉的知识	0	0	0	0
-inundate	'ɪnʌndeɪt	v. 淹没；泛滥；压倒 | vt. 浸水；使充满；（洪水般的）扑来	2	1	1	1
-invade	ɪn'veɪd	v. 侵略；侵犯；蜂拥而至 | vt. 侵入；拥入；侵袭；侵扰；涌入	2	1	1	1
-invader	ɪn'veɪdə(r)	n. 入侵者；侵略者；侵入物	13	6	7	2
+inundate	'ɪnʌndeɪt	v. 淹没；泛滥；压倒 | vt. 浸水；使充满；（洪水般的）扑来	5	2	3	1
+invade	ɪn'veɪd	v. 侵略；侵犯；蜂拥而至 | vt. 侵入；拥入；侵袭；侵扰；涌入	3	2	1	2
+invader	ɪn'veɪdə(r)	n. 入侵者；侵略者；侵入物	14	7	7	3
 invalid	ˈɪnvəlɪd；ɪnˈvælɪd	adj. 无效的；作废的；病弱的；有病的 | n. 病人；病弱者；残废者	0	0	0	0
 invaluable	ɪn'væljʊ(ə)b(ə)l	adj. 无价的；无法估价的"；价值无法衡量的；非常贵重的	0	0	0	0
 invariably	ɪn'veərɪəblɪ	adv. 不变地；永恒地；恒定地；始终如一地；总是；一定地	0	0	0	0
@@ -2750,9 +2750,9 @@ leadership	'liːdəʃɪp	n. 领导；领导层；领导能力；领导阶层	0	0
 leaflet	ˈliːflət	n. 散页的印刷品；传单；小叶	0	0	0	0
 leak	liːk	n. 漏洞；泄漏；漏处；漏出；裂缝 | vt. 使渗漏；泄露 | vi. 渗；泄漏出去	0	0	0	0
 leap	liːp	v. 扑向；欣然接受 | n. 跳；跃；剧增；急变；被越过之物 | vi. 突然经过 | vt. 使跃过	0	0	0	0
-lease	liːs	v. 出租 | n. 租约；租期；租赁物；租赁权 | vt. 租出；租得	3	1	2	0
+lease	liːs	v. 出租 | n. 租约；租期；租赁物；租赁权 | vt. 租出；租得	14	2	12	1
 leather	'leðə(r)	n. 皮革；皮革制品；皮制品；马镫的皮带 | vt. 覆以皮革；鞭苔；抽打；用皮革包盖	0	0	0	0
-leave	liːv	v. 离开；遗忘；保持一定状态；留下 | n. 许可；告别；请假；休假 | vt. 剩下；委托	1	1	0	1
+leave	liːv	v. 离开；遗忘；保持一定状态；留下 | n. 许可；告别；请假；休假 | vt. 剩下；委托	2	2	0	2
 lecture	'lektʃə(r)	n. 演讲；讲课；谴责；讲稿；教训 | vt. 训诫；说教 | vi. 讲演	0	0	0	0
 legacy	'legəsi	n. 遗产；遗赠；祖先传下来之物	0	0	0	0
 legal	'liːg(ə)l	adj. 法律的；法定的；合法的	0	0	0	0
@@ -2760,7 +2760,7 @@ legend	'ledʒ(ə)nd	n. 传说；传奇；传奇文学；地图图例；图例；
 legislate	'ledʒɪsleɪt	v. 立法 | vi. 制定法律 | vt. 用立法规定	0	0	0	0
 legislation	ledʒɪs'leɪʃ(ə)n	n. 立法；法律	0	0	0	0
 legislative	'ledʒɪslətɪv	adj. 立法的；有立法权的；根据法规执行的；立法机关的 | n. 立法机关；立法机构	0	0	0	0
-legitimacy	lɪ'dʒɪtɪməsi	n. 合法性；正统性；正当；合理	0	0	0	0
+legitimacy	lɪ'dʒɪtɪməsi	n. 合法性；正统性；正当；合理	2	0	2	0
 legitimate	lɪ'dʒɪtɪmət	adj. 合法的；合理的；正当的；婚生的；正统的 | vt. 认为正当；立为嫡嗣	0	0	0	0
 legitimize	lɪ'dʒɪtəmaɪz	vt. 使合法；赋予合法权利；立为嫡嗣	0	0	0	0
 leisure	'leʒə(r)	n. 空闲时间；悠闲；空闲；闲暇；安逸 | adj. 有闲的；业余的	0	0	0	0
@@ -2924,7 +2924,7 @@ marrow	'mærəʊ	n. 髓；骨髓；精华；活力；配偶	0	0	0	0
 marsh	mɑːʃ	n. 沼泽；湿地 | adj. 生长在沼泽地的	0	0	0	0
 marsupial	mɑː'suːpiəl	n&a. 有袋动物 | n. 有袋类动物 | adj. 有袋的；袋状的	0	0	0	0
 martial	'mɑːʃ(ə)l	adj. 战争的；军事的；尚武的；威武的	0	0	0	0
-martyr	'mɑːtə	n. 烈士；殉难者；受苦者；受难者 | v. 杀害；折磨；牺牲 | vt. 使成为烈士；使受苦	4	2	2	1
+martyr	'mɑːtə	n. 烈士；殉难者；受苦者；受难者 | v. 杀害；折磨；牺牲 | vt. 使成为烈士；使受苦	5	3	2	2
 marvel	'mɑːv(ə)l	n. 令人惊奇的事；创造奇迹；奇异事物；罕见例子；奇迹 | vt. 惊异于	0	0	0	0
 marvellous	'mɑːvələs	n. 令人惊奇的；奇特的；非凡的；奇迹般的；不可思议的；绝妙的 | adj. 奇异的；神奇的；惊人的；妙极的	0	0	0	0
 marvelous	ˈmɑːvələs	adj. 令人惊奇的；创造奇迹的；令人惊异的；了不起的；不平常的；非凡的	0	0	0	0
@@ -2932,7 +2932,7 @@ masculine	'mæskjʊlɪn	adj. 男性的；阳性的；有丈夫气的；男子气
 mask	mɑːsk	n. 面具；口罩；掩饰；石膏面模 | v. 遮蔽；伪装 | vt. 使模糊 | vi. 化装；参加化装舞会	0	0	0	0
 mass	mæs	adj. 大量的；大规模的 | v. 聚集 | n. 团；众多；【物】质量；块；大多数；群众；弥撒	0	0	0	0
 massacre	'mæsəkə	n&vt. 大屠杀；残杀 | vt. 彻底击败 | n. 惨败	0	0	0	0
-massive	'mæsɪv	adj. 巨大的；大而重的；宽大的；宏伟的；大量的；厚重的；魁伟的	8	6	2	2
+massive	'mæsɪv	adj. 巨大的；大而重的；宽大的；宏伟的；大量的；厚重的；魁伟的	9	7	2	3
 MasterCard	'maːstə(r)kaːd	n. 万事达信用卡	0	0	0	0
 masterpiece	'mɑːstəpiːs	n. 杰作；名著；绝无仅有的人	0	0	0	0
 mastery	'mɑːstəri	n. 精通；熟练；控制；征服；统治权；优势；掌握	0	0	0	0
@@ -2996,7 +2996,7 @@ merge	mɜːdʒ	vt&vi. (企业)兼并；合并 | vt. 使消失；吞没 | vi. 渐
 merit	'merɪt	n. 价值；优点；功绩；功过；真相 | v. 值得；应收 | vi. 应受	0	0	0	0
 mesh	meʃ	n. 网；筛孔；网状物；圈套；陷阱；啮合 | vt. 以网捕捉；使缠住	0	0	0	0
 mess	mes	n. 混乱；污垢；杂乱；食堂；伙食；用膳；一份食品；乱七八糟 | vt&v. 瞎忙；草率处理	8	6	2	3
-metabolism	mɪ'tæbəlɪz(ə)m	n. 新陈代谢；变态	3	1	2	0
+metabolism	mɪ'tæbəlɪz(ə)m	n. 新陈代谢；变态	5	2	3	1
 metallic	mɪ'tælɪk	adj. 金属的；产生金属的	0	0	0	0
 metaphor	'metəfə; -fɔː	n. 隐喻；暗喻；比喻说法	0	0	0	0
 metaphorical	ˌmetə'fɒrɪkl	adj. 隐喻的；比喻性的	0	0	0	0
@@ -3132,7 +3132,7 @@ multitude	'mʌltɪtjuːd	n. 大批；大群；众多；多数；群众	0	0	0	0
 mundane	'mʌndeɪn; mʌn'deɪn	adj. 世间的；世俗的；现世的；宇宙的；平凡的；世界的	0	0	0	0
 municipal	mjʊ'nɪsɪp(ə)l	adj. 市的；市政的；自治区的；内政的；地方自治的	0	0	0	0
 murder	'mɜːdə(r)	n&v. 谋杀；凶杀 | vt. 损毁；破坏 | vi. 犯杀人罪	0	0	0	0
-murky	'mɜːki	adj. 浑浊的；黑暗的；朦胧的；隐晦的；黝暗的；阴沉的；阴郁的	5	1	4	0
+murky	'mɜːki	adj. 浑浊的；黑暗的；朦胧的；隐晦的；黝暗的；阴沉的；阴郁的	10	2	8	1
 murmur	'mɜːmə	n&v. 低沉连续的声音；诉怨 | n. 低语；低声的怨言；低声抱怨；潺潺声 | vi. 低声而言 | vt. 低声说	0	0	0	0
 muscle	'mʌsl	n. 肌肉；体力；力量；实力；臂力 | vt. 加强；使劲搬动；使劲挤出	0	0	0	0
 muscular	'mʌskjʊlə	adj. 肌肉的；肌肉发达的；强壮的；有力的；强健的	0	0	0	0
@@ -3169,7 +3169,7 @@ necessarily	'nesəsərəli; ˌnesə'serəli	adv. 必要地；必然地；必须�
 necessitate	nɪ'sesɪteɪt	v. 使成为必需 | vt. 迫使；需要	0	0	0	0
 necessity	nə'sesəti	n. 必然；必要；必需品；必要性；需要	0	0	0	0
 negation	nɪ'geɪʃ(ə)n	n. 否定；否认；反面；不存在；拒绝	0	0	0	0
-negative	'negətɪv	adj. 否定的；消极的；负的；阴性的；底片的 | vt. 拒绝	3	2	1	2
+negative	'negətɪv	adj. 否定的；消极的；负的；阴性的；底片的 | vt. 拒绝	4	3	1	3
 neglect	nɪ'glekt	v. 忽视；搁置未做 | n. 忽略；疏忽；漏做；怠慢 | vt. 不顾	0	0	0	0
 negligence	'neglɪdʒ(ə)ns	n. 疏忽；粗心大意；忽视	0	0	0	0
 negligible	'neglɪdʒɪb(ə)l	adj. 微不足道的；可以忽视的；可以忽略的；不足取的；无用的	0	0	0	0
@@ -3237,7 +3237,7 @@ nylon	'naɪlɒn	n. 尼龙；尼龙长袜；聚酰胺纤维	0	0	0	0
 oak	əuk	n. 橡树；橡木 | adj. 栎树的；栎木制的	8	6	2	5
 oar	ɔː	n. 桨；橹；搅棒 | vt. 划动	0	0	0	0
 oasis	əʊ'eɪsɪs	n. (沙漠中的)绿洲；舒适的地方；令人宽慰的事物	0	0	0	0
-oath	əʊθ	n. 誓言；誓约；咒骂；诅咒	3	1	2	0
+oath	əʊθ	n. 誓言；誓约；咒骂；诅咒	4	2	2	1
 obedient	ə'biːdɪənt	adj. 服从的；顺从的；孝顺的	0	0	0	0
 object	'ɒbdʒɪkt; -dʒekt	n. 物体；目标；目的；对象；宾语；客体 | v. 反对 | vi. 抱反感；拒绝 | vt. 提出...来反对	0	0	0	0
 objectify	əb'dʒektɪfaɪ	vt. 使客观化；使具体化；物化；体现	0	0	0	0
@@ -3477,7 +3477,7 @@ pavement	'peɪvm(ə)nt	n. [英]人行道；路面；铺面路；铺路材料	0	0
 pay	peɪ	n. 工资；薪资；付款；补偿 | v. 支付；有利；给予 | vt. 付清；偿还；为...涂防水物	0	0	0	0
 payable	'peɪəbl	adj. 可支付的；应支付的；可付的；到期的；应付的；有利益的；可获利的	0	0	0	0
 payment	'peɪmənt	n. 支付；支付的款项；付款；偿还；报应；惩罚；报酬；报答	0	0	0	0
-pearl	pɜːl	n. 珍珠；珠灰色；杰出者；珍贵之物；珍品 | vt. 用珍珠镶；使成珠状；用珍珠装饰 | vi. 成珠子状；用珍珠做	2	1	1	1
+pearl	pɜːl	n. 珍珠；珠灰色；杰出者；珍贵之物；珍品 | vt. 用珍珠镶；使成珠状；用珍珠装饰 | vi. 成珠子状；用珍珠做	5	2	3	1
 peculiar	pɪ'kjuːlɪə	adj. 特殊的；奇特的；罕见的；特别的；独特的；奇怪的 | n. 特有财产；特权	11	5	6	3
 pedal	'ped(ə)l	n&v. 脚噔；踏板；踩踏板 | n. 脚蹬子 | adj. 脚踏的 | vt. 用脚踏动；踩……的踏板 | vi. 骑车	0	0	0	0
 pedestrian	pɪˈdestrɪən	n&a. 行人(的) | n. 步行者 | adj. 人行的；徒步的；呆板的；通俗的；平淡无奇的；缺乏想像力的	0	0	0	0
@@ -3596,7 +3596,7 @@ planetarium	,plænɪ'teərɪəm	n. 天文馆；行星仪；天象图	0	0	0	0
 plank	plæŋk	n. 厚板；板材；地板；厚木板；支架；木板制品；冲浪板；救急物；政纲条目 | vt. 在...上铺板	0	0	0	0
 plankton	'plæŋ(k)t(ə)n; -tɒn	n. 浮游生物	27	13	14	13
 plantation	plæn'teɪʃ(ə)n; plɑːn-	n. 种植园；大农场；植树造林；新开垦地；栽植；殖民	0	0	0	0
-plaster	'plɑːstə	n&vt. 膏药；(涂)灰泥 | n. 石膏；安慰(缓解)用品 | vt. 涂以灰泥；敷以膏药；掩饰；使平服；彻底击败；减轻	3	1	2	1
+plaster	'plɑːstə	n&vt. 膏药；(涂)灰泥 | n. 石膏；安慰(缓解)用品 | vt. 涂以灰泥；敷以膏药；掩饰；使平服；彻底击败；减轻	8	2	6	1
 plastic	'plæstɪk	adj. 塑料的；塑造的；有可塑性的；造型的；易受影响的；有创造力的 | n. 可塑体；可塑性物质；塑料制品；整形	3	3	0	3
 plateau	'plætəʊ	n. 高原；(上升后的)稳定水平；托盘；平顶女帽 | vi. 达到平衡；达到稳定时期	0	0	0	0
 platform	'plætfɔːm	n. 月台；站台；讲台；(政党的)政纲；党纲；论坛；平台	0	0	0	0
@@ -3638,7 +3638,7 @@ ponderous	'pɒnd(ə)rəs	adj. 沉重的；笨重的；(文章)冗长的；毫无
 populace	'pɒpjələs	n. 人口；全体居民；平民；大众	0	0	0	0
 popularity	ˌpɒpjʊ'lærəti	n. 普及；流行；名声；受大众欢迎；名气	0	0	0	0
 popularize	'pɒpjələraɪz	vt. 宣扬；宣传；推广；使普及；使通俗化；使成通俗性；使平易	0	0	0	0
-populate	'pɒpjʊleɪt	vt. 居住于；生活于；使人口聚居在...中；殖民于；移民于；定居于；构成人口	3	1	2	0
+populate	'pɒpjʊleɪt	vt. 居住于；生活于；使人口聚居在...中；殖民于；移民于；定居于；构成人口	12	2	10	1
 population	ˌpɒpjʊ'leɪʃn	n. 人口；种群；群体；全体居民	0	0	0	0
 porcelain	'pɔːs(ə)lɪn	n. 瓷器 | adj. 瓷制的；精美的	0	0	0	0
 porch	pɔːtʃ	n. 门廊；走廊	0	0	0	0
@@ -3771,7 +3771,7 @@ professional	prə'feʃ(ə)n(ə)l	adj. 职业的；专业的 | n. 专业人员；
 proficiency	prə'fɪʃ(ə)nsɪ	n. 熟练；进步；精通；精练	0	0	0	0
 profile	'prəʊfaɪl	n. 侧面；轮廓；传略；外形；剖面 | vt. 描绘...轮廓；写...的传略	0	0	0	0
 profit	'prɒfɪt	n. 利益；利润；赢利 | vi. 有益；获利；赚钱	0	0	0	0
-profitable	'prɒfɪtəbl	adj. 有利可图的；赚钱的；有益的；有利润的；有利益的	6	3	3	2
+profitable	'prɒfɪtəbl	adj. 有利可图的；赚钱的；有益的；有利润的；有利益的	7	4	3	3
 profound	prə'faʊnd	adj. 深的；极深的；渊博的；深奥的；意义深远的	0	0	0	0
 profuse	prə'fjuːs	adj. 极其丰富的；很多的；大量的；丰富的；浪费的；慷慨的	0	0	0	0
 prohibit	prə(ʊ)'hɪbɪt	v. 禁止 | vt. 阻止	0	0	0	0
@@ -3856,7 +3856,7 @@ qualitative	'kwɒlɪtətɪv	adj. 质的；定性的	0	0	0	0
 quantitative	'kwɒntɪ,tətɪv; -,teɪtɪv	adj. 量的；定量的	0	0	0	0
 quantity	'kwɒntəti	n. 数量；数目；量；众多；大宗	0	0	0	0
 quarry	'kwɒrɪ	n. 采石场；猎物；方形石；被追求物；来源 | vt. 挖出；努力挖掘 | vi. 费力地找	0	0	0	0
-quarterly	'kwɔːtəlɪ	adj. 季度的；季刊；每季的 | adv. 按季；每三个月；每季一次	5	1	4	0
+quarterly	'kwɔːtəlɪ	adj. 季度的；季刊；每季的 | adv. 按季；每三个月；每季一次	8	2	6	1
 quartz	kwɔːts	n. 石英	0	0	0	0
 queer	kwɪə	adj. 奇怪的；不平常的；可疑的；眩晕的；不舒服的；心智不平衡的 | n. 怪人；同性恋者 | vt. 搞糟；使陷于不利地位	0	0	0	0
 quench	kwen(t)ʃ	v. 熄灭；扑灭 | vt. 结束；使冷却；将...淬火；解渴；冷浸 | vi. 平息	0	0	0	0
@@ -3887,7 +3887,7 @@ ransom	'ræns(ə)m	n. 赎金；赎救；赎身；赎回 | vt. 勒索赎金；救
 rarely	'reəlɪ	adv. 非常地；难得；很少地；罕有地	0	0	0	0
 rarity	'reərəti	n. 稀有；稀有的事物；稀罕；罕有；珍奇；稀薄；罕见；珍贵；珍品（需用复数）	0	0	0	0
 ratio	'reɪʃɪəʊ	n. 比率；比例	0	0	0	0
-ration	'ræʃn	n. 配给量；定量；给养；口粮；定额 | vt. 配给；定量供应	12	2	10	0
+ration	'ræʃn	n. 配给量；定量；给养；口粮；定额 | vt. 配给；定量供应	13	3	10	1
 rational	'ræʃ(ə)n(ə)l	adj. 有推理能力的；合理的；理性的 | n. 有理数	0	0	0	0
 ravage	'rævɪdʒ	vt&vi. 毁坏；蹂躏；抢劫；掠夺 | n. 破坏	0	0	0	0
 rave	reɪv	v. 胡言乱语；热衷谈论；愤怒地说；叫嚷；咆哮 | n. 热情赞扬；狂吼；狂暴；热烈赞美 | vi. 狂骂	0	0	0	0
@@ -3930,7 +3930,7 @@ recreate	ˌriːkrɪ'eɪt	vt. 再现；再创造 | v. (使)得到休养；(使)�
 recreation	ˌrekri'eɪʃn	n. 娱乐；消遣；休息；再创造；休养	0	0	0	0
 recreational	ˌrekri'eɪʃənl	adj. 消遣的；娱乐的；游戏的；休养的	0	0	0	0
 recruit	rɪ'kruːt	v&n. 招募；吸收 | n. 新兵；新手；新会员；补给品 | vt. 恢复；补充；充实；征募	0	0	0	0
-rectangle	'rektæŋg(ə)l	n. 矩形；长方形	1	1	0	1
+rectangle	'rektæŋg(ə)l	n. 矩形；长方形	2	2	0	2
 rectangular	rek'tæŋgjələ(r)	adj. 长方形的；矩形的；成直角的	0	0	0	0
 rectify	'rektɪfaɪ	v. 纠正；矫正 | vt. 订正；改正；调正；校正；精馏；整流	0	0	0	0
 recycle	riː'saɪk(ə)l	v. 使再循环；回收利用 | vt. 重新利用；再制 | n. 再生；重复利用	0	0	0	0
@@ -4016,7 +4016,7 @@ rendezvous	'rɒndɪvuː; -deɪvuː	n. 约会；集会；聚会之地点；约会
 rendition	ren'dɪʃn	n. 表演；扮演；演唱；翻译；视觉再现；译文；施舍；演奏；提供；引渡逃奴	0	0	0	0
 renew	rɪ'njuː	v. 重新开始；恢复；更换；更新；续借 | vt. 复兴；修补；补充；继续；重订	0	0	0	0
 renewable	rɪ'njuːəbl	adj. 可更新的；可再生的；可恢复的；可延长有效期的；可续期的；可继续的；可换新的；可重复的；可重说的	8	6	2	5
-renewal	rɪ'njuːəl	n. 更新；恢复；重新开始；重建；复兴；续期；重申；革新；修补；补充	2	1	1	1
+renewal	rɪ'njuːəl	n. 更新；恢复；重新开始；重建；复兴；续期；重申；革新；修补；补充	4	2	2	1
 renovation	,renə'veɪʃn	n. 修理；恢复；革新；刷新；恢复活力	0	0	0	0
 renowned	rɪ'naʊnd	adj. 有名望的；声誉鹊起的；有声誉的；著名的；有声望的	0	0	0	0
 rent	rent	v. 租借；出租 | n. 租金；房租；裂缝；破裂处；分裂 | vt. 租用；租出	0	0	0	0
@@ -4063,7 +4063,7 @@ resist	rɪ'zɪst	v. 抵抗；抗；耐；耐得住；抵制 | n. 防染材料；
 resistance	rɪ'zɪstəns	n. 反抗；抵制；抵抗力；抵抗性；阻力；电阻；耐力	0	0	0	0
 resistant	rɪ'zɪstənt	adj. 抵抗的；有抵抗力的；耐...的；顽固的 | n. 反抗者	0	0	0	0
 resit	ˌrɪː'sɪt	v&n. 重修；补考 | vi. (考试不及格后)再考；重考	0	0	0	0
-resolution	rezə'luːʃ(ə)n	n. 坚决；坚定；决定；决议；决心；解决；解析；消除；解答；分解	3	2	1	2
+resolution	rezə'luːʃ(ə)n	n. 坚决；坚定；决定；决议；决心；解决；解析；消除；解答；分解	4	3	1	3
 resolve	rɪ'zɒlv	v. 解决；决定 | vi. 分解；决心 | vt. 解析；消除；溶解；决心要做… | n. 决定之事；坚决	0	0	0	0
 resonant	'rez(ə)nənt	adj. 反响的；共鸣的；洪亮的；共振的	0	0	0	0
 resort	rɪ'zɔːt	vi&n. 求助 | n. 度假胜地；手段；凭借；常去之地 | vi. 诉诸；采取某手段或方法	0	0	0	0
@@ -4117,7 +4117,7 @@ ribbon	'rɪbən	n. 缎带；丝带；带状物；色带；（勋章等的）绶�
 ridge	rɪdʒ	n. 山脊；脊；岭；山脉	0	0	0	0
 ridiculous	rɪ'dɪkjʊləs	adj. 荒谬的；可笑的	0	0	0	0
 rig	rɪg	v. 给船装帆；为提供必要装备 | n. 成套设备；装备；帆装；钻探设备 | vt. 装配；装扮；垄断；操纵	0	0	0	0
-righteous	'raɪtʃəs	adj. 正直的；正当的；公正的；正义的	7	2	5	1
+righteous	'raɪtʃəs	adj. 正直的；正当的；公正的；正义的	8	3	5	2
 rigid	'rɪdʒɪd	adj. 僵硬的；不易弯的；严格的；坚硬的；刚性的；精密的；刻板的；死板的；精确的	0	0	0	0
 rigorous	'rɪg(ə)rəs	adj. 严格的；严厉的；严酷的(气候条件)；苛刻的；严密的；精确的	0	0	0	0
 rim	rɪm	n. 边；边缘；轮辋；轮缘；框；圆圈 | vt. 为...装边 | vi. 形成边缘	0	0	0	0
@@ -4337,7 +4337,7 @@ sincere	sɪn'sɪə	adj. 真挚的；诚恳的；诚实的；正直的；纯净�
 sinew	'sɪnjuː	n. 肌腱；力量的来源；肌肉；精力；体力；力量的源泉；筋 | vt. 赋予力量；加强；使牢固	0	0	0	0
 single	'sɪŋg(ə)l	adj. 单一的；未婚的；单人的；单身的；个别的；孤独的；专一的 | n. 单打；单程票；一个	0	0	0	0
 singular	'sɪŋgjʊlə	adj. 非凡的；卓越的；异常的；单一的 | n. 单数	0	0	0	0
-sinister	'sɪnɪstə(r)	adj. 不吉祥的；凶兆的；险恶的；邪恶的；不吉利的；凶恶的；左边的；阴险的；灾难性的	4	1	3	0
+sinister	'sɪnɪstə(r)	adj. 不吉祥的；凶兆的；险恶的；邪恶的；不吉利的；凶恶的；左边的；阴险的；灾难性的	5	2	3	1
 sink	sɪŋk	n. 洗涤漕；藏垢的场所；沟渠；污水槽 | vi. 下沉；沉没；下陷；减弱；衰退；消沉	0	0	0	0
 sip	sɪp	v. 小口地喝；吸吮 | n. 啜饮；小口喝；抿；单列直插式组件	0	0	0	0
 site	saɪt	n. 位置；场所；地点 | v. 设置 | vt. 给...择址；为…选址	0	0	0	0
@@ -4361,7 +4361,7 @@ slash	slæʃ	v. 砍；大幅度削减 | n. 砍痕；伤痕；斜线号；删减�
 slat	slæt	n. 板条；狭板；条板 | vt. 用板条制作；用条板制造 | vi. 劈啪劈啪地碰撞	0	0	0	0
 slate	sleɪt	n. 板岩；石板；页岩；提名名单；人选；记录；蓝色；石片 | vt. 责骂；痛打	0	0	0	0
 slaughter	'slɔːtə	n&vt. 屠杀；屠宰 | n. 残杀；杀戮；消灭 | vt. 亏本出售；使惨败	0	0	0	0
-sledge	sledʒ	vi. 乘雪橇；猛击 | n. 雪橇；大锤 | vt. 用雪橇搬运；用大锤打	3	1	2	0
+sledge	sledʒ	vi. 乘雪橇；猛击 | n. 雪橇；大锤 | vt. 用雪橇搬运；用大锤打	4	2	2	1
 sleek	sliːk	adj. 光滑而有光泽的；时髦的；豪华的；光滑的；油嘴滑舌的；线条明快的；圆滑的 | vt. 使光滑发亮；掩盖 | vi. 打扮漂亮	0	0	0	0
 slender	'slendə	adj. 细长的；苗条的；纤弱的；微小的；微薄的；微少的	0	0	0	0
 slice	slaɪs	n. 片；部分；薄的切片；菜刀；火铲 | v. 切片 | vt. 切成薄片；切下；把…分成部分 | vi. 切开	0	0	0	0
@@ -4413,7 +4413,7 @@ soluble	'sɒljʊb(ə)l	adj. 可溶解的；可以解决的；可解决的	0	0	0	
 solution	sə'luːʃ(ə)n	n. 解决困难；解答问题；溶解；溶液；解决；解答；解决方案	0	0	0	0
 solve	sɒlv	vt. 解答；解决；付给；溶解；求解	0	0	0	0
 solvent	'sɒlv(ə)nt	adj. 能偿还的；有溶解力的 | n. 溶剂；偿付能力；解决方法	0	0	0	0
-somehow	'sʌmhaʊ	adv. 以某种方式；不知何故；以某种方法；莫明其妙地	4	3	1	2
+somehow	'sʌmhaʊ	adv. 以某种方式；不知何故；以某种方法；莫明其妙地	5	4	1	3
 somewhat	'sʌmwɒt	adv. 有点儿；多少；稍微 | n. 某物；几分	0	0	0	0
 sophisticate	sə'fɪstɪkeɪt	n. 久经世故的人；精通者；精于...之道的人 | vt. 篡改；曲解；使变得世故；掺合；弄复杂 | vi. 诡辩	0	0	0	0
 sophisticated	sə'fɪstɪkeɪtɪd	adj. 老练的；有经验的；世故的；尖端的；复杂的；久经世故的；精致的 | v. 使变得世故；使迷惑	0	0	0	0
@@ -4434,7 +4434,7 @@ spare	speə	adj. 空闲的；剩余的；多余的；节约的；瘦的 | n. 备
 spark	spɑːk	n&v. (发)火花 | n. 火星；闪光；无线电报务员；瞬间放电；活力；朝气；花花公子；情郎 | vi. 求婚	0	0	0	0
 sparkle	'spɑːk(ə)l	v. 闪光；闪耀 | n. 火花；活力；发泡 | vt. 使发光 | vi. 活跃	0	0	0	0
 sparse	spɑːs	adj. 稀少的；稀疏的；稀稀落落的；稀薄的	0	0	0	0
-spasm	'spæzəm	n. 痉挛；抽搐；突发；阵发；发作；一阵发作	2	1	1	1
+spasm	'spæzəm	n. 痉挛；抽搐；突发；阵发；发作；一阵发作	6	2	4	1
 spasmodic	spæz'mɒdɪk	adj. 痉挛的；间歇性的；由痉挛引起的；抽搐的；突发性的；一阵阵的	0	0	0	0
 spatial	'speɪʃ(ə)l	adj. 空间的；关于空间的；受空间条件限制的；占地位的；存在于空间的	0	0	0	0
 specialise	'speʃəlaɪz	v. 专门研究；专攻；专用于；使适应特殊目的 | vt. 特加指明；列举；使专门化；限定...的范围；vi. (使)特化；(使)专化	0	0	0	0
@@ -4445,7 +4445,7 @@ specialty	'speʃəltɪ	n. 特产；特长；专业；专长；特制品；特性
 species	'spiːʃiːz; -ʃɪz; 'spiːs-	n. 生物的种；种类；外形；物种	0	0	0	0
 specific	spə'sɪfɪk	adj. 具体的；特定的；特殊的；明确的；具有特效的；详细的 | n. 特效药；特性；细节	0	0	0	0
 specification	,spesɪfɪ'keɪʃ(ə)n	n. 载明；详述；规格；清单；说明书；详细说明书	0	0	0	0
-specify	'spesɪfaɪ	v. 指定；详细说明 | vt. 详列；说明；列举；把…列入说明书	4	2	2	1
+specify	'spesɪfaɪ	v. 指定；详细说明 | vt. 详列；说明；列举；把…列入说明书	5	3	2	2
 specimen	'spesɪmɪn	n. 标本；样品；样张；试样；试料；样本	0	0	0	0
 spectacle	'spektək(ə)l	n. 场面；景象；壮观；引人羡慕的东西；眼镜；公开展示；奇观；引人羡慕的人	0	0	0	0
 spectacular	spek'tækjʊlə	adj. 壮观的；公开展示的；惊人的 | n. 奇观；惊人之举；展览物	0	0	0	0
@@ -4458,7 +4458,7 @@ spice	spaɪs	n. 香料；调味品；药料；香气；情趣；少许 | vt. 使
 spill	spɪl	vt&vi. (使)溢出；(使)溅出 | n. 摔下；木片；小塞子 | vt. 使散落；洒；使流出；倒出 | vi. 涌流	0	0	0	0
 spin	spɪn	v. 纺纱；编结；编造故事 | n. 旋转；自旋；疾驰；情绪低落 | vt. 纺织；编造 | vi. 吐丝	0	0	0	0
 spine	spaɪn	n. 脊椎；脊柱；刺；刺毛；书脊；〈喻〉中心；背骨	0	0	0	0
-spiral	'spaɪr(ə)l	adj. 螺旋形的；盘旋的 | n. 螺旋形之物；螺线；旋涡 | vi. 螺旋形下降；螺旋形上升；螺旋形行进	11	5	6	2
+spiral	'spaɪr(ə)l	adj. 螺旋形的；盘旋的 | n. 螺旋形之物；螺线；旋涡 | vi. 螺旋形下降；螺旋形上升；螺旋形行进	12	6	6	3
 spiritual	'spɪrɪtʃʊəl; -tjʊəl	adj. 精神的；心灵的；神圣的；超自然的；崇高的；高尚的；鬼的；招魂术的 | n. 有关教会的事；圣歌（尤指美国南部黑人的）	0	0	0	0
 spit	spɪt	v. vi吐(唾沫) | n. 唾液；唾吐；小雨；炙叉；一铲的深度 | vt. 吐出；用炙叉穿过 | vi. 吐唾沫；吐痰	0	0	0	0
 spite	spaɪt	n. 恶意；怨恨；使人烦恼的事物；不顾 | vt. 故意刁难；欺侮；刁难；使恼怒	0	0	0	0
@@ -4477,7 +4477,7 @@ sporadically	spə'rædɪkli	adv. 偶发地；零星地	0	0	0	0
 spot	spɒt	vt. 认出；发现；看见 | n. 污点；地点；斑点；娱乐场所；处境；少量 | adj. 当场的	0	0	0	0
 spotlight	'spɒtlaɪt	n. 聚光灯；照明灯；反光灯；公众注意的中心 | v. 聚光照明；使显著	0	0	0	0
 spouse	spaʊz; -s	n. (法律)配偶	0	0	0	0
-sprawl	sprɔːl	v. 植物蔓生；城市无计划扩张 | vi. 伸开手足躺；爬行；蔓生；蔓延；无计划地扩展 | vt. 懒散地伸开；使不规则地伸展 | n. 伸开手足躺卧姿势	0	0	0	0
+sprawl	sprɔːl	v. 植物蔓生；城市无计划扩张 | vi. 伸开手足躺；爬行；蔓生；蔓延；无计划地扩展 | vt. 懒散地伸开；使不规则地伸展 | n. 伸开手足躺卧姿势	1	0	1	0
 spray	spreɪ	vt&n. 水花；飞沫；喷射 | n. 水沫；浪花；喷雾；小树枝 | vt. 扫射 | vi. 溅开	0	0	0	0
 spring	sprɪŋ	v&n. 跳；发芽 | n. 春季；泉；弹簧；春天；弹性；活力 | vi. 涌出；生长	0	0	0	0
 sprint	sprɪnt	v. 全速奔跑；冲刺 | n. 短距离赛跑；短跑 | vi. 全速跑	0	0	0	0
@@ -4576,7 +4576,7 @@ strengthen	'streŋθ(ə)n; -ŋkθ(ə)n	vt&vi. 加强；巩固 | vt. 变坚固 | 
 strenuous	'strenjʊəs	adj. 费劲的；用力的；奋发的；艰苦的；紧张的；费力的；热烈的	0	0	0	0
 stress	stres	n. 压力；重压；紧迫；强调；重音；重点；应力 | v. 着重；强调重点；重视	0	0	0	0
 stretch	stretʃ	vt&vi. 伸长；拉长；滥用；曲解 | n. 伸展；张开；连绵；一段路；一段时间 | adj. 可伸缩的	0	0	0	0
-stride	straɪd	v&n. 大踏步走 | n. 大步；步幅；步态；进步；进展 | v. 迈大步走；跨过 | vt. 跨坐在… | vi. 大步行走	1	1	0	1
+stride	straɪd	v&n. 大踏步走 | n. 大步；步幅；步态；进步；进展 | v. 迈大步走；跨过 | vt. 跨坐在… | vi. 大步行走	2	2	0	2
 strike	straɪk	v. 打；折磨 | n. 罢工 | vt. 撞击；冲击；侵袭；取消；结算；刺透；使生根	0	0	0	0
 striking	'straɪkɪŋ	adj. 引人注目的；显著的；醒目的；惊人的；打击的；罢工的；突出的	0	0	0	0
 string	strɪŋ	n. 线；细绳；弦；一串；字符串 | vt. 串起；成串；收紧；缚；扎	0	0	0	0
@@ -4752,7 +4752,7 @@ taunt	tɔːnt	vt. 嘲笑；讥笑；奚落；逗弄 | n. 辱骂；嘲弄；讥�
 taxation	tæk'seɪʃ(ə)n	n. 税制；税项；课税；征税；抽税；税款；估定的税额	0	0	0	0
 teamwork	'tiːmwɜːk	n. 协力合作；团队合作；配合；协同作业；协力	0	0	0	0
 tear	(for v.) ˈtɛː; (for n.) ˈtɪə	n. 眼泪；泪滴；扯；裂缝；激怒；飞奔 | vt&vi. 撕裂；撕碎；破坏安宁 | vi. 流泪	0	0	0	0
-tease	tiːz	v. 取笑；嘲笑；戏弄 | n. 揶揄；逗惹；爱纠缠的小孩 | vt. 强求；梳理；使起毛；欺负	5	1	4	0
+tease	tiːz	v. 取笑；嘲笑；戏弄 | n. 揶揄；逗惹；爱纠缠的小孩 | vt. 强求；梳理；使起毛；欺负	7	2	5	1
 technical	'teknɪkl	adj. 技术的；工艺的；专门的；工业的；严格根据法律的；科技的	0	0	0	0
 technician	tek'nɪʃ(ə)n	n. 技术人员；技师；技术员；技巧纯熟的人	0	0	0	0
 technique	tek'niːk	n. 技术；技能；行家手法；技巧；方法；手法	0	0	0	0
@@ -4846,7 +4846,7 @@ timid	'tɪmɪd	adj. 胆小的；羞怯的	0	0	0	0
 timidity	tɪ'mɪdətɪ	n. 胆怯；胆小；羞怯	0	0	0	0
 tinge	tɪn(d)ʒ	v. (较淡)着色于；染色；使带有气息 | n. 色调；色彩；气味；气息；淡色；些许味道 | vt. 使带气息	0	0	0	0
 tissue	'tɪʃuː; 'tɪsjuː	n. 生理组织；薄纸；棉纸；织物；一套；薄的织物；薄纱；组织；纸巾	0	0	0	0
-title	'taɪt(ə)l	n. 标题；题目；称号；法律权利；所有权；头衔；名称；书名；扉页；权利	0	0	0	0
+title	'taɪt(ə)l	n. 标题；题目；称号；法律权利；所有权；头衔；名称；书名；扉页；权利	1	1	0	1
 toast	təʊst	n. 烤面包；烤火；吐司；干杯 | v. 为祝酒；敬酒 | vt. 使暖和 | vi. 烘	0	0	0	0
 toddle	'tɒd(ə)l	v. (如小孩)蹒跚学步 | vi. 东倒西歪地走；溜达；散步 | n. 东倒西歪的走路；蹒跚	0	0	0	0
 toil	tɒɪl	v. 辛劳工作；艰难地行动 | n. 苦工；难事；辛苦；网；圈套 | vi. 苦干；跋涉；辛苦工作	0	0	0	0
@@ -4894,7 +4894,7 @@ trample	'træmp(ə)l	v. 踩；践踏；蔑视；粗暴对待；无视 | n. 蹂�
 tranquility		n. 安静；平静；宁静	0	0	0	0
 transaction	træn'zækʃ(ə)n; trɑːn-; -'sæk-	n. 办理；处理；执行；事务；事项；交易；学报；和解协议；会报	0	0	0	0
 transcend	træn'send; trɑːn-	v. 超出；超过 | vt. 超越；胜过	0	0	0	0
-transcribe	træn'skraɪb	vt. 抄写；誊写；打印；转录；译；录制；改编	6	2	4	1
+transcribe	træn'skraɪb	vt. 抄写；誊写；打印；转录；译；录制；改编	7	3	4	2
 transcript	'trænskrɪpt; 'trɑːn-	n. 抄本；副本；成绩单；文字记录	0	0	0	0
 transcription	træn'skrɪpʃn	n. 抄写；誊写；抄本；誊本；书面标注的事物；改编	0	0	0	0
 transfer	træns'fɜː; trɑːns-; -nz-	v. 转让；转业；调任 | n. 转移；传递；迁移；移动；过户；汇兑；换车	0	0	0	0
@@ -5144,7 +5144,7 @@ victimise	'vɪktɪmaɪz	v. 受害；迫害 | vt. 使牺牲；欺骗；欺压	0	0
 viewpoint	'vjuːpɔɪnt	n. 观点；看法；视角	0	0	0	0
 vigilant	'vɪdʒɪl(ə)nt	adj. 警戒的；警惕的；警觉的；警醒的；注意的	0	0	0	0
 vigorous	'vɪg(ə)rəs	adj. 强有力的；精力充沛的；元气旺盛的；茁壮的	0	0	0	0
-vile	vaɪl	adj. 糟糕透顶的；可恶的；恶劣的；卑鄙的；肮脏的；低廉的；邪恶的	22	6	16	2
+vile	vaɪl	adj. 糟糕透顶的；可恶的；恶劣的；卑鄙的；肮脏的；低廉的；邪恶的	23	7	16	3
 vindicate	'vɪndɪkeɪt	v. 为辩白；证明正确 | vt. 辩护；证明...无辜；维护	0	0	0	0
 violate	'vaɪəleɪt	v. 违犯；侵犯 | vt. 亵渎；违反；妨碍	0	0	0	0
 violence	'vaɪələns	n. 暴力行为；激烈；猛烈；暴力；暴虐；暴行；侵犯；歪曲	0	0	0	0
