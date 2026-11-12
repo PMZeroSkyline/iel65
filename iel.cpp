@@ -261,7 +261,7 @@ int main(int argc, char** argv) {
             printf("  (y 改判为对，回车继续) "); fflush(stdout);
             string c; if (readLine(c) && trim(c) == "y") right = true;
         }
-        // 已掌握的词答错/被混淆时，确认后才踢回学习中（避免同义词误杀）；回车=不会 则直接踢
+        // 本题判错且没改判为对 → 直接踢回学习中；被混淆的已掌握词确认后才踢（避免同义词误杀）
         auto kick = [&](Word& y, bool ask) {
             if (y.streak < MASTER) return true;
             if (ask) {
@@ -274,7 +274,7 @@ int main(int argc, char** argv) {
         if (!right) for (auto* y : mixed) if (y->streak >= MASTER && kick(*y, true)) y->streak = 0;
         x.seen++;
         if (right) x.right++, x.streak++;
-        else { x.wrong++; if (kick(x, !in.empty())) x.streak = 0; }
+        else { x.wrong++; if (kick(x, false)) x.streak = 0; }
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");
         done++; ok += right;
         save(v);
