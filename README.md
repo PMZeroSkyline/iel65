@@ -7,9 +7,9 @@
 
 ## 数据表格式
 
-`word	phonetic	meaning	seen	right	wrong	streak	swept`（Tab 分隔）
+`word	phonetic	meaning	seen	right	wrong	streak	lastok`（Tab 分隔）
 
-`streak` 是连续答对次数，**连续答对 3 次 = 已掌握**，之后不再出题；答错清零。`swept` 是按章遍历里最近一次答过的日期，用来分块。
+`streak` 是连续答对次数，**连续答对 3 次 = 已掌握**，之后不再出题；答错清零。`lastok` 是最近一次答对的日期（任何模式），按章刷按它分块。
 想加词就直接在表里加一行，统计列填 `0 0 0 0`。
 
 ## 命令行

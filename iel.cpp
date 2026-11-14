@@ -32,7 +32,7 @@ void speak(const std::string& text) {
 using namespace std;
 namespace fs = std::filesystem;
 
-struct Word { string w, ph, m; int seen = 0, right = 0, wrong = 0, streak = 0; string swept; };  // swept = 按章遍历里最近一次答过的日期
+struct Word { string w, ph, m; int seen = 0, right = 0, wrong = 0, streak = 0; string lastok; };  // lastok = 最近一次答对的日期（按章刷按它分块）
 const int MASTER = 3;  // 连续答对 MASTER 次视为掌握
 string header;
 fs::path dbPath;
@@ -41,14 +41,15 @@ vector<Word> load() {
     ifstream f(dbPath); vector<Word> v; string line;
     getline(f, header);
     if (!header.empty() && header.back() == '\r') header.pop_back();
-    if (header.find("\tswept") == string::npos) header += "\tswept";  // 旧数据没有这一列
+    if (auto p = header.find("\tswept"); p != string::npos) header.replace(p, 6, "\tlastok");  // 旧列名
+    if (header.find("\tlastok") == string::npos) header += "\tlastok";  // 旧数据没有这一列
     while (getline(f, line)) {
         if (!line.empty() && line.back() == '\r') line.pop_back();
         stringstream ss(line); Word x; string a[8];
         for (auto& s : a) getline(ss, s, '\t');
         x.w = a[0]; x.ph = a[1]; x.m = a[2];
         x.seen = atoi(a[3].c_str()); x.right = atoi(a[4].c_str());
-        x.wrong = atoi(a[5].c_str()); x.streak = atoi(a[6].c_str()); x.swept = a[7];
+        x.wrong = atoi(a[5].c_str()); x.streak = atoi(a[6].c_str()); x.lastok = a[7];
         if (!x.w.empty()) v.push_back(x);
     }
     return v;
@@ -56,7 +57,7 @@ vector<Word> load() {
 void save(const vector<Word>& v) {
     ofstream f(dbPath, ios::binary);
     f << header << '\n';
-    for (auto& x : v) f << x.w << '\t' << x.ph << '\t' << x.m << '\t' << x.seen << '\t' << x.right << '\t' << x.wrong << '\t' << x.streak << '\t' << x.swept << '\n';
+    for (auto& x : v) f << x.w << '\t' << x.ph << '\t' << x.m << '\t' << x.seen << '\t' << x.right << '\t' << x.wrong << '\t' << x.streak << '\t' << x.lastok << '\n';
 }
 // "2026-11-14" -> 天数（只用于比较先后）；空字符串返回很小的数，表示从没过
 long dayNum(const string& d) {
@@ -245,8 +246,8 @@ int main(int argc, char** argv) {
         long n = today - dayNum(d);
         return n <= 0 ? string("今天") : n == 1 ? string("昨天") : to_string(n) + " 天前";
     };
-    // 把一组词按 swept 日期分块：从没过（空）最先，然后从老到新
-    auto blocks = [&](const vector<int>& ids) { map<string, int> c; for (int i : ids) c[v[i].swept]++; return c; };
+    // 把一组词按 lastok 日期分块：从没过（空）最先，然后从老到新
+    auto blocks = [&](const vector<int>& ids) { map<string, int> c; for (int i : ids) c[v[i].lastok]++; return c; };
     auto blockLine = [&](const map<string, int>& c) {
         string s; for (auto& [d, k] : c) s += (s.empty() ? "" : " · ") + age(d) + " " + to_string(k);
         return s;
@@ -274,7 +275,7 @@ int main(int argc, char** argv) {
         for (int i = 0; i < (int)v.size(); i++) if (sel[i / CH + 1] && v[i].streak >= MASTER) idx.push_back(i);
         if (idx.empty()) { puts(names.empty() ? "没有选中任何章节" : "这几章还没有已掌握的单词"); return 0; }
         shuffle(idx.begin(), idx.end(), rng);  // 打乱后按日期稳定排序 = 块内随机
-        stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return v[a].swept < v[b].swept; });
+        stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return v[a].lastok < v[b].lastok; });
         printf("第%s 章：%zu 个（%s）\n", names.c_str(), idx.size(), blockLine(blocks(idx)).c_str());
     } else {
         // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错（错过） > 学习中（刷过没错过） > 未学 排序
@@ -296,7 +297,7 @@ int main(int argc, char** argv) {
         long s = (long)(ms / 1000); ms %= 1000;
         if (s) { times[dayStr(time(nullptr))] += s; sessSec += s; saveTimes(); }
     };
-    vector<string> blk; for (int i : idx) blk.push_back(v[i].swept);  // 每题原来所在的块（答完 swept 会变成今天）
+    vector<string> blk; for (int i : idx) blk.push_back(v[i].lastok);  // 每题原来所在的块（答完 lastok 会变成今天）
     for (size_t k = 0; k < idx.size(); k++) {
         auto& x = v[idx[k]];
         if (sweep && (k == 0 || blk[k - 1] != blk[k])) {  // 进入新的一块
@@ -338,7 +339,7 @@ int main(int argc, char** argv) {
         };
         if (!right) for (auto* y : mixed) if (y->streak >= MASTER && kick(*y, true)) y->streak = 0;
         x.seen++;
-        if (sweep) x.swept = dayStr(time(nullptr));  // 记下这次遍历过的日期
+        if (right) x.lastok = dayStr(time(nullptr));  // 任何模式答对都记日期
         if (right) x.right++, x.streak++;
         else { x.wrong++; if (kick(x, false)) x.streak = 0; }
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");

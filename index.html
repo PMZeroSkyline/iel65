@@ -146,15 +146,16 @@ const saveLog = () => { store('iel_log', JSON.stringify(LOG)); updSync(); };
 function parseTsv(t) {
   const lines = t.replace(/\r/g, '').split('\n');
   return {head: lines[0], rows: lines.slice(1).filter(Boolean).map(l => { const a = l.split('\t');
-    return {w: a[0], ph: a[1] || '', m: a[2] || '', seen: +a[3] || 0, right: +a[4] || 0, wrong: +a[5] || 0, streak: +a[6] || 0, swept: a[7] || ''}; })};
+    return {w: a[0], ph: a[1] || '', m: a[2] || '', seen: +a[3] || 0, right: +a[4] || 0, wrong: +a[5] || 0, streak: +a[6] || 0, lastok: a[7] || ''}; })};
 }
-// 第 8 列 swept = 按章遍历里最近一次答过的日期；旧数据没有这一列就补上表头
-const toTsv = (head, rows) => (head.includes('\tswept') ? head : head + '\tswept') + '\n'
-  + rows.map(x => [x.w, x.ph, x.m, x.seen, x.right, x.wrong, x.streak, x.swept].join('\t')).join('\n') + '\n';
+// 第 8 列 lastok = 最近一次答对的日期；旧列名 swept 改名，没有这一列就补上
+const fixHead = h => h.includes('\tswept') ? h.replace('\tswept', '\tlastok') : h.includes('\tlastok') ? h : h + '\tlastok';
+const toTsv = (head, rows) => fixHead(head) + '\n'
+  + rows.map(x => [x.w, x.ph, x.m, x.seen, x.right, x.wrong, x.streak, x.lastok].join('\t')).join('\n') + '\n';
 function applyOps(rows, ops) {
   const m = new Map(rows.map(x => [x.w, x]));
   for (const {w, op, s} of ops) { const x = m.get(w); if (!x) continue;
-    if (s) x.swept = s; // 按章遍历答过的日期
+    if (s) x.lastok = s; // 答对的日期
     if (op === 'x') { x.streak = 0; continue; }
     x.seen++; if (op === 'r') { x.right++; x.streak++; } else { x.wrong++; if (op === 'w') x.streak = 0; } }
 }
@@ -336,7 +337,7 @@ function finalize() {
     ops.push({w: p.w, op: !p.self || !p.typed || p.kick.has(p.w) ? 'w' : 'k'});
     p.mixed.forEach(w => { if (p.kick.has(w)) ops.push({w, op: 'x'}); });
   }
-  if (pool === 'ch' && EXQ && EXQ.q[0] === p.w) ops[0].s = dayStr(new Date()); // 按章遍历：记下过的日期
+  if (p.right) ops[0].s = dayStr(new Date()); // 任何模式答对都记日期
   // 状态变化弹提示：刚掌握 / 移出已掌握
   const byW = new Map(W.map(x => [x.w, x])), tips = [];
   for (const {w, op} of ops) { const x = byW.get(w); if (!x) continue;
@@ -349,7 +350,7 @@ function finalize() {
 }
 
 // ===== 按章遍历：每 500 词一章；按上次过的日期分块，从没过的一块最先，然后最老的块先出，块内随机，每个词只出一次 =====
-// 进度就是每个词的 swept 日期，跟着 words.tsv 同步，换设备或第二天接着来不用记刷到哪
+// 进度就是每个词最近答对的日期，跟着 words.tsv 同步，换设备或第二天接着来不用记刷到哪
 const CH = 500;
 let EXQ = null, chSel = new Set(); // EXQ = 本次的队列 {q: 剩余单词, blk: {单词: 原来的日期}, n: 总数, ok: 答对数, ch: 章节}
 try { chSel = new Set(JSON.parse(load('iel_sweep_ch') || '[]')); } catch (e) {}
@@ -360,7 +361,7 @@ function ageOf(d) { // 块名：从没过 / 今天 / 昨天 / N 天前
   return n <= 0 ? '今天' : n === 1 ? '昨天' : `${n} 天前`;
 }
 function blocks(words) { // [[日期, 个数], ...]，从没过（空）最先，然后从老到新
-  const c = {}; words.forEach(w => { c[w.swept] = (c[w.swept] || 0) + 1; });
+  const c = {}; words.forEach(w => { c[w.lastok] = (c[w.lastok] || 0) + 1; });
   return Object.keys(c).sort().map(d => [d, c[d]]);
 }
 function renderCh() {
@@ -390,8 +391,8 @@ $('chGrid').addEventListener('click', e => { const b = e.target.closest('button[
 $('chStart').onclick = () => {
   const q = W.filter((w, i) => chSel.has(chOf(i)) && w.streak >= MASTER);
   for (let i = q.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [q[i], q[j]] = [q[j], q[i]]; } // 块内随机
-  q.sort((a, b) => a.swept < b.swept ? -1 : a.swept > b.swept ? 1 : 0); // 稳定排序：按块从老到新，空（从没过）最先
-  EXQ = {q: q.map(w => w.w), blk: Object.fromEntries(q.map(w => [w.w, w.swept])), n: q.length, ok: 0, ch: [...chSel].sort((a, b) => a - b)}; show();
+  q.sort((a, b) => a.lastok < b.lastok ? -1 : a.lastok > b.lastok ? 1 : 0); // 稳定排序：按块从老到新，空（从没过）最先
+  EXQ = {q: q.map(w => w.w), blk: Object.fromEntries(q.map(w => [w.w, w.lastok])), n: q.length, ok: 0, ch: [...chSel].sort((a, b) => a - b)}; show();
 };
 $('chStop').onclick = e => { e.preventDefault(); EXQ = null; show(); }; // 随时停：过了的词已记日期，下次接着过最久没过的
 function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : '') + ` · 本次用时 ${fmtTime(sess.sec)}`; }
