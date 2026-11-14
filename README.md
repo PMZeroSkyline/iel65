@@ -22,6 +22,7 @@ iel mix        # 混合
 iel stat       # 看进度
 iel push       # 提交并推送学习记录（words.tsv、time.tsv）
 iel review     # 只刷已掌握的词，答错踢回未掌握（可组合：iel c2e 30 review）
+iel sweep 1-3,5  # 按章遍历：每 500 词一章，把选中章节里已掌握的词各过一遍（不重复）；不写章节会先列出来让你选
 ```
 
 - 出题顺序：易错词 > 没学过的 > 学习中的，已掌握的跳过

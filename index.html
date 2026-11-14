@@ -34,6 +34,9 @@ th{cursor:pointer;white-space:nowrap;color:var(--mute);font-weight:500}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 td .m{color:var(--mute);font-size:12px}
 .say{float:right;cursor:pointer;padding:2px 6px;font-size:18px;line-height:1;border:0;background:none;color:inherit;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}.say:active{opacity:.5}
+.chGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.chGrid button{padding:6px 2px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;font-size:13px;line-height:1.3}
+.chGrid button.on{background:var(--acc);border-color:var(--acc);color:#fff}.chGrid small{display:block;font-size:11px;opacity:.75}
 .tag{font-size:11px;padding:1px 6px;border-radius:6px;color:#fff}
 .kick{margin:6px 6px 0 0;padding:5px 10px;border:1px solid var(--bad);border-radius:8px;background:none;color:var(--bad);font-size:13px}
 .kick.on{background:var(--bad);color:#fff}
@@ -66,7 +69,16 @@ input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var
 <section id="quiz">
   <div class="card">
     <div class="seg" id="mode"><button data-m="e2c" class="on">英→中</button><button data-m="c2e">中→英</button><button data-m="card">卡片</button></div>
-    <div class="seg" id="pool"><button data-p="todo" class="on">未掌握</button><button data-p="weak">易错</button><button data-p="mast">已掌握</button><button data-p="all">全部</button></div>
+    <div class="seg" id="pool"><button data-p="todo" class="on">未掌握</button><button data-p="weak">易错</button><button data-p="mast">已掌握</button><button data-p="all">全部</button><button data-p="ch">按章</button></div>
+    <div id="chBox" hidden>
+      <div id="chSel">
+        <div class="mute" style="margin-bottom:6px">每 500 词一章，选几章把里面已掌握的词各过一遍（不重复，顺序打乱）</div>
+        <div class="chGrid" id="chGrid"></div>
+        <div class="mute" id="chInfo" style="margin-top:6px"></div>
+        <div class="row"><button id="chStart">开始</button></div>
+      </div>
+      <div class="mute" id="chBar" hidden><span id="chProg"></span>　<a href="#" id="chStop">结束</a></div>
+    </div>
     <div class="q" id="q">加载中…</div>
     <div class="ph" id="ph"></div>
     <div id="typeBox">
@@ -242,6 +254,12 @@ function editDist(a, b) {
 
 // ===== 刷题 =====
 function pick() {
+  if (pool === 'ch') { // 按章遍历：按队列出题，答完才从队列里去掉
+    while (EXQ && EXQ.q.length) { const w = W.find(x => x.w === EXQ.q[0]); if (w) return w; EXQ.q.shift(); }
+    $('q').textContent = EXQ ? `遍历完成：${EXQ.n} 个，答对 ${EXQ.ok}（${Math.round(EXQ.ok * 100 / Math.max(1, EXQ.n))}%）` : '选择要遍历的章节';
+    $('q').className = 'q cn';
+    return null;
+  }
   let c = W.filter(w => pool === 'all' ? true : pool === 'weak' ? isWeak(w) : pool === 'mast' ? w.streak >= MASTER : w.streak < MASTER);
   if (!c.length) { if (pool === 'mast') { $('q').textContent = '还没有已掌握的单词'; return null; } c = W; }
   // 网页里本次答对的往后放，答错的会再出现
@@ -258,6 +276,7 @@ function show() {
   tick();
   finalize();
   cur = pick(); answered = false;
+  renderCh();
   if (!cur) { $('ph').textContent = $('res').innerHTML = ''; $('typeBox').hidden = $('cardBox').hidden = $('nextRow').hidden = true; return; }
   curDir = mode === 'c2e' ? 'c2e' : 'e2c';
   $('q').textContent = curDir === 'e2c' ? cur.w : cur.m;
@@ -322,7 +341,37 @@ function finalize() {
   if (tips.length) toast(tips.join('　'));
   const day = dayStr(new Date()); TA[day] = (TA[day] || 0) + 1; store('iel_ans', JSON.stringify(TA)); // 当天答题数
   LOG.push(...ops); applyOps(W, ops); saveLog();
+  if (pool === 'ch' && EXQ && EXQ.q[0] === p.w) { EXQ.q.shift(); EXQ.ok += p.right ? 1 : 0; saveEx(); } // 按章遍历：答完出队
 }
+
+// ===== 按章遍历：每 500 词一章，选中章节里的已掌握词各出一次；进度存在本机，可以接着来 =====
+const CH = 500;
+let EXQ = null, chSel = new Set(); // EXQ = {q: 剩余单词, n: 总数, ok: 答对数, ch: 章节}
+try { EXQ = JSON.parse(load('iel_sweep') || 'null'); } catch (e) {}
+const saveEx = () => store('iel_sweep', EXQ ? JSON.stringify(EXQ) : undefined);
+const chOf = i => Math.floor(i / CH) + 1;
+function renderCh() {
+  $('chBox').hidden = pool !== 'ch';
+  if (pool !== 'ch') return;
+  const active = !!(EXQ && EXQ.q.length), nch = Math.ceil(W.length / CH), m = Array(nch + 1).fill(0);
+  W.forEach((w, i) => { if (w.streak >= MASTER) m[chOf(i)]++; });
+  $('chSel').hidden = active; $('chBar').hidden = !active;
+  if (active) { $('chProg').textContent = `第 ${EXQ.ch.join('、')} 章：${EXQ.n - EXQ.q.length} / ${EXQ.n} · 答对 ${EXQ.ok}`; return; }
+  $('chGrid').innerHTML = Array.from({length: nch}, (_, k) => k + 1).map(c =>
+    `<button type="button" data-c="${c}" class="${chSel.has(c) ? 'on' : ''}" title="${esc(W[(c - 1) * CH].w)} ~ ${esc(W[Math.min(c * CH, W.length) - 1].w)}">第${c}章<small>已掌握 ${m[c]}</small></button>`).join('');
+  const total = [...chSel].reduce((a, c) => a + m[c], 0);
+  $('chInfo').textContent = chSel.size ? `选了 ${chSel.size} 章，共 ${total} 个已掌握的词` : '点选章节，可以多选';
+  $('chStart').disabled = !total;
+}
+$('chGrid').addEventListener('click', e => { const b = e.target.closest('button[data-c]'); if (!b) return;
+  const c = +b.dataset.c; chSel.has(c) ? chSel.delete(c) : chSel.add(c); renderCh(); });
+$('chStart').onclick = () => {
+  const q = W.filter((w, i) => chSel.has(chOf(i)) && w.streak >= MASTER).map(w => w.w);
+  for (let i = q.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [q[i], q[j]] = [q[j], q[i]]; }
+  EXQ = {q, n: q.length, ok: 0, ch: [...chSel].sort((a, b) => a - b)}; saveEx(); show();
+};
+$('chStop').onclick = e => { e.preventDefault();
+  if (confirm(`还剩 ${EXQ.q.length} 个没过，确定结束？已答的记录会保留。`)) { EXQ = null; saveEx(); show(); } };
 function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : '') + ` · 本次用时 ${fmtTime(sess.sec)}`; }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 

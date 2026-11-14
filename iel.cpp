@@ -164,8 +164,14 @@ int main(int argc, char** argv) {
     CoInitialize(nullptr);
     CoCreateInstance(CLSID_SpVoice, nullptr, CLSCTX_ALL, IID_ISpVoice, (void**)&voice);
 #endif
-    string mode = "e2c"; int n = 20; bool review = false;  // review = 只刷已掌握的
-    for (int i = 1; i < argc; i++) { string a = argv[i]; if (isdigit((unsigned char)a[0])) n = atoi(a.c_str()); else if (a == "review") review = true; else mode = a; }
+    string mode = "e2c", chapSpec; int n = 20; bool review = false, sweep = false;  // review = 只刷已掌握的；sweep = 按章遍历已掌握的
+    for (int i = 1; i < argc; i++) {
+        string a = argv[i];
+        if (a == "review") review = true;
+        else if (a == "sweep") sweep = true;
+        else if (isdigit((unsigned char)a[0])) { if (sweep) chapSpec = a; else n = atoi(a.c_str()); }  // sweep 后面的数字是章节
+        else mode = a;
+    }
     for (fs::path p : {fs::current_path(), fs::absolute(argv[0]).parent_path(), fs::absolute(argv[0]).parent_path().parent_path(),
                        fs::absolute(argv[0]).parent_path().parent_path().parent_path()})
         if (fs::exists(p / "words.tsv")) { dbPath = p / "words.tsv"; break; }
@@ -217,18 +223,44 @@ int main(int argc, char** argv) {
         return 0;
     }
     if (mode != "e2c" && mode != "c2e" && mode != "mix") {
-        puts("用法: iel [e2c|c2e|mix|stat|push] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度  push 提交并推送学习记录\n  review 只刷已掌握的词，答错踢回未掌握");
+        puts("用法: iel [e2c|c2e|mix|stat|push] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度  push 提交并推送学习记录\n"
+             "  review 只刷已掌握的词，答错踢回未掌握\n  iel sweep [章节] [e2c|c2e|mix]  按章遍历已掌握的词，每个出一次（每 500 词一章，如 iel sweep 1-3,5）");
         return 0;
     }
-    // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错（错过） > 学习中（刷过没错过） > 未学 排序
     mt19937 rng(random_device{}());
     vector<int> idx;
-    for (int i = 0; i < (int)v.size(); i++) if ((v[i].streak >= MASTER) == review) idx.push_back(i);
-    if (idx.empty()) { puts(review ? "还没有已掌握的单词" : "全部掌握了！"); return 0; }
-    shuffle(idx.begin(), idx.end(), rng);
-    auto rank = [&](int i) { auto& x = v[i]; return x.wrong > 0 ? 0 : x.seen > 0 ? 1 : 2; };
-    stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return rank(a) < rank(b); });
-    if ((int)idx.size() > n) idx.resize(n);
+    if (sweep) {  // 按章遍历：选中章节里的已掌握词各出一次，顺序打乱
+        const int CH = 500, nch = ((int)v.size() + CH - 1) / CH;
+        if (chapSpec.empty()) {
+            for (int c = 0; c < nch; c++) {
+                int m = 0, e = min((c + 1) * CH, (int)v.size());
+                for (int i = c * CH; i < e; i++) m += v[i].streak >= MASTER;
+                printf("第%2d章  %4d-%-4d  已掌握 %3d   %s ~ %s\n", c + 1, c * CH + 1, e, m, v[c * CH].w.c_str(), v[e - 1].w.c_str());
+            }
+            printf("要遍历哪几章？（如 1-3,5）："); fflush(stdout);
+            if (!readLine(chapSpec)) return 0;
+        }
+        vector<bool> sel(nch + 1, false);
+        stringstream ss(chapSpec); string part;  // 解析 "1-3,5"
+        while (getline(ss, part, ',')) {
+            int a = 0, b = 0;
+            if (sscanf(part.c_str(), "%d-%d", &a, &b) < 2) b = a;
+            for (int c = max(1, a); c <= min(b, nch); c++) sel[c] = true;
+        }
+        string names; for (int c = 1; c <= nch; c++) if (sel[c]) names += " " + to_string(c);
+        for (int i = 0; i < (int)v.size(); i++) if (sel[i / CH + 1] && v[i].streak >= MASTER) idx.push_back(i);
+        if (idx.empty()) { puts(names.empty() ? "没有选中任何章节" : "这几章还没有已掌握的单词"); return 0; }
+        shuffle(idx.begin(), idx.end(), rng);
+        printf("按章遍历：第%s 章，%zu 个已掌握的词，每个出一次\n", names.c_str(), idx.size());
+    } else {
+        // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错（错过） > 学习中（刷过没错过） > 未学 排序
+        for (int i = 0; i < (int)v.size(); i++) if ((v[i].streak >= MASTER) == review) idx.push_back(i);
+        if (idx.empty()) { puts(review ? "还没有已掌握的单词" : "全部掌握了！"); return 0; }
+        shuffle(idx.begin(), idx.end(), rng);
+        auto rank = [&](int i) { auto& x = v[i]; return x.wrong > 0 ? 0 : x.seen > 0 ? 1 : 2; };
+        stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return rank(a) < rank(b); });
+        if ((int)idx.size() > n) idx.resize(n);
+    }
 
     puts("回车=不会  q=退出  判错时输入 y 可改判为对\n");
     int done = 0, ok = 0;
