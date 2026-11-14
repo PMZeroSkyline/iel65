@@ -40,6 +40,21 @@ td .m{color:var(--mute);font-size:12px}
 input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
 #sync summary{cursor:pointer;color:var(--mute);font-size:13px;margin-top:10px}
 #st{margin-top:6px;font-size:14px;font-weight:600}
+:root{--h0:#ebedf0;--h1:#9be9a8;--h2:#40c463;--h3:#30a14e;--h4:#216e39}
+@media (prefers-color-scheme:dark){:root{--h0:#2a313d;--h1:#0e4429;--h2:#006d32;--h3:#26a641;--h4:#39d353}}
+.hmHead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.hmHead .seg{margin:0;flex:0 0 auto}.hmHead .seg button{flex:0 0 auto;padding:4px 10px;font-size:13px}
+.hmWrap{display:flex;gap:4px}
+.hmDays{display:grid;grid-template-rows:14px repeat(7,11px);row-gap:3px;font-size:10px;line-height:11px;color:var(--mute)}
+.hmScroll{flex:1;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+#hmMonths,#hm{display:grid;grid-auto-flow:column;grid-auto-columns:11px;column-gap:3px;width:max-content}
+#hmMonths{height:14px;margin-bottom:3px;font-size:10px;line-height:11px;color:var(--mute);white-space:nowrap}
+#hm{grid-template-rows:repeat(7,11px);row-gap:3px}
+#hm i,.legend i{display:block;width:11px;height:11px;border-radius:2px;background:var(--h0)}
+#hm i{cursor:pointer}#hm i.sel{outline:2px solid var(--fg);outline-offset:1px}#hm i.fut{visibility:hidden}
+.l1{background:var(--h1)!important}.l2{background:var(--h2)!important}.l3{background:var(--h3)!important}.l4{background:var(--h4)!important}
+.hmFoot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}
+.legend{display:flex;align-items:center;gap:3px;font-size:11px;color:var(--mute)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);max-width:calc(100% - 32px);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9}
 .toast.on{opacity:1}
 </style>
@@ -74,6 +89,16 @@ input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var
     <div class="bar" id="bar"></div>
     <div class="mute" id="acc"></div>
     <div class="mute" id="timeLine" style="margin-top:6px"></div>
+  </div>
+  <div class="card">
+    <div class="hmHead"><b id="hmTitle" style="font-size:14px"></b>
+      <div class="seg" id="hmMode"><button data-h="ans" class="on">次数</button><button data-h="sec">时长</button></div></div>
+    <div class="hmWrap">
+      <div class="hmDays"><span></span><span>一</span><span></span><span>三</span><span></span><span>五</span><span></span><span>日</span></div>
+      <div class="hmScroll" id="hmScroll"><div id="hmMonths"></div><div id="hm" role="img" aria-label="过去一年每天的学习量"></div></div>
+    </div>
+    <div class="hmFoot"><span class="mute" id="hmInfo"></span>
+      <span class="legend">少<i></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i>多</span></div>
   </div>
   <div class="card">
     <input type="text" id="search" placeholder="搜索单词或中文" style="margin-top:0">
@@ -120,16 +145,19 @@ function applyOps(rows, ops) {
 }
 function setBase(text) { const d = parseTsv(text); HEAD = d.head; W = d.rows; applyOps(W, LOG); }
 
-// ===== 学习时长：time.tsv（已上传）+ 本机未上传的秒数 =====
+// ===== 学习时长 + 每日答题数：time.tsv（已上传）+ 本机未上传的部分 =====
 const IDLE_MS = 60000; // 两次操作之间最多算 60 秒，走开不累加（命令行相同）
-let TB = {}, TP = {}, lastTick = null; try { TP = JSON.parse(load('iel_time') || '{}'); } catch (e) {}
+let TB = {}, TBA = {}, TP = {}, TA = {}, lastTick = null; // B=已上传 P/A=本机待传；TB/TP 秒数，TBA/TA 答题数
+try { TP = JSON.parse(load('iel_time') || '{}'); TA = JSON.parse(load('iel_ans') || '{}'); } catch (e) {}
 const dayStr = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-function parseTime(t) {
+function parseTime(t, col = 1) { // col 1=秒数 2=答题数
   const o = {};
-  t.replace(/\r/g, '').split('\n').slice(1).filter(Boolean).forEach(l => { const [d, s] = l.split('\t'); o[d] = (o[d] || 0) + (+s || 0); });
+  t.replace(/\r/g, '').split('\n').slice(1).filter(Boolean).forEach(l => { const a = l.split('\t'); o[a[0]] = (o[a[0]] || 0) + (+a[col] || 0); });
   return o;
 }
-const toTime = o => 'date\tseconds\n' + Object.keys(o).sort().map(d => `${d}\t${o[d]}\n`).join('');
+const toTime = (sec, ans) => 'date\tseconds\tanswers\n' + [...new Set([...Object.keys(sec), ...Object.keys(ans)])].sort()
+  .map(d => `${d}\t${sec[d] || 0}\t${ans[d] || 0}\n`).join('');
+const merged = (b, p) => { const o = {...b}; for (const d in p) o[d] = (o[d] || 0) + p[d]; return o; };
 function tick() {
   const now = Date.now();
   if (lastTick !== null) {
@@ -143,15 +171,43 @@ function fmtTime(s) {
   return s < 60 ? `${Math.round(s)} 秒` : s < 3600 ? `${Math.round(s / 60)} 分钟` : `${(s / 3600).toFixed(1)} 小时`;
 }
 function renderTime() {
-  const all = {...TB}; for (const d in TP) all[d] = (all[d] || 0) + TP[d];
-  const ds = Object.keys(all).filter(d => all[d] > 0).sort(), now = new Date(), from = new Date();
+  const all = merged(TB, TP);
+  const ds =Object.keys(all).filter(d => all[d] > 0).sort(), now = new Date(), from = new Date();
   from.setDate(from.getDate() - 13);
   const sum = f => ds.filter(f).reduce((a, d) => a + all[d], 0), fromS = dayStr(from), today = dayStr(now);
   $('timeLine').textContent = ds.length
     ? `学习时长 ${fmtTime(sum(() => true))} · 过去两周 ${fmtTime(sum(d => d >= fromS))} · 今天 ${fmtTime(sum(d => d === today))} · 最后学习 ${ds[ds.length - 1]}`
     : '学习时长：还没有记录';
 }
-document.addEventListener('visibilitychange', () => { if (document.hidden) tick(); else lastTick = Date.now(); }); // 切走或锁屏不计时
+// ===== 学习热力图（类似 GitHub contributions）：过去一年，每列一周（周一开头），越多越绿 =====
+let hmMode = 'ans', hmSel = null;
+function renderHeat() {
+  const sec = merged(TB, TP), ans = merged(TBA, TA), val = d => (hmMode === 'ans' ? ans : sec)[d] || 0;
+  const today = new Date(); today.setHours(12, 0, 0, 0);
+  const start = new Date(today); start.setDate(start.getDate() - 52 * 7 - (today.getDay() + 6) % 7); // 52 周前的周一
+  const days = []; for (const d = new Date(start); days.length < 53 * 7; d.setDate(d.getDate() + 1)) days.push({s: dayStr(d), m: d.getMonth(), fut: d > today});
+  const vals = days.filter(x => !x.fut).map(x => val(x.s)), max = Math.max(0, ...vals), total = vals.reduce((a, b) => a + b, 0);
+  const lv = v => v <= 0 || !max ? 0 : Math.min(4, Math.ceil(v / max * 4)); // 按当年最大值分 4 档
+  $('hmTitle').textContent = hmMode === 'ans' ? `过去一年答题 ${total} 次` : `过去一年学习 ${fmtTime(total)}`;
+  $('hm').innerHTML = days.map(x => `<i data-d="${x.s}" class="${x.fut ? 'fut' : 'l' + lv(val(x.s))}${x.s === hmSel ? ' sel' : ''}" title="${x.s}"></i>`).join('');
+  let months = '', prev = -1, lastCol = -9; // 月份标在该月第一个完整周的上方，太挤就跳过
+  for (let c = 0; c < 53; c++) { const m = days[c * 7].m;
+    if (m !== prev && c - lastCol >= 3 && c < 52) { months += `<span style="grid-column:${c + 1}">${m + 1}月</span>`; lastCol = c; }
+    prev = m; }
+  $('hmMonths').innerHTML = months;
+  hmInfo(hmSel || dayStr(today));
+  $('hmScroll').scrollLeft = $('hmScroll').scrollWidth; // 默认显示最近几周
+}
+function hmInfo(d) {
+  const s = merged(TB, TP)[d] || 0, a = merged(TBA, TA)[d] || 0;
+  $('hmInfo').textContent = `${d}：` + (s || a ? `答题 ${a} 次 · 用时 ${fmtTime(s)}` : '没有学习');
+}
+$('hm').addEventListener('click', e => { const c = e.target.closest('i[data-d]'); if (!c || c.classList.contains('fut')) return;
+  document.querySelectorAll('#hm i.sel').forEach(x => x.classList.remove('sel')); c.classList.add('sel'); hmSel = c.dataset.d; hmInfo(hmSel); });
+$('hm').addEventListener('mouseover', e => { const c = e.target.closest('i[data-d]'); if (c && !c.classList.contains('fut')) hmInfo(c.dataset.d); });
+$('hm').addEventListener('mouseleave', () => hmInfo(hmSel || dayStr(new Date())));
+seg('hmMode', 'h', m => { hmMode = m; renderHeat(); });
+document.addEventListener('visibilitychange',() => { if (document.hidden) tick(); else lastTick = Date.now(); }); // 切走或锁屏不计时
 const status = w => w.streak >= MASTER ? 'mast' : w.seen ? 'learn' : 'new';
 // 易错 = 错过且还没掌握；答对几次也留在易错里，直到连续答对 MASTER 次
 const isWeak = w => w.wrong > 0 && w.streak < MASTER;
@@ -264,6 +320,7 @@ function finalize() {
     if (op === 'r' && x.streak + 1 === MASTER) tips.push(`★ ${w} 已掌握`);
     if ((op === 'w' || op === 'x') && x.streak >= MASTER) tips.push(`↓ ${w} 已移出已掌握`); }
   if (tips.length) toast(tips.join('　'));
+  const day = dayStr(new Date()); TA[day] = (TA[day] || 0) + 1; store('iel_ans', JSON.stringify(TA)); // 当天答题数
   LOG.push(...ops); applyOps(W, ops); saveLog();
 }
 function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : '') + ` · 本次用时 ${fmtTime(sess.sec)}`; }
@@ -304,7 +361,7 @@ seg('pool', 'p', p => { pool = p; show(); });
 // ===== 进度 =====
 let filter = 'seen', sortK = 'seen', sortDesc = true, limit = 200;
 function renderProg() {
-  renderTime();
+  renderTime(); renderHeat();
   const c = {mast: 0, learn: 0, new: 0}; let r = 0, w = 0, seen = 0;
   W.forEach(x => { c[status(x)]++; r += x.right; w += x.wrong; seen += x.seen; });
   const weak = W.filter(isWeak).length, N = W.length;
@@ -360,7 +417,8 @@ async function upload() {
   finalize(); tick();
   const n = LOG.length, snap = {}; // 只上传满 1 秒的部分，零头留到下次
   for (const d in TP) if (TP[d] >= 1) snap[d] = Math.floor(TP[d]);
-  const hasTime = Object.keys(snap).length > 0;
+  const snapA = {...TA}; // 每日答题数，和时长一起写进 time.tsv
+  const hasTime = Object.keys(snap).length + Object.keys(snapA).length > 0;
   if (!n && !hasTime) return msg('没有需要上传的记录');
   uploading = true; $('upload').disabled = true; msg('上传中…');
   try {
@@ -371,9 +429,10 @@ async function upload() {
     }
     if (hasTime) {
       const out = await putFile('time.tsv', `网页学习时长：上传 ${fmtTime(Object.values(snap).reduce((a, b) => a + b, 0))}`, text => {
-        const o = parseTime(text); for (const d in snap) o[d] = (o[d] || 0) + snap[d]; return toTime(o); });
+        return toTime(merged(parseTime(text, 1), snap), merged(parseTime(text, 2), snapA)); });
       for (const d in snap) { TP[d] -= snap[d]; if (TP[d] <= 0) delete TP[d]; }
-      store('iel_time', JSON.stringify(TP)); TB = parseTime(out);
+      for (const d in snapA) { TA[d] -= snapA[d]; if (TA[d] <= 0) delete TA[d]; }
+      store('iel_time', JSON.stringify(TP)); store('iel_ans', JSON.stringify(TA)); TB = parseTime(out, 1); TBA = parseTime(out, 2);
     }
     if (!$('prog').hidden) renderProg();
     msg(n ? `已上传 ${n} 条记录 ✓` : '学习时长已上传 ✓');
@@ -401,7 +460,7 @@ const loadFile = f => (token() ? fetchLatest(f).then(d => d.text) : Promise.reje
 loadFile('words.tsv')
   .then(t => { setBase(t); show(); updSync(); })
   .catch(() => { $('q').textContent = '加载 words.tsv 失败'; });
-loadFile('time.tsv').then(t => { TB = parseTime(t); if (!$('prog').hidden) renderTime(); }).catch(() => {});
+loadFile('time.tsv').then(t => { TB = parseTime(t, 1); TBA = parseTime(t, 2); if (!$('prog').hidden) renderProg(); }).catch(() => {});
 </script>
 </body>
 </html>

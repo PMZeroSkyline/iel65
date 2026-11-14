@@ -121,19 +121,23 @@ int editDist(const string& a, const string& b) {
     return d[b.size()];
 }
 
-// ===== 学习时长：time.tsv 每天一行（日期、秒数）=====
-map<string, long> times;
+// ===== 学习时长：time.tsv 每天一行（日期、秒数、答题数）=====
+map<string, long> times, answers;
 const long IDLE_MS = 60000;  // 两次操作之间最多算 60 秒，走开不累加（网页端相同）
 string dayStr(time_t t) { char b[16]; strftime(b, sizeof b, "%Y-%m-%d", localtime(&t)); return b; }
 void loadTimes() {
     ifstream f(dbPath.parent_path() / "time.tsv"); string line;
     getline(f, line);
-    while (getline(f, line)) { auto p = line.find('\t'); if (p != string::npos) times[line.substr(0, p)] += atol(line.c_str() + p + 1); }
+    while (getline(f, line)) {
+        stringstream ss(line); string d, s, a;
+        getline(ss, d, '\t'); getline(ss, s, '\t'); getline(ss, a, '\t');
+        if (!d.empty()) { times[d] += atol(s.c_str()); answers[d] += atol(a.c_str()); }
+    }
 }
 void saveTimes() {
     ofstream f(dbPath.parent_path() / "time.tsv", ios::binary);
-    f << "date\tseconds\n";
-    for (auto& [d, s] : times) f << d << '\t' << s << '\n';
+    f << "date\tseconds\tanswers\n";
+    for (auto& [d, s] : times) f << d << '\t' << s << '\t' << answers[d] << '\n';
 }
 string fmtTime(long s) {
     char b[32];
@@ -277,6 +281,7 @@ int main(int argc, char** argv) {
         else { x.wrong++; if (kick(x, false)) x.streak = 0; }
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");
         done++; ok += right;
+        answers[dayStr(time(nullptr))]++; times[dayStr(time(nullptr))]; saveTimes();  // 当天答题数（热力图用）
         save(v);
         tick();
         puts("");
