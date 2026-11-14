@@ -32,7 +32,7 @@ void speak(const std::string& text) {
 using namespace std;
 namespace fs = std::filesystem;
 
-struct Word { string w, ph, m; int seen = 0, right = 0, wrong = 0, streak = 0; };
+struct Word { string w, ph, m; int seen = 0, right = 0, wrong = 0, streak = 0; string swept; };  // swept = 按章遍历里最近一次答过的日期
 const int MASTER = 3;  // 连续答对 MASTER 次视为掌握
 string header;
 fs::path dbPath;
@@ -40,13 +40,15 @@ fs::path dbPath;
 vector<Word> load() {
     ifstream f(dbPath); vector<Word> v; string line;
     getline(f, header);
+    if (!header.empty() && header.back() == '\r') header.pop_back();
+    if (header.find("\tswept") == string::npos) header += "\tswept";  // 旧数据没有这一列
     while (getline(f, line)) {
         if (!line.empty() && line.back() == '\r') line.pop_back();
-        stringstream ss(line); Word x; string a[7];
+        stringstream ss(line); Word x; string a[8];
         for (auto& s : a) getline(ss, s, '\t');
         x.w = a[0]; x.ph = a[1]; x.m = a[2];
         x.seen = atoi(a[3].c_str()); x.right = atoi(a[4].c_str());
-        x.wrong = atoi(a[5].c_str()); x.streak = atoi(a[6].c_str());
+        x.wrong = atoi(a[5].c_str()); x.streak = atoi(a[6].c_str()); x.swept = a[7];
         if (!x.w.empty()) v.push_back(x);
     }
     return v;
@@ -54,7 +56,14 @@ vector<Word> load() {
 void save(const vector<Word>& v) {
     ofstream f(dbPath, ios::binary);
     f << header << '\n';
-    for (auto& x : v) f << x.w << '\t' << x.ph << '\t' << x.m << '\t' << x.seen << '\t' << x.right << '\t' << x.wrong << '\t' << x.streak << '\n';
+    for (auto& x : v) f << x.w << '\t' << x.ph << '\t' << x.m << '\t' << x.seen << '\t' << x.right << '\t' << x.wrong << '\t' << x.streak << '\t' << x.swept << '\n';
+}
+// "2026-11-14" -> 天数（只用于比较先后）；空字符串返回很小的数，表示从没过
+long dayNum(const string& d) {
+    int y, m, dd;
+    if (sscanf(d.c_str(), "%d-%d-%d", &y, &m, &dd) != 3) return -1000000;
+    y -= m <= 2; long era = y / 400, yoe = y - era * 400, doy = (153 * (m + (m > 2 ? -3 : 9)) + 2) / 5 + dd - 1;
+    return era * 146097 + yoe * 365 + yoe / 4 - yoe / 100 + doy;
 }
 
 bool readLine(string& s) {
@@ -229,13 +238,21 @@ int main(int argc, char** argv) {
     }
     mt19937 rng(random_device{}());
     vector<int> idx;
-    if (sweep) {  // 按章遍历：选中章节里的已掌握词各出一次，顺序打乱
+    const long today = dayNum(dayStr(time(nullptr)));
+    auto age = [&](const string& d) {  // 块名：从没过 / 今天 / 昨天 / N 天前
+        if (d.empty()) return string("从没过");
+        long n = today - dayNum(d);
+        return n <= 0 ? string("今天刷过") : n == 1 ? string("昨天刷过") : to_string(n) + " 天前刷过";
+    };
+    if (sweep) {  // 按章遍历：按上次过的日期分块，从没过的一块最先，然后最老的块先出；块内随机，每个词只出一次
         const int CH = 500, nch = ((int)v.size() + CH - 1) / CH;
         if (chapSpec.empty()) {
             for (int c = 0; c < nch; c++) {
-                int m = 0, e = min((c + 1) * CH, (int)v.size());
-                for (int i = c * CH; i < e; i++) m += v[i].streak >= MASTER;
-                printf("第%2d章  %4d-%-4d  已掌握 %3d   %s ~ %s\n", c + 1, c * CH + 1, e, m, v[c * CH].w.c_str(), v[e - 1].w.c_str());
+                int m = 0, never = 0, e = min((c + 1) * CH, (int)v.size()); string oldest;
+                for (int i = c * CH; i < e; i++) if (v[i].streak >= MASTER) {
+                    m++; if (v[i].swept.empty()) never++; else if (oldest.empty() || v[i].swept < oldest) oldest = v[i].swept; }
+                printf("第%2d章  %4d-%-4d  已掌握 %3d  从没过 %3d  %-16s  %s ~ %s\n", c + 1, c * CH + 1, e, m, never,
+                       oldest.empty() ? "" : ("最早 " + age(oldest)).c_str(), v[c * CH].w.c_str(), v[e - 1].w.c_str());
             }
             printf("要遍历哪几章？（如 1-3,5）："); fflush(stdout);
             if (!readLine(chapSpec)) return 0;
@@ -250,8 +267,14 @@ int main(int argc, char** argv) {
         string names; for (int c = 1; c <= nch; c++) if (sel[c]) names += " " + to_string(c);
         for (int i = 0; i < (int)v.size(); i++) if (sel[i / CH + 1] && v[i].streak >= MASTER) idx.push_back(i);
         if (idx.empty()) { puts(names.empty() ? "没有选中任何章节" : "这几章还没有已掌握的单词"); return 0; }
-        shuffle(idx.begin(), idx.end(), rng);
-        printf("按章遍历：第%s 章，%zu 个已掌握的词，每个出一次\n", names.c_str(), idx.size());
+        shuffle(idx.begin(), idx.end(), rng);  // 先打乱，再按日期稳定排序 = 块内随机、块按日期从老到新（空日期最小）
+        stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return v[a].swept < v[b].swept; });
+        printf("按章遍历：第%s 章，%zu 个已掌握的词，按块出（最老的块先出，块内随机），q 随时停\n", names.c_str(), idx.size());
+        for (size_t k = 0; k < idx.size();) {  // 列出每块：多少个、几天前刷过
+            size_t e = k; while (e < idx.size() && v[idx[e]].swept == v[idx[k]].swept) e++;
+            printf("  %-14s %3zu 个\n", age(v[idx[k]].swept).c_str(), e - k);
+            k = e;
+        }
     } else {
         // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错（错过） > 学习中（刷过没错过） > 未学 排序
         for (int i = 0; i < (int)v.size(); i++) if ((v[i].streak >= MASTER) == review) idx.push_back(i);
@@ -272,8 +295,13 @@ int main(int argc, char** argv) {
         long s = (long)(ms / 1000); ms %= 1000;
         if (s) { times[dayStr(time(nullptr))] += s; sessSec += s; saveTimes(); }
     };
-    for (int i : idx) {
-        auto& x = v[i];
+    vector<string> blk; for (int i : idx) blk.push_back(v[i].swept);  // 每题原来所在的块（答完 swept 会变成今天）
+    for (size_t k = 0; k < idx.size(); k++) {
+        auto& x = v[idx[k]];
+        if (sweep && (k == 0 || blk[k - 1] != blk[k])) {  // 进入新的一块
+            size_t e = k; while (e < idx.size() && blk[e] == blk[k]) e++;
+            printf("—— %s的 %zu 个 ——\n", age(blk[k]).c_str(), e - k);
+        }
         bool e2c = mode == "e2c" || (mode == "mix" && rng() % 2);
         printf("[%d/%zu] %s\n> ", done + 1, idx.size(), e2c ? (x.w + "  /" + x.ph + "/").c_str() : x.m.c_str());
         fflush(stdout);
@@ -309,6 +337,7 @@ int main(int argc, char** argv) {
         };
         if (!right) for (auto* y : mixed) if (y->streak >= MASTER && kick(*y, true)) y->streak = 0;
         x.seen++;
+        if (sweep) x.swept = dayStr(time(nullptr));  // 记下这次遍历过的日期
         if (right) x.right++, x.streak++;
         else { x.wrong++; if (kick(x, false)) x.streak = 0; }
         if (x.streak == MASTER) puts("  ★ 已掌握，之后不再出现");

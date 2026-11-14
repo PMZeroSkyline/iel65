@@ -7,9 +7,9 @@
 
 ## 数据表格式
 
-`word	phonetic	meaning	seen	right	wrong	streak`（Tab 分隔）
+`word	phonetic	meaning	seen	right	wrong	streak	swept`（Tab 分隔）
 
-`streak` 是连续答对次数，**连续答对 3 次 = 已掌握**，之后不再出题；答错清零。
+`streak` 是连续答对次数，**连续答对 3 次 = 已掌握**，之后不再出题；答错清零。`swept` 是按章遍历里最近一次答过的日期，用来分块。
 想加词就直接在表里加一行，统计列填 `0 0 0 0`。
 
 ## 命令行
@@ -22,7 +22,7 @@ iel mix        # 混合
 iel stat       # 看进度
 iel push       # 提交并推送学习记录（words.tsv、time.tsv）
 iel review     # 只刷已掌握的词，答错踢回未掌握（可组合：iel c2e 30 review）
-iel sweep 1-3,5  # 按章遍历：每 500 词一章，把选中章节里已掌握的词各过一遍（不重复）；不写章节会先列出来让你选
+iel sweep 1-3,5  # 按章遍历：每 500 词一章，已掌握的词按上次刷的日期分块，从没过的块最先、然后最老的块先出，块内随机；q 随时停，下次接着来
 ```
 
 - 出题顺序：易错词 > 没学过的 > 学习中的，已掌握的跳过

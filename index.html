@@ -72,7 +72,7 @@ input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var
     <div class="seg" id="pool"><button data-p="todo" class="on">未掌握</button><button data-p="weak">易错</button><button data-p="mast">已掌握</button><button data-p="all">全部</button><button data-p="ch">按章</button></div>
     <div id="chBox" hidden>
       <div id="chSel">
-        <div class="mute" style="margin-bottom:6px">每 500 词一章，选几章把里面已掌握的词各过一遍（不重复，顺序打乱）</div>
+        <div class="mute" style="margin-bottom:6px">每 500 词一章，把已掌握的词按上次刷的日期分块，最老的块先出、块内随机，每次不重复，随时可以停</div>
         <div class="chGrid" id="chGrid"></div>
         <div class="mute" id="chInfo" style="margin-top:6px"></div>
         <div class="row"><button id="chStart">开始</button></div>
@@ -146,12 +146,15 @@ const saveLog = () => { store('iel_log', JSON.stringify(LOG)); updSync(); };
 function parseTsv(t) {
   const lines = t.replace(/\r/g, '').split('\n');
   return {head: lines[0], rows: lines.slice(1).filter(Boolean).map(l => { const a = l.split('\t');
-    return {w: a[0], ph: a[1] || '', m: a[2] || '', seen: +a[3] || 0, right: +a[4] || 0, wrong: +a[5] || 0, streak: +a[6] || 0}; })};
+    return {w: a[0], ph: a[1] || '', m: a[2] || '', seen: +a[3] || 0, right: +a[4] || 0, wrong: +a[5] || 0, streak: +a[6] || 0, swept: a[7] || ''}; })};
 }
-const toTsv = (head, rows) => head + '\n' + rows.map(x => [x.w, x.ph, x.m, x.seen, x.right, x.wrong, x.streak].join('\t')).join('\n') + '\n';
+// 第 8 列 swept = 按章遍历里最近一次答过的日期；旧数据没有这一列就补上表头
+const toTsv = (head, rows) => (head.includes('\tswept') ? head : head + '\tswept') + '\n'
+  + rows.map(x => [x.w, x.ph, x.m, x.seen, x.right, x.wrong, x.streak, x.swept].join('\t')).join('\n') + '\n';
 function applyOps(rows, ops) {
   const m = new Map(rows.map(x => [x.w, x]));
-  for (const {w, op} of ops) { const x = m.get(w); if (!x) continue;
+  for (const {w, op, s} of ops) { const x = m.get(w); if (!x) continue;
+    if (s) x.swept = s; // 按章遍历答过的日期
     if (op === 'x') { x.streak = 0; continue; }
     x.seen++; if (op === 'r') { x.right++; x.streak++; } else { x.wrong++; if (op === 'w') x.streak = 0; } }
 }
@@ -333,6 +336,7 @@ function finalize() {
     ops.push({w: p.w, op: !p.self || !p.typed || p.kick.has(p.w) ? 'w' : 'k'});
     p.mixed.forEach(w => { if (p.kick.has(w)) ops.push({w, op: 'x'}); });
   }
+  if (pool === 'ch' && EXQ && EXQ.q[0] === p.w) ops[0].s = dayStr(new Date()); // 按章遍历：记下过的日期
   // 状态变化弹提示：刚掌握 / 移出已掌握
   const byW = new Map(W.map(x => [x.w, x])), tips = [];
   for (const {w, op} of ops) { const x = byW.get(w); if (!x) continue;
@@ -341,37 +345,55 @@ function finalize() {
   if (tips.length) toast(tips.join('　'));
   const day = dayStr(new Date()); TA[day] = (TA[day] || 0) + 1; store('iel_ans', JSON.stringify(TA)); // 当天答题数
   LOG.push(...ops); applyOps(W, ops); saveLog();
-  if (pool === 'ch' && EXQ && EXQ.q[0] === p.w) { EXQ.q.shift(); EXQ.ok += p.right ? 1 : 0; saveEx(); } // 按章遍历：答完出队
+  if (pool === 'ch' && EXQ && EXQ.q[0] === p.w) { EXQ.q.shift(); EXQ.ok += p.right ? 1 : 0; } // 按章遍历：答完出队
 }
 
-// ===== 按章遍历：每 500 词一章，选中章节里的已掌握词各出一次；进度存在本机，可以接着来 =====
+// ===== 按章遍历：每 500 词一章；按上次过的日期分块，从没过的一块最先，然后最老的块先出，块内随机，每个词只出一次 =====
+// 进度就是每个词的 swept 日期，跟着 words.tsv 同步，换设备或第二天接着来不用记刷到哪
 const CH = 500;
-let EXQ = null, chSel = new Set(); // EXQ = {q: 剩余单词, n: 总数, ok: 答对数, ch: 章节}
-try { EXQ = JSON.parse(load('iel_sweep') || 'null'); } catch (e) {}
-const saveEx = () => store('iel_sweep', EXQ ? JSON.stringify(EXQ) : undefined);
+let EXQ = null, chSel = new Set(); // EXQ = 本次的队列 {q: 剩余单词, blk: {单词: 原来的日期}, n: 总数, ok: 答对数, ch: 章节}
+try { chSel = new Set(JSON.parse(load('iel_sweep_ch') || '[]')); } catch (e) {}
 const chOf = i => Math.floor(i / CH) + 1;
+function ageOf(d) { // 块名：从没过 / 今天 / 昨天 / N 天前
+  if (!d) return '从没过';
+  const n = Math.round((new Date(dayStr(new Date()) + 'T12:00:00') - new Date(d + 'T12:00:00')) / 864e5);
+  return n <= 0 ? '今天' : n === 1 ? '昨天' : `${n} 天前`;
+}
+function blocks(words) { // [[日期, 个数], ...]，从没过（空）最先，然后从老到新
+  const c = {}; words.forEach(w => { c[w.swept] = (c[w.swept] || 0) + 1; });
+  return Object.keys(c).sort().map(d => [d, c[d]]);
+}
 function renderCh() {
   $('chBox').hidden = pool !== 'ch';
   if (pool !== 'ch') return;
-  const active = !!(EXQ && EXQ.q.length), nch = Math.ceil(W.length / CH), m = Array(nch + 1).fill(0);
-  W.forEach((w, i) => { if (w.streak >= MASTER) m[chOf(i)]++; });
+  const active = !!(EXQ && EXQ.q.length), nch = Math.ceil(W.length / CH), mw = Array.from({length: nch + 1}, () => []);
+  W.forEach((w, i) => { if (w.streak >= MASTER) mw[chOf(i)].push(w); });
   $('chSel').hidden = active; $('chBar').hidden = !active;
-  if (active) { $('chProg').textContent = `第 ${EXQ.ch.join('、')} 章：${EXQ.n - EXQ.q.length} / ${EXQ.n} · 答对 ${EXQ.ok}`; return; }
-  $('chGrid').innerHTML = Array.from({length: nch}, (_, k) => k + 1).map(c =>
-    `<button type="button" data-c="${c}" class="${chSel.has(c) ? 'on' : ''}" title="${esc(W[(c - 1) * CH].w)} ~ ${esc(W[Math.min(c * CH, W.length) - 1].w)}">第${c}章<small>已掌握 ${m[c]}</small></button>`).join('');
-  const total = [...chSel].reduce((a, c) => a + m[c], 0);
-  $('chInfo').textContent = chSel.size ? `选了 ${chSel.size} 章，共 ${total} 个已掌握的词` : '点选章节，可以多选';
-  $('chStart').disabled = !total;
+  if (active) {
+    const b = EXQ.blk[EXQ.q[0]], left = EXQ.q.filter(w => EXQ.blk[w] === b).length;
+    $('chProg').textContent = `第 ${EXQ.ch.join('、')} 章：${EXQ.n - EXQ.q.length} / ${EXQ.n} · 答对 ${EXQ.ok} · 当前块：${ageOf(b)}${b ? '刷过' : ''}，还剩 ${left} 个`;
+    return;
+  }
+  $('chGrid').innerHTML = Array.from({length: nch}, (_, k) => k + 1).map(c => {
+    const bl = blocks(mw[c]), never = bl.length && !bl[0][0] ? bl[0][1] : 0, oldest = bl.find(x => x[0]);
+    const sub = !mw[c].length ? '还没有已掌握' : never ? `没过 ${never} / ${mw[c].length}` : `最早 ${ageOf(oldest[0])}`;
+    return `<button type="button" data-c="${c}" class="${chSel.has(c) ? 'on' : ''}" title="${esc(W[(c - 1) * CH].w)} ~ ${esc(W[Math.min(c * CH, W.length) - 1].w)}">第${c}章<small>${sub}</small></button>`;
+  }).join('');
+  const sel = [...chSel].flatMap(c => mw[c] || []);
+  $('chInfo').textContent = chSel.size
+    ? `选了 ${chSel.size} 章，${sel.length} 个已掌握的词：` + blocks(sel).map(([d, n]) => `${ageOf(d)}${d ? '刷过' : ''} ${n} 个`).join(' · ')
+    : '点选章节，可以多选';
+  $('chStart').disabled = !sel.length;
 }
 $('chGrid').addEventListener('click', e => { const b = e.target.closest('button[data-c]'); if (!b) return;
-  const c = +b.dataset.c; chSel.has(c) ? chSel.delete(c) : chSel.add(c); renderCh(); });
+  const c = +b.dataset.c; chSel.has(c) ? chSel.delete(c) : chSel.add(c); store('iel_sweep_ch', JSON.stringify([...chSel])); renderCh(); });
 $('chStart').onclick = () => {
-  const q = W.filter((w, i) => chSel.has(chOf(i)) && w.streak >= MASTER).map(w => w.w);
-  for (let i = q.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [q[i], q[j]] = [q[j], q[i]]; }
-  EXQ = {q, n: q.length, ok: 0, ch: [...chSel].sort((a, b) => a - b)}; saveEx(); show();
+  const q = W.filter((w, i) => chSel.has(chOf(i)) && w.streak >= MASTER);
+  for (let i = q.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [q[i], q[j]] = [q[j], q[i]]; } // 块内随机
+  q.sort((a, b) => a.swept < b.swept ? -1 : a.swept > b.swept ? 1 : 0); // 稳定排序：按块从老到新，空（从没过）最先
+  EXQ = {q: q.map(w => w.w), blk: Object.fromEntries(q.map(w => [w.w, w.swept])), n: q.length, ok: 0, ch: [...chSel].sort((a, b) => a - b)}; show();
 };
-$('chStop').onclick = e => { e.preventDefault();
-  if (confirm(`还剩 ${EXQ.q.length} 个没过，确定结束？已答的记录会保留。`)) { EXQ = null; saveEx(); show(); } };
+$('chStop').onclick = e => { e.preventDefault(); EXQ = null; show(); }; // 随时停：过了的词已记日期，下次接着过最久没过的
 function updSess() { $('sess').textContent = `本次已刷 ${sess.n} 个，答对 ${sess.ok} 个` + (sess.n ? `（${Math.round(sess.ok * 100 / sess.n)}%）` : '') + ` · 本次用时 ${fmtTime(sess.sec)}`; }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 
