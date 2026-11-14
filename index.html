@@ -44,7 +44,7 @@ input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var
 #sync summary{cursor:pointer;color:var(--mute);font-size:13px;margin-top:10px}
 #st{margin-top:6px;font-size:14px;font-weight:600}
 :root{--h0:#ebedf0;--h1:#9be9a8;--h2:#40c463;--h3:#30a14e;--h4:#216e39}
-@media (prefers-color-scheme:dark){:root{--h0:#2a313d;--h1:#0e4429;--h2:#006d32;--h3:#26a641;--h4:#39d353}}
+@media (prefers-color-scheme:dark){:root{--h0:#2a313d}} /* 深色模式只换空格子，绿色同样越多越深 */
 .hmHead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
 .hmHead .seg{margin:0;flex:0 0 auto}.hmHead .seg button{flex:0 0 auto;padding:4px 10px;font-size:13px}
 .hmWrap{display:flex;gap:4px}
@@ -72,7 +72,7 @@ input[type=password]{width:100%;padding:10px;font-size:15px;border:1px solid var
     <div class="seg" id="pool"><button data-p="todo" class="on">未掌握</button><button data-p="weak">易错</button><button data-p="mast">已掌握</button><button data-p="all">全部</button><button data-p="ch">按章</button></div>
     <div id="chBox" hidden>
       <div id="chSel">
-        <div class="mute" style="margin-bottom:6px">每 500 词一章，把已掌握的词按上次刷的日期分块，最老的块先出、块内随机，每次不重复，随时可以停</div>
+        <div class="mute" style="margin-bottom:6px">每 500 词一章，最久没刷的先出</div>
         <div class="chGrid" id="chGrid"></div>
         <div class="mute" id="chInfo" style="margin-top:6px"></div>
         <div class="row"><button id="chStart">开始</button></div>
@@ -381,7 +381,7 @@ function renderCh() {
   }).join('');
   const sel = [...chSel].flatMap(c => mw[c] || []);
   $('chInfo').textContent = chSel.size
-    ? `选了 ${chSel.size} 章，${sel.length} 个已掌握的词：` + blocks(sel).map(([d, n]) => `${ageOf(d)}${d ? '刷过' : ''} ${n} 个`).join(' · ')
+    ? `${sel.length} 个：` + blocks(sel).map(([d, n]) => `${ageOf(d)} ${n}`).join(' · ')
     : '点选章节，可以多选';
   $('chStart').disabled = !sel.length;
 }

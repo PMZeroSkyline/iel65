@@ -173,11 +173,12 @@ int main(int argc, char** argv) {
     CoInitialize(nullptr);
     CoCreateInstance(CLSID_SpVoice, nullptr, CLSCTX_ALL, IID_ISpVoice, (void**)&voice);
 #endif
-    string mode = "e2c", chapSpec; int n = 20; bool review = false, sweep = false;  // review = 只刷已掌握的；sweep = 按章遍历已掌握的
+    string mode = "e2c", chapSpec; int n = 20; bool review = false, sweep = false, sweepStat = false;
     for (int i = 1; i < argc; i++) {
         string a = argv[i];
         if (a == "review") review = true;
         else if (a == "sweep") sweep = true;
+        else if (sweep && a == "stat") sweepStat = true;
         else if (isdigit((unsigned char)a[0])) { if (sweep) chapSpec = a; else n = atoi(a.c_str()); }  // sweep 后面的数字是章节
         else mode = a;
     }
@@ -233,28 +234,33 @@ int main(int argc, char** argv) {
     }
     if (mode != "e2c" && mode != "c2e" && mode != "mix") {
         puts("用法: iel [e2c|c2e|mix|stat|push] [题数=20] [review]\n  e2c 看英文写中文  c2e 看中文写英文  mix 混合  stat 进度  push 提交并推送学习记录\n"
-             "  review 只刷已掌握的词，答错踢回未掌握\n  iel sweep [章节] [e2c|c2e|mix]  按章遍历已掌握的词，每个出一次（每 500 词一章，如 iel sweep 1-3,5）");
+             "  review 只刷已掌握的词，答错踢回未掌握\n  iel sweep [章节|stat]  按章刷已掌握的词，如 iel sweep 1-3,5；stat 看每章进度");
         return 0;
     }
     mt19937 rng(random_device{}());
     vector<int> idx;
     const long today = dayNum(dayStr(time(nullptr)));
-    auto age = [&](const string& d) {  // 块名：从没过 / 今天 / 昨天 / N 天前
+    auto age = [&](const string& d) {  // 从没过 / 今天 / 昨天 / N 天前
         if (d.empty()) return string("从没过");
         long n = today - dayNum(d);
-        return n <= 0 ? string("今天刷过") : n == 1 ? string("昨天刷过") : to_string(n) + " 天前刷过";
+        return n <= 0 ? string("今天") : n == 1 ? string("昨天") : to_string(n) + " 天前";
     };
-    if (sweep) {  // 按章遍历：按上次过的日期分块，从没过的一块最先，然后最老的块先出；块内随机，每个词只出一次
+    // 把一组词按 swept 日期分块：从没过（空）最先，然后从老到新
+    auto blocks = [&](const vector<int>& ids) { map<string, int> c; for (int i : ids) c[v[i].swept]++; return c; };
+    auto blockLine = [&](const map<string, int>& c) {
+        string s; for (auto& [d, k] : c) s += (s.empty() ? "" : " · ") + age(d) + " " + to_string(k);
+        return s;
+    };
+    if (sweep) {  // 按章刷：按上次刷的日期分块，最老的块先出，块内随机
         const int CH = 500, nch = ((int)v.size() + CH - 1) / CH;
-        if (chapSpec.empty()) {
+        if (chapSpec.empty() || sweepStat) {
             for (int c = 0; c < nch; c++) {
-                int m = 0, never = 0, e = min((c + 1) * CH, (int)v.size()); string oldest;
-                for (int i = c * CH; i < e; i++) if (v[i].streak >= MASTER) {
-                    m++; if (v[i].swept.empty()) never++; else if (oldest.empty() || v[i].swept < oldest) oldest = v[i].swept; }
-                printf("第%2d章  %4d-%-4d  已掌握 %3d  从没过 %3d  %-16s  %s ~ %s\n", c + 1, c * CH + 1, e, m, never,
-                       oldest.empty() ? "" : ("最早 " + age(oldest)).c_str(), v[c * CH].w.c_str(), v[e - 1].w.c_str());
+                vector<int> ids; int e = min((c + 1) * CH, (int)v.size());
+                for (int i = c * CH; i < e; i++) if (v[i].streak >= MASTER) ids.push_back(i);
+                printf("第%2d章  已掌握 %3zu  %s\n", c + 1, ids.size(), ids.empty() ? "" : blockLine(blocks(ids)).c_str());
             }
-            printf("要遍历哪几章？（如 1-3,5）："); fflush(stdout);
+            if (sweepStat) return 0;
+            printf("刷哪几章？（如 1-3,5）："); fflush(stdout);
             if (!readLine(chapSpec)) return 0;
         }
         vector<bool> sel(nch + 1, false);
@@ -267,14 +273,9 @@ int main(int argc, char** argv) {
         string names; for (int c = 1; c <= nch; c++) if (sel[c]) names += " " + to_string(c);
         for (int i = 0; i < (int)v.size(); i++) if (sel[i / CH + 1] && v[i].streak >= MASTER) idx.push_back(i);
         if (idx.empty()) { puts(names.empty() ? "没有选中任何章节" : "这几章还没有已掌握的单词"); return 0; }
-        shuffle(idx.begin(), idx.end(), rng);  // 先打乱，再按日期稳定排序 = 块内随机、块按日期从老到新（空日期最小）
+        shuffle(idx.begin(), idx.end(), rng);  // 打乱后按日期稳定排序 = 块内随机
         stable_sort(idx.begin(), idx.end(), [&](int a, int b) { return v[a].swept < v[b].swept; });
-        printf("按章遍历：第%s 章，%zu 个已掌握的词，按块出（最老的块先出，块内随机），q 随时停\n", names.c_str(), idx.size());
-        for (size_t k = 0; k < idx.size();) {  // 列出每块：多少个、几天前刷过
-            size_t e = k; while (e < idx.size() && v[idx[e]].swept == v[idx[k]].swept) e++;
-            printf("  %-14s %3zu 个\n", age(v[idx[k]].swept).c_str(), e - k);
-            k = e;
-        }
+        printf("第%s 章：%zu 个（%s）\n", names.c_str(), idx.size(), blockLine(blocks(idx)).c_str());
     } else {
         // 选题：跳过已掌握（review 时只要已掌握）；乱序后按 易错（错过） > 学习中（刷过没错过） > 未学 排序
         for (int i = 0; i < (int)v.size(); i++) if ((v[i].streak >= MASTER) == review) idx.push_back(i);
