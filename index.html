@@ -298,7 +298,8 @@ function reveal(right, extra = '', typed = false, mixed = []) {
   const mast = x => x.streak >= MASTER;
   const kickBtn = x => `<button type="button" class="kick" data-w="${esc(x.w)}">移出已掌握：${esc(x.w)}</button>`;
   const ask = [...(!right && typed && mast(cur) ? [cur] : []), ...(right ? [] : mixed.filter(mast))];
-  pend = {w: cur.w, right, typed, self: mast(cur), mixed: right ? [] : mixed.filter(mast).map(x => x.w), kick: new Set()};
+  pend = {w: cur.w, right, typed, self: mast(cur), mixed: right ? [] : mixed.filter(mast).map(x => x.w), kick: new Set(), day: dayStr(new Date())};
+  savePend();
   $('res').innerHTML = `<b class="${right ? 'ok' : 'bad'}">${right ? '✓ 正确' : '✗ 错误'}</b> ${extra}<button type="button" class="say" tabindex="-1" data-w="${esc(cur.w)}">🔊</button><br><b>${esc(cur.w)}</b> <span class="mute">/${esc(cur.ph)}/</span><br>${esc(cur.m)}`
     + mixed.map(x => `<div class="mute">你的答案是 <b>${esc(x.w)}</b> 的意思：${esc(x.m)}</div>`).join('')
     + (!right && !typed && mast(cur) ? `<div class="mute">↓ ${esc(cur.w)} 移出已掌握</div>` : '')
@@ -326,17 +327,20 @@ function submit() {
   const mixed = ok ? [] : W.filter(y => y !== cur && (curDir === 'e2c' ? matchCn(a, y.m) : y.w.toLowerCase() === al)).slice(0, 5);
   reveal(ok, extra, true, mixed);
 }
+// 本题结果先存本机，答完直接关页面也不丢；下次打开时补记
+const savePend = () => store('iel_pend', pend ? JSON.stringify({...pend, kick: [...pend.kick]}) : undefined);
 // 进入下一题（或上传）前，把本题结果写进 LOG
 function finalize() {
   if (!pend) return;
-  const p = pend; pend = null;
+  const p = pend; pend = null; savePend();
   const ops = [];
   if (p.right) ops.push({w: p.w, op: 'r'});
   else {
     ops.push({w: p.w, op: !p.self || !p.typed || p.kick.has(p.w) ? 'w' : 'k'});
     p.mixed.forEach(w => { if (p.kick.has(w)) ops.push({w, op: 'x'}); });
   }
-  if (p.right) ops[0].s = dayStr(new Date()); // 任何模式答对都记日期
+  // 任何模式答对都记日期；答错但保留已掌握（k）也算过了，同样记日期，否则按章刷时它一直留在老块里
+  if (ops[0].op === 'r' || ops[0].op === 'k') ops[0].s = p.day || dayStr(new Date());
   // 状态变化弹提示：刚掌握 / 移出已掌握
   const byW = new Map(W.map(x => [x.w, x])), tips = [];
   for (const {w, op} of ops) { const x = byW.get(w); if (!x) continue;
@@ -401,7 +405,7 @@ $('submit').onclick = submit;
 $('ans').onkeydown = e => { if (e.key === 'Enter') submit(); };
 $('skip').onclick = () => reveal(false);
 $('next').onclick = show;
-$('override').onclick = () => { sess.ok++; cur._done = true; $('override').hidden = true; if (pend) pend.right = true; if ($('kicks')) $('kicks').remove(); $('st').textContent = stLine(true); updSess(); };
+$('override').onclick = () => { sess.ok++; cur._done = true; $('override').hidden = true; if (pend) { pend.right = true; savePend(); } if ($('kicks')) $('kicks').remove(); $('st').textContent = stLine(true); updSess(); };
 // 结果里的连续答对提示（与 CLI 的 ★/清零 提示对应）
 function stLine(right) {
   const s = cur.streak;
@@ -416,7 +420,7 @@ function toast(t) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('on'), 2200);
 }
 $('res').addEventListener('click', e => { const b = e.target.closest('.kick'); if (!b || !pend) return;
-  const on = b.classList.toggle('on'); on ? pend.kick.add(b.dataset.w) : pend.kick.delete(b.dataset.w);
+  const on = b.classList.toggle('on'); on ? pend.kick.add(b.dataset.w) : pend.kick.delete(b.dataset.w); savePend();
   b.textContent = (on ? '✓ 将移出：' : '移出已掌握：') + b.dataset.w; });
 $('flip').onclick = () => { $('ph').textContent = (cur.ph ? '/' + cur.ph + '/  ' : '') + cur.m; };
 $('know').onclick = () => reveal(true);
@@ -529,7 +533,9 @@ $('tokClear').onclick = () => { store('iel_token'); msg('令牌已清除'); };
 // 有令牌时直接从 API 读最新的（GitHub Pages 有几分钟缓存）；没有就读 Pages 上的
 const loadFile = f => (token() ? fetchLatest(f).then(d => d.text) : Promise.reject()).catch(() => fetch(f, {cache: 'no-cache'}).then(r => { if (!r.ok) throw 0; return r.text(); }));
 loadFile('words.tsv')
-  .then(t => { setBase(t); show(); updSync(); })
+  .then(t => { setBase(t);
+    try { const p = JSON.parse(load('iel_pend')); if (p) pend = {...p, kick: new Set(p.kick)}; } catch (e) {} // 上次最后一题没记上的，show() 里补记
+    show(); updSync(); })
   .catch(() => { $('q').textContent = '加载 words.tsv 失败'; });
 loadFile('time.tsv').then(t => { TB = parseTime(t, 1); TBA = parseTime(t, 2); if (!$('prog').hidden) renderProg(); }).catch(() => {});
 </script>
