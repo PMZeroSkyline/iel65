@@ -127,7 +127,7 @@ aggregate	'ægrɪgət; (for v.) ˈægrɪgeɪt	n. 共计；合计；总计；聚�
 aggressive	ə'gresɪv	adj. 侵略的；有闯劲的；挑畔的；进取的；好斗的；有进取心的	0	0	0	0	
 aggressiveness	ə'gresɪvnɪs	n. 侵略；争斗；攻击；侵犯；寻衅；(褒)敢作敢为；有进取心；过分；放肆；进取精神	0	0	0	0	
 agile	'ædʒaɪl	adj. 敏捷的；灵活的；机敏的；活泼的	0	0	0	0	
-agitation	ædʒɪ'teɪʃ(ə)n	n. 摇动；焦虑；激动；煽动；搅动；烦乱	15	1	14	0	2026-11-19
+agitation	ædʒɪ'teɪʃ(ə)n	n. 摇动；焦虑；激动；煽动；搅动；烦乱	16	1	15	0	2026-11-19
 agony	'ægənɪ	n. 极度痛苦；极大的痛苦；挣扎；苦恼；临死的挣扎	0	0	0	0	
 agreeable	ə'griːəb(ə)l	adj. 令人愉快的；乐于同意的；同意的；适合的；和蔼可亲的	0	0	0	0	
 agreement	ə'griːm(ə)nt	n. 同意；协议；合约；一致	0	0	0	0	
@@ -460,7 +460,7 @@ bent	bent	adj. 被弄弯的；弯曲的；决心的 | n. 爱好；天赋；嗜�
 bereave	bɪ'riːv	vt. 使丧失；剥夺；使孤寂；使失去	0	0	0	0	
 besides	bɪ'saɪdz	adv. 除此之外；而且；此外 | prep. 除...之外	0	0	0	0	
 bet	bet	v. 赌；打赌 | n. 打赌；赌注；被打赌的事物 | vt. 敢断定；确信	0	0	0	0	
-betray	bɪ'treɪ	vt. 出卖；泄露；辜负；流露情感；背叛；暴露；露出…迹象	4	2	2	1	2026-11-19
+betray	bɪ'treɪ	vt. 出卖；泄露；辜负；流露情感；背叛；暴露；露出…迹象	5	2	3	0	2026-11-19
 beverage	'bevərɪdʒ	n. 饮料	0	0	0	0	
 beware	bɪ'weə(r)	v. 谨防；当心；小心 | vt. 注意；提防	14	11	3	11	2026-11-17
 bewilder	bɪ'wɪldə(r)	vt. 使迷惑；使昏乱；使不知所措	0	0	0	0	
@@ -545,7 +545,7 @@ bulb	bʌlb	n. 灯泡；球茎；鳞茎；球状物	0	0	0	0
 bulge	bʌldʒ	n&v. 膨胀；凸出；塞满 | n. 凸出部分 | vt. 使凸起	0	0	0	0	
 bulk	bʌlk	n. 大量；大批；大小；体积；大块；大多数；容量；大部分 | vt. 显得大；显得重要	0	0	0	0	
 bullet	'bulɪt	n. 枪弹；子弹；只选某党全部候选人的投票；豆子 | vi. 射出；迅速行进	0	0	0	0	
-bulletin	'bulətɪn	n. 新闻简报；公告；学报；期刊；布告；公报 | vt. 公布	9	3	6	1	2026-11-19
+bulletin	'bulətɪn	n. 新闻简报；公告；学报；期刊；布告；公报 | vt. 公布	10	3	7	0	2026-11-19
 bully	'buli	n. 恃强凌弱者；欺凌弱小者；土霸 | vt. 恐吓；胁迫；欺负；威胁 | adj. 特好的；第一流的 | adv. 十分	0	0	0	0	
 bump	bʌmp	v. 碰；撞；颠簸着前进 | n. 碰撞；隆起物；肿块 | vi. 颠簸而行 | vt. 颠簸 | adv. 突然地；猛烈地	0	0	0	0	
 bump into		无意中遇到、碰到；偶然遇见	0	0	0	0	
@@ -924,7 +924,7 @@ conquest	'kɒŋkwest	n. 征服；征服地；掠取物；战胜；战利品	0	0	
 conscience	'kɒnʃ(ə)ns	n. 良心；犯罪感	0	0	0	0	
 conscientious	,kɒnʃɪ'enʃəs	adj. 认真的；诚心诚意的；有责任心的；负责的；本着良心的；尽责的；小心谨慎的	0	0	0	0	
 conscious	'kɒnʃəs	adj. 清醒的；故意的；有意识的；知觉的；觉察的；意识到的；神志清醒的	0	0	0	0	
-consecutive	kən'sekjʊtɪv	adj. 连续的；连贯的；联贯的；连续不断的	10	3	7	2	2026-11-19
+consecutive	kən'sekjʊtɪv	adj. 连续的；连贯的；联贯的；连续不断的	11	3	8	0	2026-11-19
 consensus	kən'sensəs	n. 一致；合意；同感；舆论	0	0	0	0	
 consent	kən'sent	vi&n. 同意；允许 | n. 许可；（意见等的）一致 | vi. 赞同；赞成；答应	0	0	0	0	
 consequence	'kɒnsɪkw(ə)ns	n. 结果；后果；重要性；推论	0	0	0	0	
@@ -1145,7 +1145,7 @@ cute	kjuːt	adj. 漂亮的；逗人喜爱的；可爱的；聪明的；伶俐的
 cutting	'kʌtɪŋ	n. 开凿出来的公路；铁路；剪报；切断；切下；路堑；剪辑；开凿 | adj. 锋利的；严寒的	0	0	0	0	
 cylinder	'sɪlɪndə	n. 圆桶；汽缸；圆筒；圆筒状物；柱面；圆柱状物	0	0	0	0	
 cynical	'sɪnɪk(ə)l	adj. 愤世嫉俗的；讽刺的；冷嘲的	0	0	0	0	
-dairy	'deərɪ	n. 牛奶及乳品店；牛奶场；牛奶公司；乳品店；乳牛场；奶制品；制酪场；牛奶及乳品业 | adj. 牛奶制的；产乳的	5	2	3	1	2026-11-19
+dairy	'deərɪ	n. 牛奶及乳品店；牛奶场；牛奶公司；乳品店；乳牛场；奶制品；制酪场；牛奶及乳品业 | adj. 牛奶制的；产乳的	7	3	4	1	2026-11-19
 dam	dæm	n&vt. 水坝；筑坝；抑制；阻拦 | n. 障碍 | v. 控制	9	6	3	3	2026-11-19
 damage	'dæmɪdʒ	n. 损害；伤害 | vt. 损害；毁坏 | vi. 损毁；赔偿金	0	0	0	0	
 damp	dæmp	n&a&v. 潮湿(的)；湿气；使潮湿 | vt. 使阻尼；抑止；使沮丧；抑制 | vi. 衰减；减幅	0	0	0	0	
@@ -1293,7 +1293,7 @@ detective	dɪ'tektɪv	adj. 侦探的；发觉者的	0	0	0	0
 deter	dɪ'tɜː	v. 阻止；使不敢；吓住 | vt. 制止；威慑；使打消念头	0	0	0	0	
 detergent	dɪ'tɜːdʒ(ə)nt	n. 去垢剂；清洁剂	0	0	0	0	
 deteriorate	dɪ'tɪərɪəreɪt	v. 恶化；败坏 | vi. 变坏	0	0	0	0	
-deterioration	dɪˌtɪərə'reɪʃn	n. 恶化；堕落；衰退；退化	7	2	5	1	2026-11-19
+deterioration	dɪˌtɪərə'reɪʃn	n. 恶化；堕落；衰退；退化	9	2	7	0	2026-11-19
 determination	dɪ,tɜːmɪ'neɪʃ(ə)n	n. 决心；决定；确定；果断	0	0	0	0	
 determine	dɪ'tɜːmɪn	v. 确定；决定；下决心 | vt. 判决；使…下定决心 | vi. 终止	0	0	0	0	
 detest	dɪ'test	v. 痛恨；憎恶" | vt. 厌恶；憎恨	0	0	0	0	
@@ -1830,7 +1830,7 @@ extraordinary	ɪk'strɔːdnri	adj. 不同寻常的；非常的；特别的；非
 extravagance	ɪk'strævəgəns	n. 奢侈；挥霍；放肆的言行；浪费；过度	0	0	0	0	
 extravagant	ɪk'strævəg(ə)nt; ek-	adj. 奢侈的；过分的；挥霍无度的；浪费的；过度的；放纵的	0	0	0	0	
 extreme	ɪk'striːm; ek-	adj. 极度的；尽头的；偏激的 | n. 极端；相反的性质；末端；最大程度；极端的事物	0	0	0	0	
-extrovert	'ekstrəvɜːt	n. 性格外向的人；爱交际的人；外向性格的人	7	2	5	1	2026-11-19
+extrovert	'ekstrəvɜːt	n. 性格外向的人；爱交际的人；外向性格的人	8	2	6	0	2026-11-19
 extrusion	ɪk'struːʒn	n. 挤出；推出；挤压；赶出；喷出	0	0	0	0	
 exuberant	ɪg'z(j)uːb(ə)r(ə)nt; eg-	adj. 茂盛的；精力充沛的；繁茂的；丰富的；生气勃勃的；充溢的	0	0	0	0	
 eye	aɪ	n&vt. 眼睛；看 | n. 视力；眼光；见解；观点 | vt. 注视	0	0	0	0	
@@ -2972,7 +2972,7 @@ medium	'miːdɪəm	n. 媒介；中庸间；适中；媒体；方法 | adj. 中�
 meek	miːk	adj. 温顺的；谦逊的；逆来顺受的；谦恭的；驯服的	0	0	0	0	
 megacity	'megəsɪti	n. 大城市	0	0	0	0	
 melancholy	'melənkəlɪ	n. 忧郁；悲哀；愁思 | adj. 忧郁的；令人伤感的；使人悲伤的	0	0	0	0	
-melatonin	ˌmelə'təunɪn	n. 褪黑激素	5	2	3	1	2026-11-19
+melatonin	ˌmelə'təunɪn	n. 褪黑激素	6	3	3	2	2026-11-19
 melodious	mɪ'ləʊdɪəs	adj. 音调悦耳的；旋律的；旋律美妙的；旋律优美的；有乐曲的；悦耳的	0	0	0	0	
 melody	'melədɪ	n. 音律；歌曲；曲子；美妙音乐；曲调；旋律；美妙的音乐	0	0	0	0	
 melt	melt	v. 融化；消散；(使)变软 | n. 熔化；溶解 | vi. 渐混 | vt. 使软化；使感动	0	0	0	0	
@@ -3159,7 +3159,7 @@ native	'neɪtɪv	adj. 天真的；幼稚的；本国的；与生俱来的；自�
 natural	'nætʃrəl	adj. 正常的；普通的；自然的；自然界的；天然的；天赋的；固有的；本能的；物质的 | n. 白痴	0	0	0	0	
 naturally	'nætʃrəli	adv. 当然；自然；天生地；以自然力	0	0	0	0	
 naught	nɔːt	n. =naught无；零；无 | adj. 无价值的	0	0	0	0	
-nausea	ˈnɔ:ziə	n. 恶心；晕船；反胃；厌恶；极端的憎恶 | vt. 使恶心	4	0	4	0	
+nausea	ˈnɔ:ziə	n. 恶心；晕船；反胃；厌恶；极端的憎恶 | vt. 使恶心	5	0	5	0	
 nautical	'nɔːtɪk(ə)l	adj. 航海的；船舶的；海员的；海上的；船员的	0	0	0	0	
 naval	'neɪv(ə)l	adj. 海军的；军舰的；有舰队的	0	0	0	0	
 navigable	'nævɪgəb(ə)l	adj. (江河、海洋)可航行的；可通航的；可通船的；适于航行的；可驾驶的	0	0	0	0	
@@ -3237,7 +3237,7 @@ nylon	'naɪlɒn	n. 尼龙；尼龙长袜；聚酰胺纤维	0	0	0	0
 oak	əuk	n. 橡树；橡木 | adj. 栎树的；栎木制的	11	9	2	8	2026-11-18
 oar	ɔː	n. 桨；橹；搅棒 | vt. 划动	0	0	0	0	
 oasis	əʊ'eɪsɪs	n. (沙漠中的)绿洲；舒适的地方；令人宽慰的事物	0	0	0	0	
-oath	əʊθ	n. 誓言；誓约；咒骂；诅咒	14	10	4	2	2026-11-19
+oath	əʊθ	n. 誓言；誓约；咒骂；诅咒	15	11	4	3	2026-11-19
 obedient	ə'biːdɪənt	adj. 服从的；顺从的；孝顺的	0	0	0	0	
 object	'ɒbdʒɪkt; -dʒekt	n. 物体；目标；目的；对象；宾语；客体 | v. 反对 | vi. 抱反感；拒绝 | vt. 提出...来反对	0	0	0	0	
 objectify	əb'dʒektɪfaɪ	vt. 使客观化；使具体化；物化；体现	0	0	0	0	
@@ -3320,7 +3320,7 @@ opulent	'ɒpjələnt	adj. 豪华的；华丽的；富裕的；丰富的；丰饶
 orbit	'ɔːbɪt	n. 天体轨道；势力范围；轨道；常轨；眼眶；生活常规 | v. 沿轨道运行 | vt. 绕...轨道而行 | vi. 进入轨道；盘旋	0	0	0	0	
 orchard	'ɔːtʃəd	n. 果园；果树林	0	0	0	0	
 orchestra	'ɔːkɪstrə	n. 管弦乐队；乐队演奏处	0	0	0	0	
-ordeal	ɔː'diːəl	n. (对品格或忍耐力的)严格考验；严酷考验；痛苦经历；煎熬；折磨；严酷的考验；痛苦的经验	36	8	28	2	2026-11-19
+ordeal	ɔː'diːəl	n. (对品格或忍耐力的)严格考验；严酷考验；痛苦经历；煎熬；折磨；严酷的考验；痛苦的经验	38	9	29	1	2026-11-19
 orderly	'ɔːd(ə)lɪ	adj. 整齐的；有秩序的；有条不紊的；值班的 | n. 护理员；清道夫；传令兵；勤务兵 | adv. 依次地；顺序地	0	0	0	0	
 ore	ɔː	n. 矿石	0	0	0	0	
 organ	'ɔːg(ə)n	n. 器官；报刊；风琴；元件；机构；机关；嗓音	0	0	0	0	
@@ -3505,7 +3505,7 @@ perimeter	pə'rɪmɪtə	n. 周边；周长；周界；边缘；视野计	0	0	0	0
 periodical	pɪərɪ'ɒdɪk(ə)l	adj. 周期的；定期的；定期出版的；间歇(性的) | n. 期刊；杂志	0	0	0	0	
 periodically	,pɪərɪ'ɒdɪkəlɪ	adv. 偶然地；定期地；循环；间歇；周期；定期刊行；期刊；偶尔	0	0	0	0	
 peripheral	pə'rɪfərəl	adj. 外围的；次要的；附带的；周边的；周围的；圆周的；无关紧要的；肤浅的 | n. 外围设备	0	0	0	0	
-periphery	pə'rɪf(ə)rɪ	n. (圆体的)外面；周围；外围；边缘地区；圆周；边缘；圆柱体表面	12	4	8	1	2026-11-19
+periphery	pə'rɪf(ə)rɪ	n. (圆体的)外面；周围；外围；边缘地区；圆周；边缘；圆柱体表面	13	5	8	2	2026-11-19
 periscope	'perɪskəʊp	n. 潜望镜	0	0	0	0	
 perish	'perɪʃ	vt&vi. 灭亡；使痛苦；腐朽 | vi. 毁灭；丧生；凋谢；颓丧；死亡；腐烂 | vt. 毁坏	0	0	0	0	
 perishable	'perɪʃəb(ə)l	a&n. (尤指食物)易坏的；易腐烂的；易坏之物" | adj. 易腐坏的；会枯萎的；易毁灭的；不经久的 | n. 易腐坏的东西	0	0	0	0	
@@ -3817,7 +3817,7 @@ protract	prə'trækt	v. 延长；拖延 | vt. 伸出；绘制；伸展	0	0	0	0
 protrude	prə'truːd	vt&vi. 突出；伸出	0	0	0	0	
 provenance	'prɒvənəns	n. 出处；起源	0	0	0	0	
 provided	prə'vaɪdɪd	conj. 假如；如果；倘若；以...为条件 | v. 提供	0	0	0	0	
-provision	prə'vɪʒ(ə)n	n. 准备；供应；条款；(政府提供的)钱和设备；规定 | vt. 供给...食物及必需品	4	2	2	1	2026-11-19
+provision	prə'vɪʒ(ə)n	n. 准备；供应；条款；(政府提供的)钱和设备；规定 | vt. 供给...食物及必需品	7	3	4	1	2026-11-19
 provisional	prə'vɪʒ(ə)n(ə)l	adj. 临时的；暂时性的；暂定的	0	0	0	0	
 provoke	prə'vəʊk	v. 激怒；引起 | vt. 惹起；诱导；驱使；煽动	0	0	0	0	
 prowess	'prauəs	n. 杰出的才能；高超的技艺；专长；造诣；英勇；勇敢；超凡技术；勇猛	0	0	0	0	
@@ -4071,7 +4071,7 @@ resource	rɪ'sɔːs; rɪ'zɔːs	n. 资源；机智；财力；办法；策略；
 respect	rɪ'spekt	vt. 尊敬；注意；遵守 | n. 尊敬；方面；尊重；问候；敬意	0	0	0	0	
 respiration	respɪ'reɪʃ(ə)n	n. 呼吸作用；一次呼吸；植物光合作用；呼吸；一口气	0	0	0	0	
 respond	rɪ'spɒnd	vi. 回答；答复；响应；作出反应；回报；有反应；承担责任 | n. 应答；唱和	0	0	0	0	
-respondent	rɪ'spɒndənt	n. 回答者；响应者；调查对象；被告 | adj. 应答的；反射的	3	1	2	1	2026-11-19
+respondent	rɪ'spɒndənt	n. 回答者；响应者；调查对象；被告 | adj. 应答的；反射的	4	1	3	0	2026-11-19
 response	rɪ'spɒns	n. 回答；答复；反应；响应	0	0	0	0	
 responsibility	rɪˌspɒnsə'bɪləti	n. 责任；责任心；职责；任务；负担；可靠性	0	0	0	0	
 responsible	rɪ'spɒnsəbl	adj. 有责任感的；可靠的；负责的；责任重大的	0	0	0	0	
@@ -4096,7 +4096,7 @@ retrieve	rɪ'triːv	vt&vi. 再获得；挽回；挽救 | vt. 取回；弥补；�
 retrospect	'retrəspekt	n. 回顾；回想；追忆；回溯；追溯	0	0	0	0	
 reunion	riː'juːniən	n. 重聚；团聚；聚会；联谊活动；团圆	0	0	0	0	
 reunite	ˌriːjuː'naɪt	v. 结合；重聚；(使)再联合	10	7	3	7	2026-11-18
-reveal	rɪ'viːl	vt. 揭露；泄露；展现；露出；显示；透露；(神)启示 | n. 窗侧；门侧；暴露	9	3	6	2	2026-11-19
+reveal	rɪ'viːl	vt. 揭露；泄露；展现；露出；显示；透露；(神)启示 | n. 窗侧；门侧；暴露	11	4	7	1	2026-11-19
 revegetate	riː'vedʒəteɪt	v. 再生长；再植	0	0	0	0	
 revelation	revə'leɪʃ(ə)n	n. 揭示；揭露；泄露；发觉；默示；启示；出乎意料的事；被揭露的真相	50	14	36	4	2026-11-18
 revenge	rɪ'ven(d)ʒ	v. 报复；报仇 | n. 复仇 | vt. 洗雪 | vi. 雪耻	0	0	0	0	
@@ -4752,7 +4752,7 @@ taunt	tɔːnt	vt. 嘲笑；讥笑；奚落；逗弄 | n. 辱骂；嘲弄；讥�
 taxation	tæk'seɪʃ(ə)n	n. 税制；税项；课税；征税；抽税；税款；估定的税额	0	0	0	0	
 teamwork	'tiːmwɜːk	n. 协力合作；团队合作；配合；协同作业；协力	0	0	0	0	
 tear	(for v.) ˈtɛː; (for n.) ˈtɪə	n. 眼泪；泪滴；扯；裂缝；激怒；飞奔 | vt&vi. 撕裂；撕碎；破坏安宁 | vi. 流泪	0	0	0	0	
-tease	tiːz	v. 取笑；嘲笑；戏弄 | n. 揶揄；逗惹；爱纠缠的小孩 | vt. 强求；梳理；使起毛；欺负	22	12	10	2	2026-11-19
+tease	tiːz	v. 取笑；嘲笑；戏弄 | n. 揶揄；逗惹；爱纠缠的小孩 | vt. 强求；梳理；使起毛；欺负	23	13	10	3	2026-11-19
 technical	'teknɪkl	adj. 技术的；工艺的；专门的；工业的；严格根据法律的；科技的	0	0	0	0	
 technician	tek'nɪʃ(ə)n	n. 技术人员；技师；技术员；技巧纯熟的人	0	0	0	0	
 technique	tek'niːk	n. 技术；技能；行家手法；技巧；方法；手法	0	0	0	0	
@@ -5168,7 +5168,7 @@ void	vɒɪd	adj. 空的；空虚的；无效的；无人的；没有的；无用
 volatile	'vɒlətaɪl	adj. (液体)易挥发的；(人)反复无常的；挥发性的；可变的；不稳定的；飞行的；轻快的；爆炸性的 | n. 有翅动物；挥发物	0	0	0	0	
 volcano	vɒl'keɪnəʊ	n. 火山	0	0	0	0	
 volt	vəult	n. 伏特；环骑；闪避	0	0	0	0	
-voltage	'vəʊltɪdʒ; 'vɒltɪdʒ	n. 电压；伏特数	3	2	1	2	2026-11-19
+voltage	'vəʊltɪdʒ; 'vɒltɪdʒ	n. 电压；伏特数	4	3	1	3	2026-11-19
 volume	'vɒljuːm	n. 卷；容积；音量；大量；册；体积；容量；许多；份量 | vi. 成团卷起	0	0	0	0	
 voluntary	'vɒlənt(ə)rɪ	adj. 自愿的；志愿的；有意的；自动的；故意的；自发的 | n. 自愿行动；自由调	0	0	0	0	
 volunteer	,vɒlən'tɪə	vt&n. 自愿参加(者) | n. 志愿者 | v. 自愿	0	0	0	0	
